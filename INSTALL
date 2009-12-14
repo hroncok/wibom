@@ -1,0 +1,9 @@
+Wibom is the Wine bottle manager.nThe Core is written in Bash. Wibom-gtk, the GTK+ 2 frontend, is written in Ruby.
+
+Dependencies:
+wine
+ruby
+ruby-gnome2
+
+Install:
+Copy the usr folder over your /usr folder, you should find Wine bottle management in your menu.

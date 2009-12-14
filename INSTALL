@@ -5,5 +5,10 @@ wine
 ruby
 ruby-gnome2
 
+Recommends:
+trash-cli
+full iconset containing icons like wine-winefile or document-import
+(e.g. gnome-colors, humanity)
+
 Install:
 Copy the usr folder over your /usr folder, you should find Wine bottle management in your menu.

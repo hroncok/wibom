@@ -86,7 +86,7 @@ copy.image = makeicon("editcopy",16)
 import = Gtk::ImageMenuItem.new(_("_Import bottle"), true)
 import.image = makeicon("document-import",16)
 
-delete = Gtk::ImageMenuItem.new(_("_Delte bottle"), true)
+delete = Gtk::ImageMenuItem.new(_("_Delete bottle"), true)
 delete.image = makeicon("editdelete",16)
 
 quit = Gtk::ImageMenuItem.new(Gtk::Stock::QUIT, group)
@@ -100,10 +100,10 @@ filemenu.append(quit)
 open   = Gtk::ImageMenuItem.new(_("_Open bottle in file manager"), true)
 open.image = makeicon("document-open",16)
 
-winecfg = Gtk::ImageMenuItem.new(_("_Configure the bottle"), true)
+winecfg = Gtk::ImageMenuItem.new(_("_Configure bottle"), true)
 winecfg.image = makeicon("wine-winecfg",16)
 
-regedit = Gtk::ImageMenuItem.new(_("Edit the _registers"), true)
+regedit = Gtk::ImageMenuItem.new(_("Edit _registers"), true)
 regedit.image = makeicon("wine-notepad",16)
 
 toolsmenu.append(open)
@@ -164,10 +164,19 @@ toolbar.insert(10, addbutton)
 help = Gtk::Tooltips.new
 help.set_tip(new,_("Create a new bottle"), nil)
 help.set_tip(newbutton,_("Create a new bottle"), nil)
+help.set_tip(copy,_("Create new bottle as a copy of selected one"), nil)
 help.set_tip(copybutton,_("Create new bottle as a copy of selected one"), nil)
-help.set_tip(deletebutton,_("Permanently delete selected bottle"), nil)
+help.set_tip(import,_("Import an existing bottle"), nil)
+help.set_tip(importbutton,_("Import an existing bottle"), nil)
+help.set_tip(delete,_("Delete selected bottle"), nil)
+help.set_tip(deletebutton,_("Delete selected bottle"), nil)
 help.set_tip(openbutton,_("Open selected bottle folder in file manager"), nil)
-help.set_tip(winecfgbutton,_("Open Wine config dialog for selected bottle"), nil)
+help.set_tip(open,_("Open selected bottle folder in file manager"), nil)
+help.set_tip(winecfgbutton,_("Open Wine config dialog for the selected bottle"), nil)
+help.set_tip(winecfg,_("Open Wine config dialog for the selected bottle"), nil)
+help.set_tip(regedit,_("Edit the registers of the selected bottle"), nil)
+help.set_tip(regeditbutton,_("Edit the registers of the selected bottle"), nil)
+help.set_tip(execute,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(executebutton,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(add,_("Add or Remove software into or from selected bottle"), nil)
 help.set_tip(addbutton,_("Add or Remove software into or from selected bottle"), nil)
@@ -459,6 +468,8 @@ execute.signal_connect("activate")	  { executeinbottle(choosenbottle) }
 
 addbutton.signal_connect("clicked") { addtobottle(choosenbottle) }
 add.signal_connect("activate")	  { addtobottle(choosenbottle) }
+
+contents.signal_connect("activate")	  { system("exo-open --launch WebBrowser file://") }
 
 bottleslist.signal_connect("cursor-changed") {
 	bottle = pointer.selected

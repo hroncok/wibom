@@ -4,7 +4,7 @@
 # http://www.xfree86.org/3.3.6/COPYRIGHT2.html#5
 # Copyright © 2009, Miro Hrončok [hroncok.cz]
 
-USAGE="Usage: delete.sh bottle_path"
+USAGE="Usage: wibom delete bottle_path"
 
 BOTTLES="$HOME/.local/share/bottles"
 
@@ -22,11 +22,11 @@ if [ "$(grep -x $absolute1 $BOTTLES/bottles.lst)" ]; then
 	grep -vx $absolute1 $BOTTLES/bottles.lst.old > $BOTTLES/bottles.lst
 	echo "Bottle $1 was deleted from the list"
 	if ! [ "$(which trash)" ]; then
-		echo "It is recommanded to install trash-cli. Directory $1 was delted forever."
+		echo "It is recommanded to install trash-cli. Directory $1 was deleted forever."
 		rm -rf $1
 	else
 		trash $1
-		echo "Directory $1 was delted, you can found it in trash."
+		echo "Directory $1 was deleted, you can found it in trash."
 	fi
 else
 	echo "$1 is not a bottle on the list, delete the directory manualy"

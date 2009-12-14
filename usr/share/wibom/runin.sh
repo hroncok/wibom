@@ -4,7 +4,7 @@
 # http://www.xfree86.org/3.3.6/COPYRIGHT2.html#5
 # Copyright © 2009, Miro Hrončok [hroncok.cz]
 
-USAGE="Usage: runin.sh bottle_path commands [arguments]"
+USAGE="Usage: wibom runin bottle_path commands [arguments]"
 
 BOTTLES="$HOME/.local/share/bottles"
 

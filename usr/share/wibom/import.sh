@@ -4,7 +4,7 @@
 # http://www.xfree86.org/3.3.6/COPYRIGHT2.html#5
 # Copyright © 2009, Miro Hrončok [hroncok.cz]
 
-USAGE="Usage: import.sh bottle_path"
+USAGE="Usage: wibom import bottle_path"
 
 BOTTLES="$HOME/.local/share/bottles"
 

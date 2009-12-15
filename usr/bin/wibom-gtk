@@ -23,7 +23,9 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 require 'gtk2'
+require 'gettext'
 include GetText
+bindtextdomain("wibom-gtk")
 
 def error_window (message)
 		dialog = Gtk::MessageDialog.new(@window, 

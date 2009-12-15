@@ -204,7 +204,7 @@ def newbottle
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 			system("/usr/share/wibom/new.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 8
-				error_window(_("Choosen directory is not empty"))
+				error_window(_("Chosen directory is not empty."))
 			else
 				bottle = @bottles.append
 				@bottles.set_value(bottle, 0, dialog.filename)
@@ -218,7 +218,7 @@ def newbottle
 	end
 end
 
-def clonebottle (choosenbottle)
+def clonebottle (chosenbottle)
 	dialog = Gtk::FileChooserDialog.new(_("Choose an empty directory for the copy of the selected bottle"),
 										@window,
 										Gtk::FileChooser::ACTION_SELECT_FOLDER,
@@ -228,11 +228,11 @@ def clonebottle (choosenbottle)
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("/usr/share/wibom/new.sh \"#{dialog.filename}\" \"#{choosenbottle}\"")
+			system("/usr/share/wibom/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
 			if $?.exitstatus == 8
-				error_window(_("Choosen directory is not empty"))
+				error_window(_("Chosen directory is not empty."))
 			elsif $?.exitstatus == 5
-				error_window(_("Selected bottle is corrupted, have you been smashing with files?"))
+				error_window(_("Selected bottle is corrupted, have you been smashing files?"))
 				dialog.destroy
 				break
 			else
@@ -260,9 +260,9 @@ def importbottle
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 			system("/usr/share/wibom/import.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 5
-				error_window(_("Choosen directory is not a bottle"))
+				error_window(_("Chosen directory is not a bottle."))
 			elsif $?.exitstatus == 6
-				error_window(_("Choosen directory is allready on the list"))
+				error_window(_("Chosen directory is already on the list."))
 			else
 				bottle = @bottles.append
 				@bottles.set_value(bottle, 0, dialog.filename)
@@ -276,8 +276,8 @@ def importbottle
 	end
 end
 
-def deletebottle (choosenbottle)
-	if choosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
+def deletebottle (chosenbottle)
+	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
 		error_window(_("You are trying to delete the default bottle. This is not possible."))
 	else
 		dialog = Gtk::MessageDialog.new(@window, 
@@ -285,12 +285,12 @@ def deletebottle (choosenbottle)
 										Gtk::MessageDialog::QUESTION,
 										Gtk::MessageDialog::BUTTONS_YES_NO,
 										_("Do you really want to delete this bottle?"))
-		dialog.secondary_text = choosenbottle
+		dialog.secondary_text = chosenbottle
 		dialog.run do |response|
 			if response == Gtk::Dialog::RESPONSE_YES
-				system("/usr/share/wibom/delete.sh \"#{choosenbottle}\"")
+				system("/usr/share/wibom/delete.sh \"#{chosenbottle}\"")
 				if $?.exitstatus == 5
-					error_window(_("Selected bottle is not on the list, have you been smashing with the list?"))
+					error_window(_("Selected bottle is not on the list, have you been smashing the list?"))
 				else
 					@bottles.clear
 					redraw (@bottles)
@@ -303,21 +303,21 @@ def deletebottle (choosenbottle)
 	end
 end
 
-def openbottle (choosenbottle)
+def openbottle (chosenbottle)
 	# Here we should determinate prefered file manager
 	# FIXME
-	system("thunar \"#{choosenbottle}\"")
+	system("thunar \"#{chosenbottle}\"")
 end
 
-def winecfgbottle (choosenbottle)
-	system("/usr/share/wibom/runin.sh \"#{choosenbottle}\" winecfg 2>/dev/null &")
+def winecfgbottle (chosenbottle)
+	system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" winecfg 2>/dev/null &")
 end
 
-def regeditbottle (choosenbottle)
-	system("/usr/share/wibom/runin.sh \"#{choosenbottle}\" regedit 2>/dev/null &")
+def regeditbottle (chosenbottle)
+	system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" regedit 2>/dev/null &")
 end
 
-def executeinbottle (choosenbottle)
+def executeinbottle (chosenbottle)
 	dialog = Gtk::FileChooserDialog.new(_("Choose an Windows Installer to run"),
 										@window,
 										Gtk::FileChooser::ACTION_OPEN,
@@ -327,7 +327,7 @@ def executeinbottle (choosenbottle)
 	dialog.current_folder = `echo $HOME`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("/usr/share/wibom/runin.sh \"#{choosenbottle}\" wine \"#{dialog.filename}\"")
+			system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
 			if $?.exitstatus == 139
 				error_window(_("#{dialog.filename} is not a Windows application."))
 			else
@@ -341,14 +341,13 @@ def executeinbottle (choosenbottle)
 	end
 end
 
-def addtobottle (choosenbottle)
-	system("/usr/share/wibom/runin.sh \"#{choosenbottle}\" wine uninstaller 2>/dev/null &")
+def addtobottle (chosenbottle)
+	system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine uninstaller 2>/dev/null &")
 end
 
 # About Dialog
 def aboutdialog
-	authors = ["Miro Hrončok <miro@hroncok.cz>"]
-	documenters = ["Miro Hrončok <miro@hroncok.cz>"]
+	authors = documenters = ["Miro Hrončok <miro@hroncok.cz>"]
 
 	dialog = Gtk::AboutDialog.new
 
@@ -423,7 +422,7 @@ bottle = @bottles.prepend
 pointer = bottleslist.selection
 pointer.mode = Gtk::SELECTION_BROWSE
 pointer.select_iter(bottle)
-choosenbottle = @bottles.get_value(bottle, 0)
+chosenbottle = @bottles.get_value(bottle, 0)
 
 
 
@@ -431,49 +430,49 @@ choosenbottle = @bottles.get_value(bottle, 0)
 newbutton.signal_connect("clicked") { newbottle }
 new.signal_connect("activate")	  { newbottle }
 
-copybutton.signal_connect("clicked") { clonebottle(choosenbottle) }
-copy.signal_connect("activate")	  { clonebottle(choosenbottle) }
+copybutton.signal_connect("clicked") { clonebottle(chosenbottle) }
+copy.signal_connect("activate")	  { clonebottle(chosenbottle) }
 
 importbutton.signal_connect("clicked") { importbottle }
 import.signal_connect("activate")	  { importbottle }
 
 deletebutton.signal_connect("clicked") {
-	deletebottle(choosenbottle)
+	deletebottle(chosenbottle)
 	pointer = bottleslist.selection
 	pointer.mode = Gtk::SELECTION_BROWSE
 	bottle = @bottles.iter_first
 	pointer.select_iter(bottle)
-	choosenbottle = @bottles.get_value(bottle, 0)
+	chosenbottle = @bottles.get_value(bottle, 0)
 }
 delete.signal_connect("activate")	  {
-	deletebottle(choosenbottle)
+	deletebottle(chosenbottle)
 	pointer = bottleslist.selection
 	pointer.mode = Gtk::SELECTION_BROWSE
 	bottle = @bottles.iter_first
 	pointer.select_iter(bottle)
-	choosenbottle = @bottles.get_value(bottle, 0)
+	chosenbottle = @bottles.get_value(bottle, 0)
 }
 
-openbutton.signal_connect("clicked"){ openbottle(choosenbottle) }
-open.signal_connect("activate")	{ openbottle(choosenbottle) }
+openbutton.signal_connect("clicked"){ openbottle(chosenbottle) }
+open.signal_connect("activate")	{ openbottle(chosenbottle) }
 
-winecfgbutton.signal_connect("clicked") { winecfgbottle(choosenbottle) }
-winecfg.signal_connect("activate")	{ winecfgbottle(choosenbottle) }
+winecfgbutton.signal_connect("clicked") { winecfgbottle(chosenbottle) }
+winecfg.signal_connect("activate")	{ winecfgbottle(chosenbottle) }
 
-regeditbutton.signal_connect("clicked") { regeditbottle(choosenbottle) }
-regedit.signal_connect("activate")	  { regeditbottle(choosenbottle) }
+regeditbutton.signal_connect("clicked") { regeditbottle(chosenbottle) }
+regedit.signal_connect("activate")	  { regeditbottle(chosenbottle) }
 
-executebutton.signal_connect("clicked") { executeinbottle(choosenbottle) }
-execute.signal_connect("activate")	  { executeinbottle(choosenbottle) }
+executebutton.signal_connect("clicked") { executeinbottle(chosenbottle) }
+execute.signal_connect("activate")	  { executeinbottle(chosenbottle) }
 
-addbutton.signal_connect("clicked") { addtobottle(choosenbottle) }
-add.signal_connect("activate")	  { addtobottle(choosenbottle) }
+addbutton.signal_connect("clicked") { addtobottle(chosenbottle) }
+add.signal_connect("activate")	  { addtobottle(chosenbottle) }
 
 contents.signal_connect("activate")	  { system("exo-open --launch WebBrowser file://") }
 
 bottleslist.signal_connect("cursor-changed") {
 	bottle = pointer.selected
-	choosenbottle = @bottles.get_value(bottle, 0)
+	chosenbottle = @bottles.get_value(bottle, 0)
 }
 
 about.signal_connect("activate")	{ aboutdialog }
@@ -508,7 +507,7 @@ vbox.pack_start_defaults(scrolled_win)
 
 
 # set window title and show & start main window
-@window.set_title "Wine bottle management"
+@window.set_title _("Wine bottle management")
 @window.show_all
 
 Gtk.main

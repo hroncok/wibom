@@ -1,0 +1,260 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wibom-gtk\n"
+"POT-Creation-Date: 2009-12-15 00:51+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Miro Hrončok <miro@hroncok.cz>\n"
+"Language-Team: Czech\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: wibom-gtk:33
+#: wibom-gtk:34
+msgid "Error"
+msgstr "Chyba"
+
+#: wibom-gtk:52
+msgid "Could not find Wine or wibom scripts. You should install both before running wibom-gtk."
+msgstr "Nemohu najít Wine nebo skripty wibomu. Před spuštěním wibom-gtk byste měli nainstalovat obojí."
+
+#: wibom-gtk:64
+msgid "_File"
+msgstr "_Soubor"
+
+#: wibom-gtk:65
+msgid "_Tools"
+msgstr "Nás_troje"
+
+#: wibom-gtk:66
+msgid "_Software"
+msgstr "_Software"
+
+#: wibom-gtk:67
+msgid "_Help"
+msgstr "_Nápověda"
+
+#: wibom-gtk:80
+msgid "_New bottle"
+msgstr "_Nová bottle"
+
+#: wibom-gtk:83
+msgid "_Clone bottle"
+msgstr "_Klonovat bottle"
+
+#: wibom-gtk:86
+msgid "_Import bottle"
+msgstr "_Importovat bottle"
+
+#: wibom-gtk:89
+msgid "_Delete bottle"
+msgstr "_Odstanit bottle"
+
+#: wibom-gtk:100
+msgid "_Open bottle in file manager"
+msgstr "_Otevřít bottle ve správci souborů"
+
+#: wibom-gtk:103
+msgid "_Configure bottle"
+msgstr "_Konfigurovat bottle"
+
+#: wibom-gtk:106
+msgid "Edit _registers"
+msgstr "Upravit _registry"
+
+#: wibom-gtk:115
+msgid "_Add or Remove"
+msgstr "_Přidat nebo odstranit"
+
+#: wibom-gtk:132
+msgid "New"
+msgstr "Nová"
+
+#: wibom-gtk:133
+msgid "Clone"
+msgstr "Klonovat"
+
+#: wibom-gtk:134
+msgid "Import"
+msgstr "Importovat"
+
+#: wibom-gtk:135
+msgid "Delete"
+msgstr "Odstranit"
+
+#: wibom-gtk:137
+msgid "Open"
+msgstr "Otevřít"
+
+#: wibom-gtk:138
+msgid "Configure"
+msgstr "Konfigurovat"
+
+#: wibom-gtk:139
+msgid "Regedit"
+msgstr "Regedit"
+
+#: wibom-gtk:142
+msgid "Add/Remove"
+msgstr "Přidat/Odstranit"
+
+#: wibom-gtk:165
+#: wibom-gtk:166
+msgid "Create a new bottle"
+msgstr "Vytvořit novou lahev"
+
+#: wibom-gtk:167
+#: wibom-gtk:168
+msgid "Create new bottle as a copy of selected one"
+msgstr "Vytvořit novou lahev jako kopii označené"
+
+#: wibom-gtk:169
+#: wibom-gtk:170
+msgid "Import an existing bottle"
+msgstr "Importovat existující lahev"
+
+#: wibom-gtk:171
+#: wibom-gtk:172
+msgid "Delete selected bottle"
+msgstr "Odstranit označenou lahev"
+
+#: wibom-gtk:173
+#: wibom-gtk:174
+msgid "Open selected bottle folder in file manager"
+msgstr "Otevřít označenou lahev ve správci souborů"
+
+#: wibom-gtk:175
+#: wibom-gtk:176
+msgid "Open Wine config dialog for the selected bottle"
+msgstr "Otevřít dialog Konfigurace Wine pro označenou lahev"
+
+#: wibom-gtk:177
+#: wibom-gtk:178
+msgid "Edit the registers of the selected bottle"
+msgstr "Upravit registry označené lahve"
+
+#: wibom-gtk:179
+#: wibom-gtk:180
+msgid "Execute a Windows application in selected bottle"
+msgstr "Spustit aplikaci pro Windows v označené lahvi"
+
+#: wibom-gtk:181
+#: wibom-gtk:182
+msgid "Add or Remove software into or from selected bottle"
+msgstr "Přidat software do označené lahve, nebo jej odstarnit"
+
+#: wibom-gtk:196
+msgid "Choose an empty directory for the new bottle"
+msgstr "Vyberte prázdný adresář pro novou lahev"
+
+#: wibom-gtk:207
+#: wibom-gtk:233
+msgid "Chosen directory is not empty."
+msgstr "Zvolený adresář není prázdný"
+
+#: wibom-gtk:222
+msgid "Choose an empty directory for the copy of the selected bottle"
+msgstr "Vyberte prázdný adresář pro kopii označené lahve"
+
+#: wibom-gtk:235
+msgid "Selected bottle is corrupted, have you been smashing files?"
+msgstr "Označená lahev je poškozená, hrabali jste se v souborech?"
+
+#: wibom-gtk:252
+msgid "Choose the directory with the bottle"
+msgstr "Vyberte adresář obsahující lahev"
+
+#: wibom-gtk:263
+msgid "Chosen directory is not a bottle."
+msgstr "Zvolený adresář není lahev."
+
+#: wibom-gtk:265
+msgid "Chosen directory is already on the list."
+msgstr "Zvolený adresář se již na seznamu nachází."
+
+#: wibom-gtk:281
+msgid "You are trying to delete the default bottle. This is not possible."
+msgstr "Pokoušíte se smazat výchozí lahev. To není možné."
+
+#: wibom-gtk:287
+msgid "Do you really want to delete this bottle?"
+msgstr "Opravdu chcete odstranit tuto lahev?"
+
+#: wibom-gtk:293
+msgid "Selected bottle is not on the list, have you been smashing the list?"
+msgstr "Označená lahev není na seznamu, hrabali jste se v seznamu?"
+
+#: wibom-gtk:321
+msgid "Choose an Windows Installer to run"
+msgstr "Vyberte instalátor pro Windows"
+
+#: wibom-gtk:365
+msgid ""
+"Wibom is the Wine bottle manager.\n"
+"The Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
+msgstr ""
+"Wibom je správce Wine lahví.\n"
+"Jádro je napsáno v Bashi, tento GTK+ 2 frontend je napsaný v Ruby."
+
+#: wibom-gtk:369
+msgid ""
+"Redistribution and use in source and binary forms, with or without\n"
+"modification, are permitted provided that the following conditions are met:\n"
+"\t* Redistributions of source code must retain the above copyright\n"
+"\t  notice, this list of conditions and the following disclaimer.\n"
+"\t* Redistributions in binary form must reproduce the above copyright\n"
+"\t  notice, this list of conditions and the following disclaimer in the\n"
+"\t  documentation and/or other materials provided with the distribution.\n"
+"\t* Neither the name of the copyright holder nor the\n"
+"\t  names of its contributors may be used to endorse or promote products\n"
+"\t  derived from this software without specific prior written permission.\n"
+"\n"
+"THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\n"
+"ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n"
+"WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n"
+"DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\n"
+"DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n"
+"(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n"
+"LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\n"
+"ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
+"(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n"
+"SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+msgstr ""
+"Redistribuce a použití zdrojových i binárních forem díla, v původním\n"
+"i upravovaném tvaru, jsou povoleny za následujících podmínek:\n"
+"\t* Šířený zdrojový kód musí obsahovat výše uvedenou informaci o copyrightu,\n"
+"\t  tento seznam podmínek a níže uvedené zřeknutí se odpovědnosti.\n"
+"\t* Šířený binární tvar musí nést výše uvedenou informaci o copyrightu,\n"
+"\t  tento seznam podmínek a níže uvedené zřeknutí se odpovědnosti\n"
+"\t  ve své dokumentaci a/nebo dalších poskytovaných materiálech.\n"
+"\t* Ani jméno vlastníka práv, ani jména přispěvatelů nemohou být použita\n"
+"\t  při podpoře nebo právních aktech souvisejících s produkty odvozenými\n"
+"\t  z tohoto software bez výslovného písemného povolení.\n"
+"\n"
+"TENTO SOFTWARE JE POSKYTOVÁN DRŽITELEM LICENCE A JEHO PŘISPĚVATELI „JAK STOJÍ A LEŽÍ“\n"
+"A JAKÉKOLIV VÝSLOVNÉ NEBO PŘEDPOKLÁDANÉ ZÁRUKY VČETNĚ, ALE NEJEN,\n"
+"PŘEDPOKLÁDANÝCH OBCHODNÍCH ZÁRUK A ZÁRUKY VHODNOSTI PRO JAKÝKOLIV ÚČEL\n"
+"JSOU POPŘENY. DRŽITEL, ANI PŘISPĚVATELÉ NEBUDOU V ŽÁDNÉM PŘÍPADĚ ODPOVĚDNI\n"
+"ZA JAKÉKOLIV PŘÍMÉ, NEPŘÍMÉ, NÁHODNÉ, ZVLÁŠTNÍ, PŘÍKLADNÉ NEBO VYPLÝVAJÍCÍ ŠKODY\n"
+"(VČETNĚ, ALE NEJEN, ŠKOD VZNIKLÝCH NARUŠENÍM DODÁVEK ZBOŽÍ NEBO SLUŽEB; ZTRÁTOU\n"
+"POUŽITELNOSTI, DAT NEBO ZISKŮ; NEBO PŘERUŠENÍM OBCHODNÍ ČINNOSTI) JAKKOLIV\n"
+"ZPŮSOBENÉ NA ZÁKLADĚ JAKÉKOLIV TEORIE O ZODPOVĚDNOSTI, AŤ UŽ PLYNOUCÍ\n"
+"Z JINÉHO SMLUVNÍHO VZTAHU, URČITÉ ZODPOVĚDNOSTI NEBO PŘEČINU (VČETNĚ NEDBALOSTI)\n"
+"NA JAKÉMKOLIV ZPŮSOBU POUŽITÍ TOHOTO SOFTWARE, I V PŘÍPADĚ, ŽE DRŽITEL PRÁV\n"
+"BYL UPOZORNĚN NA MOŽNOST TAKOVÝCH ŠKOD.\n"
+
+#: wibom-gtk:397
+msgid "translator-credits"
+msgstr "Miro Hrončok <miro@hroncok.cz>"
+
+#: wibom-gtk:414
+msgid "Bottles"
+msgstr "Lahve"
+
+#: wibom-gtk:510
+msgid "Wine bottle management"
+msgstr "Správce Wine lahví"
+

@@ -2,11 +2,11 @@
 Version=1.0
 Encoding=UTF-8
 Name=Wine bottle management
-Name[cs]=Správce wine bottles
+Name[cs]=Správce Wine lahví
 Name[en_GB]=Wine bottle management
-Comment=Manage wine bottles
-Comment[cs]=Umožňuje spravovat jednotlivé wine bootles
-Comment[en_GB]=Manage wine bottles
+Comment=Manage Wine bottles
+Comment[cs]=Umožňuje spravovat jednotlivé Wine lahve
+Comment[en_GB]=Manage Wine bottles
 Exec=wibom-gtk
 Icon=wine-winefile
 StartupNotify=true

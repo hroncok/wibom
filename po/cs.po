@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wibom-gtk\n"
-"POT-Creation-Date: 2009-12-15 00:51+0100\n"
+"POT-Creation-Date: 2010-01-02 20:38+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Miro Hrončok <miro@hroncok.cz>\n"
 "Language-Team: Czech\n"
@@ -12,186 +12,186 @@ msgstr ""
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: wibom-gtk:33
-#: wibom-gtk:34
+#: wibom-gtk:35
+#: wibom-gtk:36
 msgid "Error"
 msgstr "Chyba"
 
-#: wibom-gtk:52
+#: wibom-gtk:54
 msgid "Could not find Wine or wibom scripts. You should install both before running wibom-gtk."
 msgstr "Nemohu najít Wine nebo skripty wibomu. Před spuštěním wibom-gtk byste měli nainstalovat obojí."
 
-#: wibom-gtk:64
+#: wibom-gtk:66
 msgid "_File"
 msgstr "_Soubor"
 
-#: wibom-gtk:65
+#: wibom-gtk:67
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: wibom-gtk:66
+#: wibom-gtk:68
 msgid "_Software"
 msgstr "_Software"
 
-#: wibom-gtk:67
+#: wibom-gtk:69
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: wibom-gtk:80
+#: wibom-gtk:82
 msgid "_New bottle"
-msgstr "_Nová bottle"
+msgstr "_Nová lahev"
 
-#: wibom-gtk:83
+#: wibom-gtk:85
 msgid "_Clone bottle"
-msgstr "_Klonovat bottle"
+msgstr "_Klonovat lahev"
 
-#: wibom-gtk:86
+#: wibom-gtk:88
 msgid "_Import bottle"
-msgstr "_Importovat bottle"
+msgstr "_Importovat lahev"
 
-#: wibom-gtk:89
+#: wibom-gtk:91
 msgid "_Delete bottle"
-msgstr "_Odstanit bottle"
+msgstr "_Odstranit lahev"
 
-#: wibom-gtk:100
+#: wibom-gtk:102
 msgid "_Open bottle in file manager"
-msgstr "_Otevřít bottle ve správci souborů"
+msgstr "_Otevřít lahev ve správci souborů"
 
-#: wibom-gtk:103
+#: wibom-gtk:105
 msgid "_Configure bottle"
-msgstr "_Konfigurovat bottle"
+msgstr "_Konfigurovat lahev"
 
-#: wibom-gtk:106
+#: wibom-gtk:108
 msgid "Edit _registers"
 msgstr "Upravit _registry"
 
-#: wibom-gtk:115
+#: wibom-gtk:117
 msgid "_Add or Remove"
 msgstr "_Přidat nebo odstranit"
 
-#: wibom-gtk:132
+#: wibom-gtk:134
 msgid "New"
 msgstr "Nová"
 
-#: wibom-gtk:133
+#: wibom-gtk:135
 msgid "Clone"
 msgstr "Klonovat"
 
-#: wibom-gtk:134
+#: wibom-gtk:136
 msgid "Import"
 msgstr "Importovat"
 
-#: wibom-gtk:135
+#: wibom-gtk:137
 msgid "Delete"
 msgstr "Odstranit"
 
-#: wibom-gtk:137
+#: wibom-gtk:139
 msgid "Open"
 msgstr "Otevřít"
 
-#: wibom-gtk:138
+#: wibom-gtk:140
 msgid "Configure"
 msgstr "Konfigurovat"
 
-#: wibom-gtk:139
+#: wibom-gtk:141
 msgid "Regedit"
 msgstr "Regedit"
 
-#: wibom-gtk:142
+#: wibom-gtk:144
 msgid "Add/Remove"
 msgstr "Přidat/Odstranit"
 
-#: wibom-gtk:165
-#: wibom-gtk:166
+#: wibom-gtk:167
+#: wibom-gtk:168
 msgid "Create a new bottle"
 msgstr "Vytvořit novou lahev"
 
-#: wibom-gtk:167
-#: wibom-gtk:168
+#: wibom-gtk:169
+#: wibom-gtk:170
 msgid "Create new bottle as a copy of selected one"
 msgstr "Vytvořit novou lahev jako kopii označené"
 
-#: wibom-gtk:169
-#: wibom-gtk:170
+#: wibom-gtk:171
+#: wibom-gtk:172
 msgid "Import an existing bottle"
 msgstr "Importovat existující lahev"
 
-#: wibom-gtk:171
-#: wibom-gtk:172
+#: wibom-gtk:173
+#: wibom-gtk:174
 msgid "Delete selected bottle"
 msgstr "Odstranit označenou lahev"
 
-#: wibom-gtk:173
-#: wibom-gtk:174
+#: wibom-gtk:175
+#: wibom-gtk:176
 msgid "Open selected bottle folder in file manager"
 msgstr "Otevřít označenou lahev ve správci souborů"
 
-#: wibom-gtk:175
-#: wibom-gtk:176
+#: wibom-gtk:177
+#: wibom-gtk:178
 msgid "Open Wine config dialog for the selected bottle"
 msgstr "Otevřít dialog Konfigurace Wine pro označenou lahev"
 
-#: wibom-gtk:177
-#: wibom-gtk:178
+#: wibom-gtk:179
+#: wibom-gtk:180
 msgid "Edit the registers of the selected bottle"
 msgstr "Upravit registry označené lahve"
 
-#: wibom-gtk:179
-#: wibom-gtk:180
+#: wibom-gtk:181
+#: wibom-gtk:182
 msgid "Execute a Windows application in selected bottle"
 msgstr "Spustit aplikaci pro Windows v označené lahvi"
 
-#: wibom-gtk:181
-#: wibom-gtk:182
+#: wibom-gtk:183
+#: wibom-gtk:184
 msgid "Add or Remove software into or from selected bottle"
 msgstr "Přidat software do označené lahve, nebo jej odstarnit"
 
-#: wibom-gtk:196
+#: wibom-gtk:198
 msgid "Choose an empty directory for the new bottle"
 msgstr "Vyberte prázdný adresář pro novou lahev"
 
-#: wibom-gtk:207
-#: wibom-gtk:233
+#: wibom-gtk:209
+#: wibom-gtk:235
 msgid "Chosen directory is not empty."
 msgstr "Zvolený adresář není prázdný"
 
-#: wibom-gtk:222
+#: wibom-gtk:224
 msgid "Choose an empty directory for the copy of the selected bottle"
 msgstr "Vyberte prázdný adresář pro kopii označené lahve"
 
-#: wibom-gtk:235
+#: wibom-gtk:237
 msgid "Selected bottle is corrupted, have you been smashing files?"
 msgstr "Označená lahev je poškozená, hrabali jste se v souborech?"
 
-#: wibom-gtk:252
+#: wibom-gtk:254
 msgid "Choose the directory with the bottle"
 msgstr "Vyberte adresář obsahující lahev"
 
-#: wibom-gtk:263
+#: wibom-gtk:265
 msgid "Chosen directory is not a bottle."
 msgstr "Zvolený adresář není lahev."
 
-#: wibom-gtk:265
+#: wibom-gtk:267
 msgid "Chosen directory is already on the list."
 msgstr "Zvolený adresář se již na seznamu nachází."
 
-#: wibom-gtk:281
+#: wibom-gtk:283
 msgid "You are trying to delete the default bottle. This is not possible."
 msgstr "Pokoušíte se smazat výchozí lahev. To není možné."
 
-#: wibom-gtk:287
+#: wibom-gtk:289
 msgid "Do you really want to delete this bottle?"
 msgstr "Opravdu chcete odstranit tuto lahev?"
 
-#: wibom-gtk:293
+#: wibom-gtk:295
 msgid "Selected bottle is not on the list, have you been smashing the list?"
 msgstr "Označená lahev není na seznamu, hrabali jste se v seznamu?"
 
-#: wibom-gtk:321
-msgid "Choose an Windows Installer to run"
-msgstr "Vyberte instalátor pro Windows"
+#: wibom-gtk:334
+msgid "Choose a Windows application to run"
+msgstr "Vyberte aplikaci pro Windows"
 
-#: wibom-gtk:365
+#: wibom-gtk:379
 msgid ""
 "Wibom is the Wine bottle manager.\n"
 "The Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
@@ -199,7 +199,7 @@ msgstr ""
 "Wibom je správce Wine lahví.\n"
 "Jádro je napsáno v Bashi, tento GTK+ 2 frontend je napsaný v Ruby."
 
-#: wibom-gtk:369
+#: wibom-gtk:381
 msgid ""
 "Redistribution and use in source and binary forms, with or without\n"
 "modification, are permitted provided that the following conditions are met:\n"
@@ -246,15 +246,15 @@ msgstr ""
 "NA JAKÉMKOLIV ZPŮSOBU POUŽITÍ TOHOTO SOFTWARE, I V PŘÍPADĚ, ŽE DRŽITEL PRÁV\n"
 "BYL UPOZORNĚN NA MOŽNOST TAKOVÝCH ŠKOD.\n"
 
-#: wibom-gtk:397
+#: wibom-gtk:409
 msgid "translator-credits"
 msgstr "Miro Hrončok <miro@hroncok.cz>"
 
-#: wibom-gtk:414
+#: wibom-gtk:426
 msgid "Bottles"
 msgstr "Lahve"
 
-#: wibom-gtk:510
+#: wibom-gtk:522
 msgid "Wine bottle management"
 msgstr "Správce Wine lahví"
 

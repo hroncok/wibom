@@ -23,14 +23,14 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERSION="0.1"
+VERSION="0.2"
 WIBOM="/usr/share/wibom"
 BOTTLES="$HOME/.local/share/bottles"
 
 $WIBOM/initialization.sh
 
 if [ -z "$1" ]; then
-	echo "Wine bottle manager version $VERSION"
+	echo "Wine bottle management $VERSION"
 	echo "Commands: list new import delete runin"
 	exit 1
 fi
@@ -42,6 +42,16 @@ if [ "$1" == "new" ] || [ "$1" == "import" ] || [ "$1" == "delete" ] || [ "$1" =
 elif [ "$1" == "list" ]; then
 	echo "$BOTTLES/default"
 	cat $BOTTLES/bottles.lst
+elif [ "$1" == "--help" ]; then
+	echo "Commands: list new import delete runin"
+	echo "More information can be found in man wibom(1)."
+elif [ "$1" == "--version" ]; then
+	echo "Wine bottle management $VERSION"
+	echo ""
+	echo "Copyright (C) 2009, Miro Hrončok [hroncok.cz]"
+	echo "Licenced under BSD licence, see source for more information."
+	echo ""
+	echo "Written by Miro Hrončok [hroncok.cz]"
 else
 	echo "Wibom: command $1 not found."
 fi

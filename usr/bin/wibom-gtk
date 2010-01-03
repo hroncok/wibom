@@ -342,7 +342,7 @@ def executeinbottle (chosenbottle)
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 			system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
 			if $?.exitstatus == 139
-				error_window(_("#{dialog.filename} is not a Windows application."))
+				error_window("#{dialog.filename}" + _(" is not a Windows application."))
 			else
 				dialog.destroy
 				break

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wibom-gtk\n"
-"POT-Creation-Date: 2010-01-02 20:38+0100\n"
+"POT-Creation-Date: 2010-01-04 00:13+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Miro Hrončok <miro@hroncok.cz>\n"
 "Language-Team: Czech\n"
@@ -190,6 +190,10 @@ msgstr "Označená lahev není na seznamu, hrabali jste se v seznamu?"
 #: wibom-gtk:334
 msgid "Choose a Windows application to run"
 msgstr "Vyberte aplikaci pro Windows"
+
+#: wibom-gtk:345
+msgid " is not a Windows application."
+msgstr " není aplikace pro Windows."
 
 #: wibom-gtk:379
 msgid ""

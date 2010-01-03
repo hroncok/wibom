@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-01-02 20:38+0100\n"
-"PO-Revision-Date: 2010-01-02 20:38+0100\n"
+"POT-Creation-Date: 2010-01-04 00:13+0100\n"
+"PO-Revision-Date: 2010-01-04 00:13+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -182,6 +182,10 @@ msgstr ""
 
 #: wibom-gtk:334
 msgid "Choose a Windows application to run"
+msgstr ""
+
+#: wibom-gtk:345
+msgid " is not a Windows application."
 msgstr ""
 
 #: wibom-gtk:379

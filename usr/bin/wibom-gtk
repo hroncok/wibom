@@ -409,7 +409,7 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.2"
+	dialog.version = "0.3"
 	dialog.copyright = "Copyright © 2009 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 

@@ -27,13 +27,13 @@ VERSION="0.2"
 WIBOM="/usr/share/wibom"
 BOTTLES="$HOME/.local/share/bottles"
 
-$WIBOM/initialization.sh
-
 if [ -z "$1" ]; then
 	echo "Wine bottle management $VERSION"
 	echo "Commands: list new import delete runin"
 	exit 1
 fi
+
+$WIBOM/initialization.sh
 
 if [ "$1" == "new" ] || [ "$1" == "import" ] || [ "$1" == "delete" ] || [ "$1" == "runin" ]; then
 	command=$1

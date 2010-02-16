@@ -306,7 +306,7 @@ def deletebottle (chosenbottle)
 end
 
 def openbottle (chosenbottle)
-	# Here we should determinate prefered file manager
+	# Here we should determine prefered file manager
 	# Xfce & Thunar
 	if ((`pidof xfce4-session`.chomp != "" || `pidof xfdesktop`.chomp != "" || `pidof xfwm4`.chomp != "") && `which thunar`.chomp != "")
 		system("thunar \"#{chosenbottle}\"")
@@ -316,10 +316,11 @@ def openbottle (chosenbottle)
 	# LXDE & PCMan File Manager
 	elsif ((`pidof lxsession`.chomp != "" || `pidof lxpanel`.chomp != "" || `pidof pcmanfm`.chomp != "") && `which pcmanfm`.chomp != "")
 		system("pcmanfm \"#{chosenbottle}\"")
-	# KDE
-	# elsif
-		
+	# Terminal for geeks
+	else
+		system("cd #{chosenbottle}; x-terminal-emulator")
 	end
+	# I do not determine KDE file managers, because this is a GTK+ frontend
 end
 
 def winecfgbottle (chosenbottle)
@@ -331,37 +332,71 @@ def regeditbottle (chosenbottle)
 end
 
 def executeinbottle (chosenbottle)
-	dialog = Gtk::FileChooserDialog.new(_("Choose a Windows application to run"),
-										@window,
-										Gtk::FileChooser::ACTION_OPEN,
-										nil,
-										[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
-										[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
-	dialog.current_folder = chosenbottle.chomp
-	while true
-		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
-			if $?.exitstatus == 139
-				error_window("#{dialog.filename}" + _(" is not a Windows application."))
+	no = false
+	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
+		dialog = Gtk::MessageDialog.new(@window, 
+										Gtk::Dialog::MODAL,
+										Gtk::MessageDialog::WARNING,
+										Gtk::MessageDialog::BUTTONS_YES_NO,
+										_("You want to run software in default bottle"))
+		dialog.secondary_text = _("If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?")
+		dialog.run do |response|
+			if response == Gtk::Dialog::RESPONSE_NO
+				no = true
+			end
+			dialog.destroy
+		end
+	end
+	if no == false
+		dialog = Gtk::FileChooserDialog.new(_("Choose a Windows application to run"),
+											@window,
+											Gtk::FileChooser::ACTION_OPEN,
+											nil,
+											[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+											[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
+		dialog.current_folder = chosenbottle.chomp + "/drive_c" # Drive C: of chosen bottle
+		while true
+			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+				system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
+				if $?.exitstatus == 139
+					error_window("#{dialog.filename}" + _(" is not a Windows application."))
+				else
+					dialog.destroy
+					break
+				end
 			else
 				dialog.destroy
 				break
 			end
-		else
-			dialog.destroy
-			break
 		end
 	end
 end
 
 def addtobottle (chosenbottle)
-	system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine uninstaller 2>/dev/null &")
+	no = false
+	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
+		dialog = Gtk::MessageDialog.new(@window, 
+										Gtk::Dialog::MODAL,
+										Gtk::MessageDialog::WARNING,
+										Gtk::MessageDialog::BUTTONS_YES_NO,
+										_("You want to add software to default bottle"))
+		dialog.secondary_text = _("If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?")
+		dialog.run do |response|
+			if response == Gtk::Dialog::RESPONSE_NO
+				no = true
+			end
+			dialog.destroy
+		end
+	end
+	if no == false
+		system("/usr/share/wibom/runin.sh \"#{chosenbottle}\" wine uninstaller 2>/dev/null &")
+	end
 end
 
 # About Dialog
 def aboutdialog
 	authors = documenters = ["Miro Hrončok <miro@hroncok.cz>"]
-	artists = ["Bára Havelková <bara.havelkova@seznam.cz>"]
+	artists = ["GNOME Colors by perfectska04 <perfectska04@gmail.com>", "Bára Havelková <bara.havelkova@seznam.cz>"]
 
 	dialog = Gtk::AboutDialog.new
 
@@ -480,7 +515,7 @@ execute.signal_connect("activate")	  { executeinbottle(chosenbottle) }
 addbutton.signal_connect("clicked") { addtobottle(chosenbottle) }
 add.signal_connect("activate")	  { addtobottle(chosenbottle) }
 
-contents.signal_connect("activate")	  { system("exo-open --launch WebBrowser file://") }
+contents.signal_connect("activate")	  { system("xdg-open file://") }
 
 bottleslist.signal_connect("cursor-changed") {
 	bottle = pointer.selected

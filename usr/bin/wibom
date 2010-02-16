@@ -24,7 +24,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 VERSION="0.2"
-WIBOM="/usr/share/wibom"
+WIBOM="/usr/lib/wibom"
 BOTTLES="$HOME/.local/share/bottles"
 
 if [ -z "$1" ]; then

@@ -306,9 +306,12 @@ def deletebottle (chosenbottle)
 end
 
 def openbottle (chosenbottle)
-	# Here we should determine prefered file manager
+	# Standard prefered method
+	if (`which xdg-open`.chomp != "")
+		system("xdg-open \"#{chosenbottle}\"")
+	# Here we should determine prefered file manager, if XDG failed
 	# Xfce & Thunar
-	if ((`pidof xfce4-session`.chomp != "" || `pidof xfdesktop`.chomp != "" || `pidof xfwm4`.chomp != "") && `which thunar`.chomp != "")
+	elsif ((`pidof xfce4-session`.chomp != "" || `pidof xfdesktop`.chomp != "" || `pidof xfwm4`.chomp != "") && `which thunar`.chomp != "")
 		system("thunar \"#{chosenbottle}\"")
 	# GNOME & Nautilus
 	elsif ((`pidof gnome-wm`.chomp != "" || `pidof gnome-panel`.chomp != "" || `pidof nautilus`.chomp != "") && `which nautilus`.chomp != "")

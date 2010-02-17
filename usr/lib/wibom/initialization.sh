@@ -13,7 +13,7 @@ fi
 
 # Creating the bottles directory, if doesn't exist
 if ! [ -d $BOTTLES ]; then
-	mkdir $BOTTLES
+	mkdir -p $BOTTLES
 	echo "Directory $BOTTLES was created"
 fi
 

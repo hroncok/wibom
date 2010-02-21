@@ -20,21 +20,13 @@ if [ -e $1/user.reg ] && [ -e $1/system.reg ] && [ -d $1/drive_c ]; then
 	command="$2" # Hold it
 	shift 2 # Drop it
 	$command "$@" # Use it
-	exitcode="$?"
+	exitcode="$?" # Remember the exitcode now
 	if [ $exitcode == 127 ]; then
 		echo "Command $command not found."
-		# Setting back to default, if something bad happens
-		export WINEPREFIX=""
-		exit 127
-	elif [ $command == "wine" ] && [ $exitcode == 126 ]; then
-		export WINEPREFIX=""
-		exit 126
-	elif [ $command == "wine" ] && [ $exitcode == 139 ]; then
-		export WINEPREFIX=""
-		exit 139
-	else
-		export WINEPREFIX=""
 	fi
+	# Setting back to default, if something bad happens
+	export WINEPREFIX=""
+	exit $exitcode
 else
 	echo "Error: $1 is not a wine bottle"
 	exit 5

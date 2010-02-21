@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wibom-gtk\n"
-"POT-Creation-Date: 2010-01-04 00:13+0100\n"
+"POT-Creation-Date: 2010-02-21 15:08+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Miro Hrončok <miro@hroncok.cz>\n"
 "Language-Team: Czech\n"
@@ -187,15 +187,28 @@ msgstr "Opravdu chcete odstranit tuto lahev?"
 msgid "Selected bottle is not on the list, have you been smashing the list?"
 msgstr "Označená lahev není na seznamu, hrabali jste se v seznamu?"
 
-#: wibom-gtk:334
+#: wibom-gtk:344
+msgid "You want to run software in default bottle"
+msgstr "Chystáte se spustit software ve výchozí lahvi"
+
+#: wibom-gtk:345
+#: wibom-gtk:386
+msgid "If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?"
+msgstr "Jestliže nainstalujete aplikaci do výchozí lahve, bude zkopírována do každé nově vytvořené lahve. Víte, co děláte?"
+
+#: wibom-gtk:354
 msgid "Choose a Windows application to run"
 msgstr "Vyberte aplikaci pro Windows"
 
-#: wibom-gtk:345
+#: wibom-gtk:365
 msgid " is not a Windows application."
 msgstr " není aplikace pro Windows."
 
-#: wibom-gtk:379
+#: wibom-gtk:385
+msgid "You want to add software to default bottle"
+msgstr "Chystáte se přidat software do výchozí lahve"
+
+#: wibom-gtk:417
 msgid ""
 "Wibom is the Wine bottle manager.\n"
 "The Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
@@ -203,7 +216,7 @@ msgstr ""
 "Wibom je správce Wine lahví.\n"
 "Jádro je napsáno v Bashi, tento GTK+ 2 frontend je napsaný v Ruby."
 
-#: wibom-gtk:381
+#: wibom-gtk:419
 msgid ""
 "Redistribution and use in source and binary forms, with or without\n"
 "modification, are permitted provided that the following conditions are met:\n"
@@ -250,15 +263,15 @@ msgstr ""
 "NA JAKÉMKOLIV ZPŮSOBU POUŽITÍ TOHOTO SOFTWARE, I V PŘÍPADĚ, ŽE DRŽITEL PRÁV\n"
 "BYL UPOZORNĚN NA MOŽNOST TAKOVÝCH ŠKOD.\n"
 
-#: wibom-gtk:409
+#: wibom-gtk:447
 msgid "translator-credits"
 msgstr "Miro Hrončok <miro@hroncok.cz>"
 
-#: wibom-gtk:426
+#: wibom-gtk:464
 msgid "Bottles"
 msgstr "Lahve"
 
-#: wibom-gtk:522
+#: wibom-gtk:560
 msgid "Wine bottle management"
 msgstr "Správce Wine lahví"
 

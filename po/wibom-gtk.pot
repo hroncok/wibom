@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-01-04 00:13+0100\n"
-"PO-Revision-Date: 2010-01-04 00:13+0100\n"
+"POT-Creation-Date: 2010-02-21 15:08+0100\n"
+"PO-Revision-Date: 2010-02-21 15:08+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -180,30 +180,42 @@ msgstr ""
 msgid "Selected bottle is not on the list, have you been smashing the list?"
 msgstr ""
 
-#: wibom-gtk:334
+#: wibom-gtk:344
+msgid "You want to run software in default bottle"
+msgstr ""
+
+#: wibom-gtk:345 wibom-gtk:386
+msgid "If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?"
+msgstr ""
+
+#: wibom-gtk:354
 msgid "Choose a Windows application to run"
 msgstr ""
 
-#: wibom-gtk:345
+#: wibom-gtk:365
 msgid " is not a Windows application."
 msgstr ""
 
-#: wibom-gtk:379
+#: wibom-gtk:385
+msgid "You want to add software to default bottle"
+msgstr ""
+
+#: wibom-gtk:417
 msgid "Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
 msgstr ""
 
-#: wibom-gtk:381
+#: wibom-gtk:419
 msgid "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n	* Redistributions of source code must retain the above copyright\n	  notice, this list of conditions and the following disclaimer.\n	* Redistributions in binary form must reproduce the above copyright\n	  notice, this list of conditions and the following disclaimer in the\n	  documentation and/or other materials provided with the distribution.\n	* Neither the name of the copyright holder nor the\n	  names of its contributors may be used to endorse or promote products\n	  derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
 
-#: wibom-gtk:409
+#: wibom-gtk:447
 msgid "translator-credits"
 msgstr ""
 
-#: wibom-gtk:426
+#: wibom-gtk:464
 msgid "Bottles"
 msgstr ""
 
-#: wibom-gtk:522
+#: wibom-gtk:560
 msgid "Wine bottle management"
 msgstr ""

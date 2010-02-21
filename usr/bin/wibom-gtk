@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-# Copyright © 2009, Miro Hrončok [hroncok.cz]. All rights reserved.
+# Copyright © 2009-2010, Miro Hrončok [hroncok.cz]. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -413,7 +413,7 @@ def aboutdialog
 	# Set application data that will be displayed in the
 	# main dialog.
 	dialog.version = "0.3"
-	dialog.copyright = "Copyright © 2009 Miro Hrončok"
+	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
 	dialog.license = _("Redistribution and use in source and binary forms, with or without

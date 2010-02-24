@@ -39,13 +39,18 @@ def error_window (message)
 		dialog.destroy
 end
 
-def makeicon (icon, size)
+def makepixbuf (icon, size)
 	icon_theme = Gtk::IconTheme.default
 	begin
 	  img = icon_theme.load_icon(icon, size, Gtk::IconTheme::LOOKUP_USE_BUILTIN)
 	rescue RuntimeError => e
 	  puts e.message
 	end
+	return img
+end
+
+def makeicon (icon, size)
+	img = makepixbuf(icon,size)
 	return Gtk::Image.new(img)
 end
 
@@ -361,7 +366,9 @@ def executeinbottle (chosenbottle)
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 				system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
-				if $?.exitstatus == 139
+				exitstatus = $?.exitstatus
+				puts exitstatus
+				if ((exitstatus == 139) || (exitstatus == 193) || (exitstatus == 1))
 					error_window("#{dialog.filename}" + _(" is not a Windows application."))
 				else
 					dialog.destroy
@@ -540,6 +547,9 @@ vbox.pack_start_defaults(menubar)
 vbox.pack_start_defaults(toolbar)
 vbox.pack_start_defaults(scrolled_win)
 
+# Setting icon for all windows
+icon_list = [makepixbuf("wine-winefile", 128), makepixbuf("wine-winefile", 64), makepixbuf("wine-winefile", 48), makepixbuf("wine-winefile", 32), makepixbuf("wine-winefile", 16)]
+Gtk::Window.set_default_icon_list(icon_list)
 
 #main window initialization
 @window = Gtk::Window.new

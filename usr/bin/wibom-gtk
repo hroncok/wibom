@@ -570,4 +570,34 @@ Gtk::Window.set_default_icon_list(icon_list)
 @window.set_title _("Wine bottle management")
 @window.show_all
 
+# No bottles on the list? Show the short guide.
+if "" == `cat $HOME/.local/share/bottles/bottles.lst`.chomp
+	dialog = Gtk::MessageDialog.new(@window, 
+									Gtk::Dialog::MODAL,
+									Gtk::MessageDialog::INFO,
+									Gtk::MessageDialog::BUTTONS_OK,
+							_("What should you know before using wibom:") )
+	dialog.title = _("First run")
+	dialog.secondary_text = _("What is a Wine bottle?
+	A Wine bottle has nothing to do with the famous
+	alcoholic drink. It is a separated and isolated
+	instance of fake Windows file structure and
+	registers, where Wine can run Windows apps.")
+	dialog.secondary_text += "\n\n"
+	dialog.secondary_text += _("What can I do with more bottles?
+	You are able to do whatever you want with one
+	bottle without any risk to destroy other bottles.
+	It means you can have bottle for native DirectX,
+	bottle without sound, bottle with IE 6 and another
+	bottle with IE 7.")
+	dialog.secondary_text += "\n\n"
+	dialog.secondary_text += _("What should I do with the default bottle?
+	The default bottle will be copied each time you
+	create a new bottle. You shouldn't install apps
+	inside, unless you want them in each bottle.
+	You should configure it well.")
+	dialog.run
+	dialog.destroy
+end
+
 Gtk.main

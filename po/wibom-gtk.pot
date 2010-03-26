@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-02-21 15:08+0100\n"
-"PO-Revision-Date: 2010-02-21 15:08+0100\n"
+"POT-Creation-Date: 2010-03-25 21:24+0100\n"
+"PO-Revision-Date: 2010-03-25 21:24+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,202 +20,222 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: wibom-gtk:54
+#: wibom-gtk:59
 msgid "Could not find Wine or wibom scripts. You should install both before running wibom-gtk."
 msgstr ""
 
-#: wibom-gtk:66
+#: wibom-gtk:71
 msgid "_File"
 msgstr ""
 
-#: wibom-gtk:67
+#: wibom-gtk:72
 msgid "_Tools"
 msgstr ""
 
-#: wibom-gtk:68
+#: wibom-gtk:73
 msgid "_Software"
 msgstr ""
 
-#: wibom-gtk:69
+#: wibom-gtk:74
 msgid "_Help"
 msgstr ""
 
-#: wibom-gtk:82
+#: wibom-gtk:87
 msgid "_New bottle"
 msgstr ""
 
-#: wibom-gtk:85
+#: wibom-gtk:90
 msgid "_Clone bottle"
 msgstr ""
 
-#: wibom-gtk:88
+#: wibom-gtk:93
 msgid "_Import bottle"
 msgstr ""
 
-#: wibom-gtk:91
+#: wibom-gtk:96
 msgid "_Delete bottle"
 msgstr ""
 
-#: wibom-gtk:102
+#: wibom-gtk:107
 msgid "_Open bottle in file manager"
 msgstr ""
 
-#: wibom-gtk:105
+#: wibom-gtk:110
 msgid "_Configure bottle"
 msgstr ""
 
-#: wibom-gtk:108
+#: wibom-gtk:113
 msgid "Edit _registers"
 msgstr ""
 
-#: wibom-gtk:117
+#: wibom-gtk:122
 msgid "_Add or Remove"
 msgstr ""
 
-#: wibom-gtk:134
+#: wibom-gtk:139
 msgid "New"
 msgstr ""
 
-#: wibom-gtk:135
+#: wibom-gtk:140
 msgid "Clone"
 msgstr ""
 
-#: wibom-gtk:136
+#: wibom-gtk:141
 msgid "Import"
 msgstr ""
 
-#: wibom-gtk:137
+#: wibom-gtk:142
 msgid "Delete"
 msgstr ""
 
-#: wibom-gtk:139
+#: wibom-gtk:144
 msgid "Open"
 msgstr ""
 
-#: wibom-gtk:140
+#: wibom-gtk:145
 msgid "Configure"
 msgstr ""
 
-#: wibom-gtk:141
+#: wibom-gtk:146
 msgid "Regedit"
 msgstr ""
 
-#: wibom-gtk:144
+#: wibom-gtk:149
 msgid "Add/Remove"
 msgstr ""
 
-#: wibom-gtk:167 wibom-gtk:168
+#: wibom-gtk:172 wibom-gtk:173
 msgid "Create a new bottle"
 msgstr ""
 
-#: wibom-gtk:169 wibom-gtk:170
+#: wibom-gtk:174 wibom-gtk:175
 msgid "Create new bottle as a copy of selected one"
 msgstr ""
 
-#: wibom-gtk:171 wibom-gtk:172
+#: wibom-gtk:176 wibom-gtk:177
 msgid "Import an existing bottle"
 msgstr ""
 
-#: wibom-gtk:173 wibom-gtk:174
+#: wibom-gtk:178 wibom-gtk:179
 msgid "Delete selected bottle"
 msgstr ""
 
-#: wibom-gtk:175 wibom-gtk:176
+#: wibom-gtk:180 wibom-gtk:181
 msgid "Open selected bottle folder in file manager"
 msgstr ""
 
-#: wibom-gtk:177 wibom-gtk:178
+#: wibom-gtk:182 wibom-gtk:183
 msgid "Open Wine config dialog for the selected bottle"
 msgstr ""
 
-#: wibom-gtk:179 wibom-gtk:180
+#: wibom-gtk:184 wibom-gtk:185
 msgid "Edit the registers of the selected bottle"
 msgstr ""
 
-#: wibom-gtk:181 wibom-gtk:182
+#: wibom-gtk:186 wibom-gtk:187
 msgid "Execute a Windows application in selected bottle"
 msgstr ""
 
-#: wibom-gtk:183 wibom-gtk:184
+#: wibom-gtk:188 wibom-gtk:189
 msgid "Add or Remove software into or from selected bottle"
 msgstr ""
 
-#: wibom-gtk:198
+#: wibom-gtk:203
 msgid "Choose an empty directory for the new bottle"
 msgstr ""
 
-#: wibom-gtk:209 wibom-gtk:235
+#: wibom-gtk:214 wibom-gtk:240
 msgid "Chosen directory is not empty."
 msgstr ""
 
-#: wibom-gtk:224
+#: wibom-gtk:229
 msgid "Choose an empty directory for the copy of the selected bottle"
 msgstr ""
 
-#: wibom-gtk:237
+#: wibom-gtk:242
 msgid "Selected bottle is corrupted, have you been smashing files?"
 msgstr ""
 
-#: wibom-gtk:254
+#: wibom-gtk:259
 msgid "Choose the directory with the bottle"
 msgstr ""
 
-#: wibom-gtk:265
+#: wibom-gtk:270
 msgid "Chosen directory is not a bottle."
 msgstr ""
 
-#: wibom-gtk:267
+#: wibom-gtk:272
 msgid "Chosen directory is already on the list."
 msgstr ""
 
-#: wibom-gtk:283
+#: wibom-gtk:288
 msgid "You are trying to delete the default bottle. This is not possible."
 msgstr ""
 
-#: wibom-gtk:289
+#: wibom-gtk:294
 msgid "Do you really want to delete this bottle?"
 msgstr ""
 
-#: wibom-gtk:295
+#: wibom-gtk:300
 msgid "Selected bottle is not on the list, have you been smashing the list?"
 msgstr ""
 
-#: wibom-gtk:344
+#: wibom-gtk:349
 msgid "You want to run software in default bottle"
 msgstr ""
 
-#: wibom-gtk:345 wibom-gtk:386
+#: wibom-gtk:350 wibom-gtk:393
 msgid "If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?"
 msgstr ""
 
-#: wibom-gtk:354
+#: wibom-gtk:359
 msgid "Choose a Windows application to run"
 msgstr ""
 
-#: wibom-gtk:365
+#: wibom-gtk:372
 msgid " is not a Windows application."
 msgstr ""
 
-#: wibom-gtk:385
+#: wibom-gtk:392
 msgid "You want to add software to default bottle"
 msgstr ""
 
-#: wibom-gtk:417
+#: wibom-gtk:424
 msgid "Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
 msgstr ""
 
-#: wibom-gtk:419
+#: wibom-gtk:426
 msgid "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n	* Redistributions of source code must retain the above copyright\n	  notice, this list of conditions and the following disclaimer.\n	* Redistributions in binary form must reproduce the above copyright\n	  notice, this list of conditions and the following disclaimer in the\n	  documentation and/or other materials provided with the distribution.\n	* Neither the name of the copyright holder nor the\n	  names of its contributors may be used to endorse or promote products\n	  derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
 
-#: wibom-gtk:447
+#: wibom-gtk:454
 msgid "translator-credits"
 msgstr ""
 
-#: wibom-gtk:464
+#: wibom-gtk:471
 msgid "Bottles"
 msgstr ""
 
-#: wibom-gtk:560
+#: wibom-gtk:570
 msgid "Wine bottle management"
+msgstr ""
+
+#: wibom-gtk:579
+msgid "What should you know before using wibom:"
+msgstr ""
+
+#: wibom-gtk:580
+msgid "First run"
+msgstr ""
+
+#: wibom-gtk:581
+msgid "What is a Wine bottle?\n	A Wine bottle has nothing to do with the famous\n	alcoholic drink. It is a separated and isolated\n	instance of fake Windows file structure and\n	registers, where Wine can run Windows apps."
+msgstr ""
+
+#: wibom-gtk:587
+msgid "What can I do with more bottles?\n	You are able to do whatever you want with one\n	bottle without any risk to destroy other bottles.\n	It means you can have bottle for native DirectX,\n	bottle without sound, bottle with IE 6 and another\n	bottle with IE 7."
+msgstr ""
+
+#: wibom-gtk:594
+msgid "What should I do with the default bottle?\n	The default bottle will be copied each time you\n	create a new bottle. You shouldn't install apps\n	inside, unless you want them in each bottle.\n	You should configure it well."
 msgstr ""

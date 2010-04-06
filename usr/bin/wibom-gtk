@@ -313,20 +313,20 @@ end
 def openbottle (chosenbottle)
 	# Standard prefered method
 	if (`which xdg-open`.chomp != "")
-		system("xdg-open \"#{chosenbottle}\"")
+		system("xdg-open \"#{chosenbottle}\" 2>/dev/null &")
 	# Here we should determine prefered file manager, if XDG failed
 	# Xfce & Thunar
 	elsif ((`pidof xfce4-session`.chomp != "" || `pidof xfdesktop`.chomp != "" || `pidof xfwm4`.chomp != "") && `which thunar`.chomp != "")
-		system("thunar \"#{chosenbottle}\"")
+		system("thunar \"#{chosenbottle}\" 2>/dev/null &")
 	# GNOME & Nautilus
 	elsif ((`pidof gnome-wm`.chomp != "" || `pidof gnome-panel`.chomp != "" || `pidof nautilus`.chomp != "") && `which nautilus`.chomp != "")
-		system("nautilus \"#{chosenbottle}\"")
+		system("nautilus \"#{chosenbottle}\" 2>/dev/null &")
 	# LXDE & PCMan File Manager
 	elsif ((`pidof lxsession`.chomp != "" || `pidof lxpanel`.chomp != "" || `pidof pcmanfm`.chomp != "") && `which pcmanfm`.chomp != "")
-		system("pcmanfm \"#{chosenbottle}\"")
+		system("pcmanfm \"#{chosenbottle}\" 2>/dev/null &")
 	# Terminal for geeks
 	else
-		system("cd #{chosenbottle}; x-terminal-emulator")
+		system("cd #{chosenbottle}; x-terminal-emulator 2>/dev/null &")
 	end
 	# I do not determine KDE file managers, because this is a GTK+ frontend
 end

@@ -587,7 +587,7 @@ vbox.pack_start_defaults(toolbar)
 vbox.pack_start_defaults(scrolled_win)
 
 # Setting icon for all windows
-icon_list = [makepixbuf("wibom-gtk", 128), makepixbuf("wibom-gtk", 64), makepixbuf("wibom-gtk", 48), makepixbuf("wibom-gtk", 32), makepixbuf("wibom-gtk", 16)]
+icon_list = [makepixbuf("wibom-gtk", 128), makepixbuf("wibom-gtk", 64), makepixbuf("wibom-gtk", 48), makepixbuf("wibom-gtk", 32), makepixbuf("wibom-gtk", 24), makepixbuf("wibom-gtk", 16)]
 Gtk::Window.set_default_icon_list(icon_list)
 
 #main window initialization

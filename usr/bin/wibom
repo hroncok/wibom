@@ -23,7 +23,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERSION="0.3"
+VERSION="0.4"
 WIBOM="/usr/lib/wibom"
 BOTTLES="$HOME/.local/share/bottles"
 
@@ -34,6 +34,9 @@ if [ -z "$1" ]; then
 fi
 
 $WIBOM/initialization.sh
+if [ $exitcode == 127 ]; then # Check it!
+	exit 126
+fi
 
 if [ "$1" == "new" ] || [ "$1" == "import" ] || [ "$1" == "delete" ] || [ "$1" == "runin" ]; then
 	command=$1

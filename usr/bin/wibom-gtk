@@ -119,11 +119,16 @@ toolsmenu.append(regedit)
 
 # Create the Software menu content.
 execute = Gtk::ImageMenuItem.new(Gtk::Stock::EXECUTE, group)
+
 add = Gtk::ImageMenuItem.new(_("_Add or Remove"), true)
 add.image = makeicon("wine-uninstaller",16)
+
+winetricks = Gtk::ImageMenuItem.new(_("_Winetricks"), true)
+winetricks.image = makeicon("winetricks",16)
+
 softwaremenu.append(execute)
 softwaremenu.append(add)
-
+softwaremenu.append(winetricks)
 
 # Create the Help menu content.
 
@@ -147,6 +152,7 @@ regeditbutton = Gtk::ToolButton.new(makeicon("wine-notepad",24),_("Regedit"))
 separator2 = Gtk::SeparatorToolItem.new
 executebutton = Gtk::ToolButton.new(Gtk::Stock::EXECUTE)
 addbutton = Gtk::ToolButton.new(makeicon("wine-uninstaller",24),_("Add/Remove"))
+winetricksbutton = Gtk::ToolButton.new(makeicon("winetricks",24),_("Winetricks"))
 
 toolbar.show_arrow = true
 toolbar.toolbar_style = Gtk::Toolbar::Style::ICONS
@@ -163,6 +169,7 @@ toolbar.insert(7, regeditbutton)
 toolbar.insert(8, separator2)
 toolbar.insert(9, executebutton)
 toolbar.insert(10, addbutton)
+toolbar.insert(11, winetricksbutton)
 
 
 
@@ -187,6 +194,8 @@ help.set_tip(execute,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(executebutton,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(add,_("Add or Remove software into or from selected bottle"), nil)
 help.set_tip(addbutton,_("Add or Remove software into or from selected bottle"), nil)
+help.set_tip(winetricks,_("Add software into the selected bottle using Winetricks"), nil)
+help.set_tip(winetricksbutton,_("Add software into the selected bottle using Winetricks"), nil)
 
 
 def redraw (bottles)
@@ -403,23 +412,50 @@ def addtobottle (chosenbottle)
 	end
 end
 
+def trickbottle (chosenbottle)
+	if "" == `which winetricks`.chomp
+		error_window(_("It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable!"))
+	elsif "" == `which zenity`.chomp
+		error_window(_("You need to install Zenity befor using this feature. Use your package manager."))
+	else
+		no = false
+		if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
+			dialog = Gtk::MessageDialog.new(@window, 
+											Gtk::Dialog::MODAL,
+											Gtk::MessageDialog::WARNING,
+											Gtk::MessageDialog::BUTTONS_YES_NO,
+											_("You want to add software to default bottle"))
+			dialog.secondary_text = _("If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?")
+			dialog.run do |response|
+				if response == Gtk::Dialog::RESPONSE_NO
+					no = true
+				end
+				dialog.destroy
+			end
+		end
+		if no == false
+			system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" winetricks 2>/dev/null &")
+		end
+	end
+end
+
 # About Dialog
 def aboutdialog
 	authors = documenters = ["Miro Hrončok <miro@hroncok.cz>"]
-	artists = ["GNOME Colors by perfectska04 <perfectska04@gmail.com>", "Bára Havelková <bara.havelkova@seznam.cz>"]
+	artists = ["Chris Stark <cstark1@gmail.com>", "GNOME Colors by perfectska04 <perfectska04@gmail.com>", "Bára Havelková <bara.havelkova@seznam.cz>"]
 
 	dialog = Gtk::AboutDialog.new
 
 	icon_theme = Gtk::IconTheme.default
 	begin
-	  dialog.logo = icon_theme.load_icon("wine-winefile", 128, Gtk::IconTheme::LOOKUP_USE_BUILTIN)
+	  dialog.logo = icon_theme.load_icon("wibom-gtk", 128, Gtk::IconTheme::LOOKUP_USE_BUILTIN)
 	rescue RuntimeError => e
 	  puts e.message
 	end
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.3"
+	dialog.version = "0.4"
 	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
@@ -525,6 +561,9 @@ execute.signal_connect("activate")	  { executeinbottle(chosenbottle) }
 addbutton.signal_connect("clicked") { addtobottle(chosenbottle) }
 add.signal_connect("activate")	  { addtobottle(chosenbottle) }
 
+winetricksbutton.signal_connect("clicked") { trickbottle(chosenbottle) }
+winetricks.signal_connect("activate")	  { trickbottle(chosenbottle) }
+
 contents.signal_connect("activate")	  { system("xdg-open file://") }
 
 bottleslist.signal_connect("cursor-changed") {
@@ -548,7 +587,7 @@ vbox.pack_start_defaults(toolbar)
 vbox.pack_start_defaults(scrolled_win)
 
 # Setting icon for all windows
-icon_list = [makepixbuf("wine-winefile", 128), makepixbuf("wine-winefile", 64), makepixbuf("wine-winefile", 48), makepixbuf("wine-winefile", 32), makepixbuf("wine-winefile", 16)]
+icon_list = [makepixbuf("wibom-gtk", 128), makepixbuf("wibom-gtk", 64), makepixbuf("wibom-gtk", 48), makepixbuf("wibom-gtk", 32), makepixbuf("wibom-gtk", 16)]
 Gtk::Window.set_default_icon_list(icon_list)
 
 #main window initialization
@@ -563,7 +602,7 @@ Gtk::Window.set_default_icon_list(icon_list)
 @window.add_accel_group(group)
 
 @window.add(vbox)
-@window.set_size_request(280, -1)
+@window.set_size_request(305, -1)
 
 
 # set window title and show & start main window

@@ -20,7 +20,7 @@ fi
 if ! ([ -e $BOTTLES/default/user.reg ] && [ -e $BOTTLES/default/system.reg ] && [ -d $BOTTLES/default/drive_c ]); then
 	# Setting the default bottle directory and creating the default bottle
 	export WINEPREFIX="$BOTTLES/default"
-	wine you-wont-found-this 2>/dev/null # simple hack for creating a wine bottle in WINEPREFIX
+	wine cmd /c echo boo 2>/dev/null # simple hack for creating a wine bottle in WINEPREFIX
 	echo "The default bottle was created in $BOTTLES/default"
 	# Setting back to default, if something bad happens
 	export WINEPREFIX=""

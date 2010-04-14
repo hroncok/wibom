@@ -374,7 +374,7 @@ def executeinbottle (chosenbottle)
 		dialog.current_folder = chosenbottle.chomp + "/drive_c" # Drive C: of chosen bottle
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-				system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
+				system("cd \"#{dialog.current_folder}\"; /usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
 				exitstatus = $?.exitstatus
 				puts exitstatus
 				if ((exitstatus == 139) || (exitstatus == 193) || (exitstatus == 1))

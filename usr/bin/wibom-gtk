@@ -54,7 +54,7 @@ def makeicon (icon, size)
 	return Gtk::Image.new(img)
 end
 
-system("../lib/wibom/initialization.sh")
+system("/usr/lib/wibom/initialization.sh")
 if $?.exitstatus == 127
 	error_window(_("Could not find Wine or wibom scripts. You should install both before running wibom-gtk."))
 	exit
@@ -218,7 +218,7 @@ def newbottle
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("../lib/wibom/new.sh \"#{dialog.filename}\"")
+			system("/usr/lib/wibom/new.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 8
 				error_window(_("Chosen directory is not empty."))
 			else
@@ -244,7 +244,7 @@ def clonebottle (chosenbottle)
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("../lib/wibom/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
+			system("/usr/lib/wibom/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
 			if $?.exitstatus == 8
 				error_window(_("Chosen directory is not empty."))
 			elsif $?.exitstatus == 5
@@ -274,7 +274,7 @@ def importbottle
 	dialog.current_folder = `echo $HOME`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("../lib/wibom/import.sh \"#{dialog.filename}\"")
+			system("/usr/lib/wibom/import.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 5
 				error_window(_("Chosen directory is not a bottle."))
 			elsif $?.exitstatus == 6
@@ -304,7 +304,7 @@ def deletebottle (chosenbottle)
 		dialog.secondary_text = chosenbottle
 		dialog.run do |response|
 			if response == Gtk::Dialog::RESPONSE_YES
-				system("../lib/wibom/delete.sh \"#{chosenbottle}\"")
+				system("/usr/lib/wibom/delete.sh \"#{chosenbottle}\"")
 				if $?.exitstatus == 5
 					error_window(_("Selected bottle is not on the list, have you been smashing the list?"))
 				else
@@ -341,11 +341,11 @@ def openbottle (chosenbottle)
 end
 
 def winecfgbottle (chosenbottle)
-	system("../lib/wibom/runin.sh \"#{chosenbottle}\" winecfg 2>/dev/null &")
+	system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" winecfg 2>/dev/null &")
 end
 
 def regeditbottle (chosenbottle)
-	system("../lib/wibom/runin.sh \"#{chosenbottle}\" regedit 2>/dev/null &")
+	system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" regedit 2>/dev/null &")
 end
 
 def executeinbottle (chosenbottle)
@@ -374,7 +374,7 @@ def executeinbottle (chosenbottle)
 		dialog.current_folder = chosenbottle.chomp + "/drive_c" # Drive C: of chosen bottle
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-				system("../lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
+				system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
 				exitstatus = $?.exitstatus
 				puts exitstatus
 				if ((exitstatus == 139) || (exitstatus == 193) || (exitstatus == 1))
@@ -408,7 +408,7 @@ def addtobottle (chosenbottle)
 		end
 	end
 	if no == false
-		system("../lib/wibom/runin.sh \"#{chosenbottle}\" wine uninstaller 2>/dev/null &")
+		system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine uninstaller 2>/dev/null &")
 	end
 end
 
@@ -434,7 +434,7 @@ def trickbottle (chosenbottle)
 			end
 		end
 		if no == false
-			system("../lib/wibom/runin.sh \"#{chosenbottle}\" winetricks 2>/dev/null &")
+			system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" winetricks 2>/dev/null &")
 		end
 	end
 end

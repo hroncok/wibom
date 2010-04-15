@@ -27,6 +27,7 @@ require 'gettext'
 include GetText
 bindtextdomain("wibom-gtk")
 
+# Error window
 def error_window (message)
 		dialog = Gtk::MessageDialog.new(@window, 
 										Gtk::Dialog::MODAL,
@@ -39,6 +40,7 @@ def error_window (message)
 		dialog.destroy
 end
 
+# Make pixbuf from icon name and size
 def makepixbuf (icon, size)
 	icon_theme = Gtk::IconTheme.default
 	begin
@@ -49,18 +51,23 @@ def makepixbuf (icon, size)
 	return img
 end
 
+# Make icon from icon name and size
 def makeicon (icon, size)
 	img = makepixbuf(icon,size)
 	return Gtk::Image.new(img)
 end
 
+# Initialize Wibom (good for first run)
 system("/usr/lib/wibom/initialization.sh")
 if $?.exitstatus == 127
 	error_window(_("Could not find Wine or wibom scripts. You should install both before running wibom-gtk."))
 	exit
 end
 
+# Blah blah
 group = Gtk::AccelGroup.new
+
+# Menu bar
 menubar = Gtk::MenuBar.new
 
 filemenu = Gtk::Menu.new
@@ -97,6 +104,7 @@ delete = Gtk::ImageMenuItem.new(_("_Delete bottle"), true)
 delete.image = makeicon("editdelete",16)
 
 quit = Gtk::ImageMenuItem.new(Gtk::Stock::QUIT, group)
+
 filemenu.append(new)
 filemenu.append(copy)
 filemenu.append(import)
@@ -131,14 +139,12 @@ softwaremenu.append(add)
 softwaremenu.append(winetricks)
 
 # Create the Help menu content.
-
 contents = Gtk::ImageMenuItem.new(Gtk::Stock::HELP, group)
 about	= Gtk::ImageMenuItem.new(Gtk::Stock::ABOUT, group)
 helpmenu.append(contents)
 helpmenu.append(about)
 
-
-
+# Toolbar
 toolbar = Gtk::Toolbar.new
 
 newbutton = Gtk::ToolButton.new(makeicon("folder-new",24),_("New"))
@@ -157,7 +163,7 @@ winetricksbutton = Gtk::ToolButton.new(makeicon("winetricks",24),_("Winetricks")
 toolbar.show_arrow = true
 toolbar.toolbar_style = Gtk::Toolbar::Style::ICONS
 
-
+# Insertation
 toolbar.insert(0, newbutton)
 toolbar.insert(1, copybutton)
 toolbar.insert(2, importbutton)
@@ -171,10 +177,7 @@ toolbar.insert(9, executebutton)
 toolbar.insert(10, addbutton)
 toolbar.insert(11, winetricksbutton)
 
-
-
-
-# set help text
+# Set help text
 help = Gtk::Tooltips.new
 help.set_tip(new,_("Create a new bottle"), nil)
 help.set_tip(newbutton,_("Create a new bottle"), nil)
@@ -197,7 +200,7 @@ help.set_tip(addbutton,_("Add or Remove software into or from selected bottle"),
 help.set_tip(winetricks,_("Add software into the selected bottle using Winetricks"), nil)
 help.set_tip(winetricksbutton,_("Add software into the selected bottle using Winetricks"), nil)
 
-
+# Redraw bottles list
 def redraw (bottles)
 	file = File.new(`echo $HOME/.local/share/bottles/bottles.lst`.chomp, "r")
 	while (line = file.gets)
@@ -207,7 +210,7 @@ def redraw (bottles)
 	file.close
 end
 
-
+# Create new bottle
 def newbottle
 	dialog = Gtk::FileChooserDialog.new(_("Choose an empty directory for the new bottle"),
                                         @window,
@@ -234,6 +237,7 @@ def newbottle
 	end
 end
 
+# Clone bottle
 def clonebottle (chosenbottle)
 	dialog = Gtk::FileChooserDialog.new(_("Choose an empty directory for the copy of the selected bottle"),
 										@window,
@@ -264,6 +268,7 @@ def clonebottle (chosenbottle)
 	end
 end
 
+# Import bottle
 def importbottle
 	dialog = Gtk::FileChooserDialog.new(_("Choose the directory with the bottle"),
 										@window,
@@ -292,6 +297,7 @@ def importbottle
 	end
 end
 
+# Delete bottle
 def deletebottle (chosenbottle)
 	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
 		error_window(_("You are trying to delete the default bottle. This is not possible."))
@@ -319,6 +325,7 @@ def deletebottle (chosenbottle)
 	end
 end
 
+# Open bottle in filemanager
 def openbottle (chosenbottle)
 	# Standard prefered method
 	if (`which xdg-open`.chomp != "")
@@ -348,6 +355,7 @@ def regeditbottle (chosenbottle)
 	Thread.new { system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" regedit") }
 end
 
+# Execute Windows app in bottle
 def executeinbottle (chosenbottle)
 	no = false
 	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
@@ -374,12 +382,15 @@ def executeinbottle (chosenbottle)
 		dialog.current_folder = chosenbottle.chomp + "/drive_c" # Drive C: of chosen bottle
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+				# Run it in differend thread, but keep the exitstatus
 				winapp = Thread.new {
 					system("cd \"#{dialog.current_folder}\"; /usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
 					exitstatus = $?.exitstatus
 					Thread.current["exitstatus"] = exitstatus # Putting out of the thread
 				}
+				# dialog.cursor = Gdk::Cursor.new("WATCH") # doesn't work at all
 				system("sleep 4") # Waiting for nonWindows app to exit
+				# dialog.cursor = nil
 				exitstatus = winapp["exitstatus"]
 				if ((exitstatus == 139) || (exitstatus == 193) || (exitstatus == 1))
 					error_window("#{dialog.filename}" + _(" is not a Windows application."))
@@ -395,6 +406,7 @@ def executeinbottle (chosenbottle)
 	end
 end
 
+# Add/Remove Wine function
 def addtobottle (chosenbottle)
 	no = false
 	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
@@ -416,6 +428,7 @@ def addtobottle (chosenbottle)
 	end
 end
 
+# Run winetricks in bottle
 def trickbottle (chosenbottle)
 	if "" == `which winetricks`.chomp
 		error_window(_("It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable!"))
@@ -521,9 +534,7 @@ pointer.mode = Gtk::SELECTION_BROWSE
 pointer.select_iter(bottle)
 chosenbottle = @bottles.get_value(bottle, 0)
 
-
-
-
+# Signals
 newbutton.signal_connect("clicked") { newbottle }
 new.signal_connect("activate")	  { newbottle }
 
@@ -570,6 +581,7 @@ winetricks.signal_connect("activate")	  { trickbottle(chosenbottle) }
 
 contents.signal_connect("activate")	  { system("xdg-open file://") }
 
+# Moving around the list
 bottleslist.signal_connect("cursor-changed") {
 	bottle = pointer.selected
 	chosenbottle = @bottles.get_value(bottle, 0)
@@ -597,12 +609,13 @@ Gtk::Window.set_default_icon_list(icon_list)
 #main window initialization
 @window = Gtk::Window.new
 
+# Closing the window
 @window.signal_connect("destroy") {
   Gtk.main_quit
 }
 
 
-# adding vbox and space between it and main window
+# adding accel group and vbox
 @window.add_accel_group(group)
 
 @window.add(vbox)

@@ -498,8 +498,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ")
-	dialog.website = "https://sourceforge.net/projects/wibom"
-	dialog.website_label = "sourceforge.net/projects/wibom"
+	dialog.website = "http://wibom.sourceforge.net/"
+	dialog.website_label = "wibom.sourceforge.net"
 
 	# Set the application authors, documenters and translators.
 	dialog.authors = authors

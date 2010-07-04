@@ -64,7 +64,7 @@ if $?.exitstatus == 127
 	exit
 end
 
-# Blah blah
+# Blah blah, don't exactly know, why this should be here
 group = Gtk::AccelGroup.new
 
 # Menu bar
@@ -384,16 +384,25 @@ def executeinbottle (chosenbottle)
 		toggle = Gtk::CheckButton.new(_("Run in an emulated virtual desktop"))
 		toggle.show
 		# Choose the resolution
+		resolutionlabel = Gtk::Label.new(_("Resolution:"))
+		resolutionlabel.show
 		resolution = Gtk::ComboBox.new(is_text_only = true)
 		resolution.append_text("1024x768")
 		resolution.append_text("800x600")
 		resolution.append_text("640x480")
 		resolution.active=0
 		resolution.show
+		# HBox
 		hbox = Gtk::HBox.new(false,5)
 		hbox.pack_start_defaults(toggle)
+		hbox.pack_start_defaults(resolutionlabel)
 		hbox.pack_start_defaults(resolution)
 		dialog.extra_widget = hbox
+		# Tooltips
+		help = Gtk::Tooltips.new
+		help.set_tip(toggle,_("Whatever the application should be run in an emulated virtual desktop"), nil)
+		help.set_tip(resolution,_("The resolution of the virtual desktop"), nil)
+		help.set_tip(resolutionlabel,_("The resolution of the virtual desktop"), nil)
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 				# Should be run in emulated desktop?

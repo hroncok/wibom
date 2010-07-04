@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wibom-gtk\n"
-"POT-Creation-Date: 2010-04-16 00:17+0200\n"
+"POT-Creation-Date: 2010-07-04 14:40+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Miro Hrončok <miro@hroncok.cz>\n"
 "Language-Team: Czech\n"
@@ -205,8 +205,8 @@ msgid "You want to run software in default bottle"
 msgstr "Chystáte se spustit software ve výchozí lahvi"
 
 #: wibom-gtk:367
-#: wibom-gtk:418
-#: wibom-gtk:445
+#: wibom-gtk:447
+#: wibom-gtk:474
 msgid "If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?"
 msgstr "Jestliže nainstalujete aplikaci do výchozí lahve, bude zkopírována do každé nově vytvořené lahve. Víte, co děláte?"
 
@@ -214,24 +214,41 @@ msgstr "Jestliže nainstalujete aplikaci do výchozí lahve, bude zkopírována 
 msgid "Choose a Windows application to run"
 msgstr "Vyberte aplikaci pro Windows"
 
-#: wibom-gtk:396
+#: wibom-gtk:384
+msgid "Run in an emulated virtual desktop"
+msgstr "Spustit v emulovaném virtuálním desktopu"
+
+#: wibom-gtk:387
+msgid "Resolution:"
+msgstr "Rozlišení:"
+
+#: wibom-gtk:403
+msgid "Whatever the application should be run in an emulated virtual desktop"
+msgstr "Zda má být aplikace spuštěna v emulovaném virtuálním desktopu"
+
+#: wibom-gtk:404
+#: wibom-gtk:405
+msgid "The resolution of the virtual desktop"
+msgstr "Rozlišení emulovaného virtuálního desktopu"
+
+#: wibom-gtk:425
 msgid " is not a Windows application."
 msgstr " není aplikace pro Windows."
 
-#: wibom-gtk:417
-#: wibom-gtk:444
+#: wibom-gtk:446
+#: wibom-gtk:473
 msgid "You want to add software to default bottle"
 msgstr "Chystáte se přidat software do výchozí lahve"
 
-#: wibom-gtk:434
+#: wibom-gtk:463
 msgid "It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable!"
 msgstr "Vypadá to, že Winetricks není nainstalován. Stáhněte jej z http://www.kegel.com/wine/winetricks a přesuňte ji do $PATH (např. do /usr/local/share). Nezapomeňte jej nastavit jako spustitelný!"
 
-#: wibom-gtk:436
+#: wibom-gtk:465
 msgid "You need to install Zenity befor using this feature. Use your package manager."
 msgstr "Před použitím této funkce musíte mít nainstalované Zenity. Použijte správce softwaru."
 
-#: wibom-gtk:477
+#: wibom-gtk:506
 msgid ""
 "Wibom is the Wine bottle manager.\n"
 "The Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
@@ -239,7 +256,7 @@ msgstr ""
 "Wibom je správce Wine lahví.\n"
 "Jádro je napsáno v Bashi, tento GTK+ 2 frontend je napsaný v Ruby."
 
-#: wibom-gtk:479
+#: wibom-gtk:508
 msgid ""
 "Redistribution and use in source and binary forms, with or without\n"
 "modification, are permitted provided that the following conditions are met:\n"
@@ -286,27 +303,27 @@ msgstr ""
 "NA JAKÉMKOLIV ZPŮSOBU POUŽITÍ TOHOTO SOFTWARE, I V PŘÍPADĚ, ŽE DRŽITEL PRÁV\n"
 "BYL UPOZORNĚN NA MOŽNOST TAKOVÝCH ŠKOD.\n"
 
-#: wibom-gtk:507
+#: wibom-gtk:536
 msgid "translator-credits"
 msgstr "Miro Hrončok <miro@hroncok.cz>"
 
-#: wibom-gtk:524
+#: wibom-gtk:553
 msgid "Bottles"
 msgstr "Lahve"
 
-#: wibom-gtk:626
+#: wibom-gtk:655
 msgid "Wine bottle management"
 msgstr "Správce Wine lahví"
 
-#: wibom-gtk:635
+#: wibom-gtk:664
 msgid "What should you know before using wibom:"
 msgstr "Co byste měli vědět, než začnete používat wibom:"
 
-#: wibom-gtk:636
+#: wibom-gtk:665
 msgid "First run"
 msgstr "První spuštění"
 
-#: wibom-gtk:637
+#: wibom-gtk:666
 msgid ""
 "What is a Wine bottle?\n"
 "\tA Wine bottle has nothing to do with the famous\n"
@@ -321,7 +338,7 @@ msgstr ""
 "\ta registrů, ve které se dají spouštět aplikace\n"
 "\tpro Windows.."
 
-#: wibom-gtk:643
+#: wibom-gtk:672
 msgid ""
 "What can I do with more bottles?\n"
 "\tYou are able to do whatever you want with one\n"
@@ -336,7 +353,7 @@ msgstr ""
 "\tže můžete mít lahev s nativním DirectX, lahev\n"
 "\tbez zvuku, lahev s IE 6 a zaároveň lahev s IE 7."
 
-#: wibom-gtk:650
+#: wibom-gtk:679
 msgid ""
 "What should I do with the default bottle?\n"
 "\tThe default bottle will be copied each time you\n"

@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-04-16 00:17+0200\n"
-"PO-Revision-Date: 2010-04-16 00:17+0200\n"
+"POT-Creation-Date: 2010-07-04 14:40+0200\n"
+"PO-Revision-Date: 2010-07-04 14:40+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -196,7 +196,7 @@ msgstr ""
 msgid "You want to run software in default bottle"
 msgstr ""
 
-#: wibom-gtk:367 wibom-gtk:418 wibom-gtk:445
+#: wibom-gtk:367 wibom-gtk:447 wibom-gtk:474
 msgid "If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?"
 msgstr ""
 
@@ -204,58 +204,74 @@ msgstr ""
 msgid "Choose a Windows application to run"
 msgstr ""
 
-#: wibom-gtk:396
+#: wibom-gtk:384
+msgid "Run in an emulated virtual desktop"
+msgstr ""
+
+#: wibom-gtk:387
+msgid "Resolution:"
+msgstr ""
+
+#: wibom-gtk:403
+msgid "Whatever the application should be run in an emulated virtual desktop"
+msgstr ""
+
+#: wibom-gtk:404 wibom-gtk:405
+msgid "The resolution of the virtual desktop"
+msgstr ""
+
+#: wibom-gtk:425
 msgid " is not a Windows application."
 msgstr ""
 
-#: wibom-gtk:417 wibom-gtk:444
+#: wibom-gtk:446 wibom-gtk:473
 msgid "You want to add software to default bottle"
 msgstr ""
 
-#: wibom-gtk:434
+#: wibom-gtk:463
 msgid "It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable!"
 msgstr ""
 
-#: wibom-gtk:436
+#: wibom-gtk:465
 msgid "You need to install Zenity befor using this feature. Use your package manager."
 msgstr ""
 
-#: wibom-gtk:477
+#: wibom-gtk:506
 msgid "Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
 msgstr ""
 
-#: wibom-gtk:479
+#: wibom-gtk:508
 msgid "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n	* Redistributions of source code must retain the above copyright\n	  notice, this list of conditions and the following disclaimer.\n	* Redistributions in binary form must reproduce the above copyright\n	  notice, this list of conditions and the following disclaimer in the\n	  documentation and/or other materials provided with the distribution.\n	* Neither the name of the copyright holder nor the\n	  names of its contributors may be used to endorse or promote products\n	  derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
 
-#: wibom-gtk:507
+#: wibom-gtk:536
 msgid "translator-credits"
 msgstr ""
 
-#: wibom-gtk:524
+#: wibom-gtk:553
 msgid "Bottles"
 msgstr ""
 
-#: wibom-gtk:626
+#: wibom-gtk:655
 msgid "Wine bottle management"
 msgstr ""
 
-#: wibom-gtk:635
+#: wibom-gtk:664
 msgid "What should you know before using wibom:"
 msgstr ""
 
-#: wibom-gtk:636
+#: wibom-gtk:665
 msgid "First run"
 msgstr ""
 
-#: wibom-gtk:637
+#: wibom-gtk:666
 msgid "What is a Wine bottle?\n	A Wine bottle has nothing to do with the famous\n	alcoholic drink. It is a separated and isolated\n	instance of fake Windows file structure and\n	registers, where Wine can run Windows apps."
 msgstr ""
 
-#: wibom-gtk:643
+#: wibom-gtk:672
 msgid "What can I do with more bottles?\n	You are able to do whatever you want with one\n	bottle without any risk to destroy other bottles.\n	It means you can have bottle for native DirectX,\n	bottle without sound, bottle with IE 6 and another\n	bottle with IE 7."
 msgstr ""
 
-#: wibom-gtk:650
+#: wibom-gtk:679
 msgid "What should I do with the default bottle?\n	The default bottle will be copied each time you\n	create a new bottle. You shouldn't install apps\n	inside, unless you want them in each bottle.\n	You should configure it well."
 msgstr ""

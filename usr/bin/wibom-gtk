@@ -380,11 +380,31 @@ def executeinbottle (chosenbottle)
 											[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
 											[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 		dialog.current_folder = chosenbottle.chomp + "/drive_c" # Drive C: of chosen bottle
+		# Option to run in emulated desktop
+		toggle = Gtk::CheckButton.new(_("Run in an emulated virtual desktop"))
+		toggle.show
+		# Choose the resolution
+		resolution = Gtk::ComboBox.new(is_text_only = true)
+		resolution.append_text("1024x768")
+		resolution.append_text("800x600")
+		resolution.append_text("640x480")
+		resolution.active=0
+		resolution.show
+		hbox = Gtk::HBox.new(false,5)
+		hbox.pack_start_defaults(toggle)
+		hbox.pack_start_defaults(resolution)
+		dialog.extra_widget = hbox
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+				# Should be run in emulated desktop?
+				if toggle.active?
+					explorer = "explorer /desktop=Wibom,#{resolution.active_text} " # Don't forgot the last space
+				else
+					explorer = ""
+				end
 				# Run it in differend thread, but keep the exitstatus
 				winapp = Thread.new {
-					system("cd \"#{dialog.current_folder}\"; /usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine \"#{dialog.filename}\"")
+					system("cd \"#{dialog.current_folder}\"; /usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine #{explorer}\"#{dialog.filename}\"")
 					exitstatus = $?.exitstatus
 					Thread.current["exitstatus"] = exitstatus # Putting out of the thread
 				}
@@ -472,7 +492,7 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.5"
+	dialog.version = "0.6"
 	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 

@@ -379,7 +379,7 @@ def executeinbottle (chosenbottle)
 											nil,
 											[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
 											[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
-		dialog.current_folder = chosenbottle.chomp + "/drive_c" # Drive C: of chosen bottle
+		dialog.current_folder = chosenbottle.chomp + "/dosdevices/c:" # Drive C: of chosen bottle
 		# Option to run in emulated desktop
 		toggle = Gtk::CheckButton.new(_("Run in an emulated virtual desktop"))
 		toggle.show

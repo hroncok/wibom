@@ -386,12 +386,37 @@ def colorizebottle (chosenbottle)
 		dialog.add_buttons([_("Cancel"),1], [_("Selected bottle"),2], [_("All bottles"),3])
 		dialog.run do |response|
 			if response == 2 # Colorize the selected bottle
-				system(@libdir + "/colorize.sh \"#{chosenbottle}\"")
+				really = Gtk::MessageDialog.new(@window, 
+												Gtk::Dialog::MODAL,
+												Gtk::MessageDialog::WARNING,
+												Gtk::MessageDialog::BUTTONS_YES_NO,
+												_("You are going to use a tricky feature"))
+				really.secondary_text = _("This feature should be tested on a useless bottle, do you want to continue?")
+				really.run do |response|
+					if response == Gtk::Dialog::RESPONSE_YES
+						system(@libdir + "/colorize.sh \"#{chosenbottle}\"")
+						if $?.exitstatus == 4
+							error_window(_("You are probably offline (or the Github is) and you have never downloaded this script before."))
+						end
+					end
+					really.destroy
+				end
 			elsif response == 3 # Colorize all bottles
-				system(@libdir + "/colorize.sh ALL")
-			end
-			if $?.exitstatus == 4
-				error_window(_("You are probably offline (or the Github is) and you have never downloaded this script before."))
+				really = Gtk::MessageDialog.new(@window, 
+												Gtk::Dialog::MODAL,
+												Gtk::MessageDialog::WARNING,
+												Gtk::MessageDialog::BUTTONS_YES_NO,
+												_("You are going to use a tricky feature"))
+				really.secondary_text = _("Have you tested this feature before on a useless bottle?")
+				really.run do |response|
+					if response == Gtk::Dialog::RESPONSE_YES
+						system(@libdir + "/colorize.sh ALL")
+						if $?.exitstatus == 4
+							error_window(_("You are probably offline (or the Github is) and you have never downloaded this script before."))
+						end
+					end
+					really.destroy
+				end
 			end
 			dialog.destroy
 		end

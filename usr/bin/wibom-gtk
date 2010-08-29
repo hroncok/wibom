@@ -27,6 +27,9 @@ require 'gettext'
 include GetText
 bindtextdomain("wibom-gtk")
 
+# To use relative pathes
+@libdir = File.dirname(__FILE__) + "/../lib/wibom"
+
 # Error window
 def error_window (message)
 		dialog = Gtk::MessageDialog.new(@window, 
@@ -58,7 +61,7 @@ def makeicon (icon, size)
 end
 
 # Initialize Wibom (good for first run)
-system("/usr/lib/wibom/initialization.sh")
+system(@libdir + "/initialization.sh")
 if $?.exitstatus == 127
 	error_window(_("Could not find Wine or wibom scripts. You should install both before running wibom-gtk."))
 	exit
@@ -121,9 +124,13 @@ winecfg.image = makeicon("wine-winecfg",16)
 regedit = Gtk::ImageMenuItem.new(_("Edit _registers"), true)
 regedit.image = makeicon("wine-notepad",16)
 
+colorize = Gtk::ImageMenuItem.new(_("Colori_ze bottle(s)..."), true)
+colorize.image = makeicon("preferences-desktop-theme",16)
+
 toolsmenu.append(open)
 toolsmenu.append(winecfg)
 toolsmenu.append(regedit)
+toolsmenu.append(colorize)
 
 # Create the Software menu content.
 execute = Gtk::ImageMenuItem.new(Gtk::Stock::EXECUTE, group)
@@ -155,6 +162,7 @@ separator = Gtk::SeparatorToolItem.new
 openbutton = Gtk::ToolButton.new(makeicon("document-open",24),_("Open"))
 winecfgbutton = Gtk::ToolButton.new(makeicon("wine-winecfg",24),_("Configure"))
 regeditbutton = Gtk::ToolButton.new(makeicon("wine-notepad",24),_("Regedit"))
+colorizebutton = Gtk::ToolButton.new(makeicon("preferences-desktop-theme",24),_("Colorize"))
 separator2 = Gtk::SeparatorToolItem.new
 executebutton = Gtk::ToolButton.new(Gtk::Stock::EXECUTE)
 addbutton = Gtk::ToolButton.new(makeicon("wine-uninstaller",24),_("Add/Remove"))
@@ -172,10 +180,11 @@ toolbar.insert(4, separator)
 toolbar.insert(5, openbutton)
 toolbar.insert(6, winecfgbutton)
 toolbar.insert(7, regeditbutton)
-toolbar.insert(8, separator2)
-toolbar.insert(9, executebutton)
-toolbar.insert(10, addbutton)
-toolbar.insert(11, winetricksbutton)
+toolbar.insert(8, colorizebutton)
+toolbar.insert(9, separator2)
+toolbar.insert(10, executebutton)
+toolbar.insert(11, addbutton)
+toolbar.insert(12, winetricksbutton)
 
 # Set help text
 help = Gtk::Tooltips.new
@@ -193,6 +202,8 @@ help.set_tip(winecfgbutton,_("Open Wine config dialog for the selected bottle"),
 help.set_tip(winecfg,_("Open Wine config dialog for the selected bottle"), nil)
 help.set_tip(regedit,_("Edit the registers of the selected bottle"), nil)
 help.set_tip(regeditbutton,_("Edit the registers of the selected bottle"), nil)
+help.set_tip(colorize,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
+help.set_tip(colorizebutton,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
 help.set_tip(execute,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(executebutton,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(add,_("Add or Remove software into or from selected bottle"), nil)
@@ -221,7 +232,7 @@ def newbottle
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("/usr/lib/wibom/new.sh \"#{dialog.filename}\"")
+			system(@libdir + "/new.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 8
 				error_window(_("Chosen directory is not empty."))
 			else
@@ -248,7 +259,7 @@ def clonebottle (chosenbottle)
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("/usr/lib/wibom/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
+			system(@libdir + "/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
 			if $?.exitstatus == 8
 				error_window(_("Chosen directory is not empty."))
 			elsif $?.exitstatus == 5
@@ -279,7 +290,7 @@ def importbottle
 	dialog.current_folder = `echo $HOME`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system("/usr/lib/wibom/import.sh \"#{dialog.filename}\"")
+			system(@libdir + "/import.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 5
 				error_window(_("Chosen directory is not a bottle."))
 			elsif $?.exitstatus == 6
@@ -310,7 +321,7 @@ def deletebottle (chosenbottle)
 		dialog.secondary_text = chosenbottle
 		dialog.run do |response|
 			if response == Gtk::Dialog::RESPONSE_YES
-				system("/usr/lib/wibom/delete.sh \"#{chosenbottle}\"")
+				system(@libdir + "/delete.sh \"#{chosenbottle}\"")
 				if $?.exitstatus == 5
 					error_window(_("Selected bottle is not on the list, have you been smashing the list?"))
 				else
@@ -348,11 +359,43 @@ def openbottle (chosenbottle)
 end
 
 def winecfgbottle (chosenbottle)
-	Thread.new { system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" winecfg") }
+	Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" winecfg") }
 end
 
 def regeditbottle (chosenbottle)
-	Thread.new { system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" regedit") }
+	Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" regedit") }
+end
+
+def colorizebottle (chosenbottle)
+	if "" == `which python`.chomp
+		error_window(_("You need to install Python befor using this feature. Use your package manager."))
+	else
+		dialog = Gtk::MessageDialog.new(@window, 
+										Gtk::Dialog::MODAL,
+										Gtk::MessageDialog::WARNING,
+										Gtk::MessageDialog::BUTTONS_NONE,
+								_("Colorize the selected bottle or all of them?") )
+		dialog.title = _("Colorize")
+		dialog.secondary_text = _("This feature sets the color scheme of the selected bottle or of all of them according to your GTK settings. It downloads and runs a Python script, but it is a little tricky. It should probably work well, but it does not with some GTK engines. You also have to be online if you are using this first time.")
+		dialog.secondary_text += "\n\n"
+		dialog.secondary_text += _("It is recommanded to create a new bottle to test it, then check the result (e.g. by running a config dialog in testing bottle) and if it works well, apply it to all bottles. If you haven't tried this before with this GTK theme, you shouldn't apply this feature on an working bottle, because it is hard to undo.")
+		dialog.secondary_text += "\n\n"
+		dialog.secondary_text += _("If you want to colorize all of your bottles, it may take a bit of time.")
+		dialog.secondary_text += "\n\n"
+		dialog.secondary_text += _("The colorizing script wine_colors_from_gtk.py © Endolith (GPL)")
+		dialog.add_buttons([_("Cancel"),1], [_("Selected bottle"),2], [_("All bottles"),3])
+		dialog.run do |response|
+			if response == 2 # Colorize the selected bottle
+				system(@libdir + "/colorize.sh \"#{chosenbottle}\"")
+			elsif response == 3 # Colorize all bottles
+				system(@libdir + "/colorize.sh ALL")
+			end
+			if $?.exitstatus == 4
+				error_window(_("You are probably offline (or the Github is) and you have never downloaded this script before."))
+			end
+			dialog.destroy
+		end
+	end
 end
 
 # Execute Windows app in bottle
@@ -453,7 +496,7 @@ def addtobottle (chosenbottle)
 		end
 	end
 	if no == false
-		Thread.new { system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine uninstaller") }
+		Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" wine uninstaller") }
 	end
 end
 
@@ -480,7 +523,7 @@ def trickbottle (chosenbottle)
 			end
 		end
 		if no == false
-			Thread.new { system("/usr/lib/wibom/runin.sh \"#{chosenbottle}\" winetricks") }
+			Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" winetricks") }
 		end
 	end
 end
@@ -488,7 +531,7 @@ end
 # About Dialog
 def aboutdialog
 	authors = documenters = ["Miro Hrončok <miro@hroncok.cz>"]
-	artists = ["Chris Stark <cstark1@gmail.com>", "GNOME Colors by perfectska04 <perfectska04@gmail.com>", "Bára Havelková <bara.havelkova@seznam.cz>"]
+	artists = [_("Icon by") + " Chris Stark <cstark1@gmail.com>", _("GNOME Colors by") + " perfectska04 <perfectska04@gmail.com>", _("The Leaflet by") + " Bára Havelková <bara.havelkova@seznam.cz>"]
 
 	dialog = Gtk::AboutDialog.new
 
@@ -501,7 +544,7 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.6.1"
+	dialog.version = "0.7"
 	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
@@ -598,6 +641,9 @@ winecfg.signal_connect("activate")	{ winecfgbottle(chosenbottle) }
 
 regeditbutton.signal_connect("clicked") { regeditbottle(chosenbottle) }
 regedit.signal_connect("activate")	  { regeditbottle(chosenbottle) }
+
+colorizebutton.signal_connect("clicked") { colorizebottle(chosenbottle) }
+colorize.signal_connect("activate")	  { colorizebottle(chosenbottle) }
 
 executebutton.signal_connect("clicked") { executeinbottle(chosenbottle) }
 execute.signal_connect("activate")	  { executeinbottle(chosenbottle) }

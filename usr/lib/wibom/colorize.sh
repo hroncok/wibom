@@ -30,7 +30,7 @@ get_script() {
 		echo "You are offline and the script was not downloaded before"
 		exit 4
 	fi
-	cd - # Go back
+	cd - > /dev/null # Go back
 }
 
 if [ -z "$1" ]; then

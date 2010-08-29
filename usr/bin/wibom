@@ -23,13 +23,17 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERSION="0.6.1"
-WIBOM="/usr/lib/wibom"
+VERSION="0.7"
+
 BOTTLES="$HOME/.local/share/bottles"
+
+# This is a way to determinate a path, where this script is
+DIR=`dirname "${0%}"`
+WIBOM="$DIR/../lib/wibom"
 
 if [ -z "$1" ]; then
 	echo "Wine bottle management $VERSION"
-	echo "Commands: list new import delete runin"
+	echo "Commands: list new import delete runin colorize"
 	exit 1
 fi
 
@@ -38,7 +42,7 @@ if [ $? == 127 ]; then # Check it!
 	exit 126
 fi
 
-if [ "$1" == "new" ] || [ "$1" == "import" ] || [ "$1" == "delete" ] || [ "$1" == "runin" ]; then
+if [ "$1" == "new" ] || [ "$1" == "import" ] || [ "$1" == "delete" ] || [ "$1" == "runin" ] || [ "$1" == "colorize" ]; then
 	command=$1
 	shift 1
 	$WIBOM/$command.sh "$@"
@@ -46,7 +50,7 @@ elif [ "$1" == "list" ]; then
 	echo "$BOTTLES/default"
 	cat $BOTTLES/bottles.lst
 elif [ "$1" == "--help" ]; then
-	echo "Commands: list new import delete runin"
+	echo "Commands: list new import delete runin colorize"
 	echo "More information can be found in man wibom(1)."
 elif [ "$1" == "--version" ]; then
 	echo "Wine bottle management $VERSION"

@@ -223,9 +223,9 @@ end
 
 # Create new bottle
 def newbottle
-	dialog = Gtk::FileChooserDialog.new(_("Choose an empty directory for the new bottle"),
+	dialog = Gtk::FileChooserDialog.new(_("Choose or create an empty directory for the new bottle"),
                                         @window,
-										Gtk::FileChooser::ACTION_SELECT_FOLDER,
+										Gtk::FileChooser::ACTION_CREATE_FOLDER,
 										nil,
 										[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
 										[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
@@ -250,9 +250,9 @@ end
 
 # Clone bottle
 def clonebottle (chosenbottle)
-	dialog = Gtk::FileChooserDialog.new(_("Choose an empty directory for the copy of the selected bottle"),
+	dialog = Gtk::FileChooserDialog.new(_("Choose or create an empty directory for the copy of the selected bottle"),
 										@window,
-										Gtk::FileChooser::ACTION_SELECT_FOLDER,
+										Gtk::FileChooser::ACTION_CREATE_FOLDER,
 										nil,
 										[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
 										[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
@@ -448,6 +448,17 @@ def executeinbottle (chosenbottle)
 											[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
 											[Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 		dialog.current_folder = chosenbottle.chomp + "/dosdevices/c:" # Drive C: of chosen bottle
+		#Filters
+		exemsi = Gtk::FileFilter.new
+		exemsi.name = _("Windows executables")
+		exemsi.add_mime_type("application/x-ms-dos-executable")
+		exemsi.add_mime_type("application/x-msi")
+		exemsi.add_mime_type("application/x-win-lnk")
+		dialog.add_filter(exemsi)
+		allfiles = Gtk::FileFilter.new
+		allfiles.name = _("All files")
+		allfiles.add_pattern("*")
+		dialog.add_filter(allfiles)
 		# Option to run in emulated desktop
 		toggle = Gtk::CheckButton.new(_("Run in an emulated virtual desktop"))
 		toggle.show
@@ -458,8 +469,15 @@ def executeinbottle (chosenbottle)
 		resolution.append_text("1024x768")
 		resolution.append_text("800x600")
 		resolution.append_text("640x480")
-		resolution.active=0
+		resolution.active = 0
 		resolution.show
+		# Sensitivity
+		resolutionlabel.sensitive = FALSE
+		resolution.sensitive = FALSE
+		toggle.signal_connect("toggled") {
+			resolutionlabel.sensitive = toggle.active?
+			resolution.sensitive = toggle.active?
+		}
 		# HBox
 		hbox = Gtk::HBox.new(false,5)
 		hbox.pack_start_defaults(toggle)

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=Wibom Bottle Chooser
+Name[cs]=Vybírač lahví Wibom
+Exec=wibom-bottle-chooser start /unix %f
+Icon=wibom-gtk
+MimeType=application/x-ms-dos-executable;application/x-msi;application/x-win-lnk;
+NoDisplay=true
+StartupNotify=true
+Terminal=false

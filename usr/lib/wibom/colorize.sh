@@ -44,7 +44,7 @@ if [ "$1" == "ALL" ]; then
 	$LIBDIR/runin.sh $BOTTLES/default python $SCRIPT
 	# Colorize all others
 	while read line
-		do
+	do
 		$LIBDIR/runin.sh $line python $SCRIPT
 	done < "$BOTTLES/bottles.lst"
 	exit 0

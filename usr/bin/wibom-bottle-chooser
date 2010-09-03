@@ -25,33 +25,24 @@
 
 VERSION="0.8"
 
-BOTTLES="$HOME/.local/share/bottles"
+USAGE="Usage: wibom-bottle-chooser PROGRAM"
 
 # This is a way to determinate a path, where this script is
 DIR=`dirname "${0%}"`
-WIBOM="$DIR/../lib/wibom"
+LIBDIR="$DIR/../lib/wibom"
+BOTTLES="$HOME/.local/share/bottles"
+
+echo "`pwd`" > ~/log
+echo "$@" >> ~/log
+
 
 if [ -z "$1" ]; then
-	echo "Wine bottle management $VERSION"
-	echo "Commands: list new import delete runin colorize"
+	echo $USAGE
 	exit 1
-fi
-
-$WIBOM/initialization.sh
-if [ $? == 127 ]; then # Check it!
-	exit 126
-fi
-
-if [ "$1" == "new" ] || [ "$1" == "import" ] || [ "$1" == "delete" ] || [ "$1" == "runin" ] || [ "$1" == "colorize" ]; then
-	command=$1
-	shift 1
-	$WIBOM/$command.sh "$@"
-elif [ "$1" == "list" ]; then
-	echo "$BOTTLES/default"
-	cat $BOTTLES/bottles.lst
 elif [ "$1" == "--help" ]; then
-	echo "Commands: list new import delete runin colorize"
-	echo "More information can be found in man wibom(1)."
+	echo $USAGE
+	echo "Run wibom-bottles-chooser instead of wine. It will work only with UNIX pathes, and only if the executable is last argument. It is developed to be chosen as a default exe louncher in your file manager. It is automaticly lounching applications in their bottles if they are in such."
+	exit 0
 elif [ "$1" == "--version" ]; then
 	echo "Wine bottle management $VERSION"
 	echo ""
@@ -59,6 +50,34 @@ elif [ "$1" == "--version" ]; then
 	echo "Licenced under BSD licence, see source for more information."
 	echo ""
 	echo "Written by Miro Hrončok [hroncok.cz]"
+	exit 0
 else
-	echo "Wibom: command $1 not found."
+	app=${!#}
 fi
+
+if [ "$WINEPREFIX" == "" ]; then # Prefix not chosen
+	$LIBDIR/initialization.sh
+	if [ $? == 127 ]; then # Check it!
+		exit 126
+	fi
+	reldir=`dirname "${app%}"`
+	absdir=`cd "$reldir"; pwd` # We need absolute path (little hack)
+	
+	while read line
+	do
+		bottle=`echo "${absdir%}" | grep -o ${line%}`
+		if [ "$bottle" != "" ]; then
+			break
+		fi
+	done < "$BOTTLES/bottles.lst"
+	
+	# Now $bottle is empty or contains the path to the bottle we need
+	# Make it easy:
+	export WINEPREFIX="$bottle"
+fi
+
+echo "`pwd`" >> ~/log
+
+
+wine "$@"
+exit $?

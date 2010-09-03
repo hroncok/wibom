@@ -24,8 +24,6 @@ if [ -e $1/user.reg ] && [ -e $1/system.reg ] && [ -d $1/drive_c ]; then
 	if [ $exitcode == 127 ]; then
 		echo "Command $command not found."
 	fi
-	# Setting back to default, if something bad happens
-	export WINEPREFIX=""
 	exit $exitcode
 else
 	echo "Error: $1 is not a wine bottle"

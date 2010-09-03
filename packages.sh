@@ -75,6 +75,20 @@ echo "" >> wibom.spec
 echo "%description gtk" >> wibom.spec
 echo "This package contains GTK interface for Wine Bottle Management." >> wibom.spec
 echo "" >> wibom.spec
+echo "%package bottle-chooser" >> wibom.spec
+echo "Requires:       bash" >> wibom.spec
+echo "Requires:       wibom" >> wibom.spec
+echo "BuildArch:      noarch" >> wibom.spec
+echo "Group:          System/Emulators/PC" >> wibom.spec
+echo "%if 0%{?suse_version}" >> wibom.spec
+echo "BuildRequires:  update-desktop-files" >> wibom.spec
+echo "Recommends:     wibom-gtk" >> wibom.spec
+echo "%endif" >> wibom.spec
+echo "Summary:        Automatic bottle chooser for Wine Bottle Management" >> wibom.spec
+echo "" >> wibom.spec
+echo "%description bottle-chooser" >> wibom.spec
+echo "This package contains automatic bottle chooser for Wine Bottle Management." >> wibom.spec
+echo "" >> wibom.spec
 echo "%prep" >> wibom.spec
 echo "%setup -c \${name}-%{version}" >> wibom.spec
 echo "" >> wibom.spec
@@ -105,11 +119,41 @@ echo "/usr/share/icons/hicolor" >> wibom.spec
 echo "/usr/share/applications/wibom-gtk.desktop" >> wibom.spec
 echo "/usr/share/locale/cs/LC_MESSAGES/wibom-gtk.mo" >> wibom.spec
 echo "" >> wibom.spec
+echo "%files bottle-chooser" >> wibom.spec
+echo "%defattr(-,root,root)" >> wibom.spec
+echo "/usr/bin/wibom-bottle-chooser" >> wibom.spec
+echo "/usr/share/applications/wibom-bottle-chooser.desktop" >> wibom.spec
+echo "" >> wibom.spec
 echo "%changelog" >> wibom.spec
 
 echo "rpm-spec: vytvářím soubor „wibom.spec“ v „wibom.spec“."
 
 ## Debian packages
+#  bottle chooser package
+rm -r wibom-bottle-chooser-package/usr/
+mkdir -p wibom-bottle-chooser-package/usr/bin
+mkdir -p wibom-bottle-chooser-package/usr/share/applications
+mv usr/bin/wibom-bottle-chooser wibom-bottle-chooser-package/usr/bin/wibom-bottle-chooser
+mv usr/share/applications/wibom-bottle-chooser.desktop wibom-bottle-chooser-package/usr/share/applications/wibom-bottle-chooser.desktop
+
+cd wibom-bottle-chooser-package/DEBIAN
+
+echo "Package: wibom-bottle-chooser" > control
+echo "Version: $1" >> control
+echo "Section: otherosfs" >> control
+echo "Priority: optional" >> control
+echo "Architecture: all" >> control
+echo "Depends: wine, bash, wibom (=$1)" >> control
+echo "Suggests: wibom-gtk" >> control
+echo "Installed-Size: `du --apparent-size -s ../usr/ | head -c2`" >> control
+echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
+echo "Description: Automatic bottle chooser for wibom." >> control
+
+cd ../.. # working dir
+dpkg -b wibom-bottle-chooser-package/ wibom-bottle-chooser_${1}_all.deb
+rm debian/debs/*.deb
+mv wibom-bottle-chooser_${1}_all.deb debian/debs
+
 #  wibom package
 rm -r wibom-package/usr/
 mkdir wibom-package/usr
@@ -128,14 +172,13 @@ echo "Priority: optional" >> control
 echo "Architecture: all" >> control
 echo "Depends: wine, bash" >> control
 echo "Recommends: xdg-utils, trash-cli, wget, python-minimal" >> control
-echo "Suggests: wibom-gtk" >> control
+echo "Suggests: wibom-gtk, wibom-bottle-chooser" >> control
 echo "Installed-Size: `du --apparent-size -s ../usr/ | head -c2`" >> control
 echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
-echo "Description: Application called Wine bottle management (or wibom) is used to (as its name suggests) manage so-called Wine bottles. http://wibom.sourceforge.net/" >> control
+echo "Description: Wine bottle management is used to manage so-called Wine bottles. http://wibom.sourceforge.net/" >> control
 
 cd ../.. # working dir
 dpkg -b wibom-package/ wibom_${1}_all.deb
-rm debian/debs/*.deb
 mv wibom_${1}_all.deb debian/debs
 
 #  wibom-additional-icons package
@@ -158,7 +201,7 @@ echo "Architecture: all" >> control
 echo "Depends: wibom-gtk (=$1), hicolor-icon-theme" >> control
 echo "Installed-Size: `du --apparent-size -s ../usr/ | head -c3`" >> control
 echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
-echo "Description: Missing icons for wibom." >> control
+echo "Description: Missing icons for wibom-gtk." >> control
 
 cd ../.. # working dir
 dpkg -b wibom-additional-icons-package/ wibom-additional-icons_${1}_all.deb
@@ -179,7 +222,7 @@ echo "Depends: wibom (=$1), ruby, libgettext-ruby1.8, libgtk2-ruby1.8, sysvinit-
 echo "Recommends: zenity, winetricks" >> control
 echo "Installed-Size: `du --apparent-size -s ../usr/ | head -c3`" >> control
 echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
-echo "Description: Application called Wine bottle management (or wibom) is used to (as its name suggests) manage so-called Wine bottles. This is a GTK frontend. http://wibom.sourceforge.net/" >> control
+echo "Description: GTK frontend for wibom." >> control
 
 cd ../.. # working dir
 dpkg -b wibom-gtk-package/ wibom-gtk_${1}_all.deb

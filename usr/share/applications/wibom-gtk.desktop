@@ -13,5 +13,5 @@ Icon=wibom-gtk
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=GTK;Utility;
+Categories=Wine;
 GenericName=

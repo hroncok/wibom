@@ -32,10 +32,6 @@ DIR=`dirname "${0%}"`
 LIBDIR="$DIR/../lib/wibom"
 BOTTLES="$HOME/.local/share/bottles"
 
-echo "`pwd`" > ~/log
-echo "$@" >> ~/log
-
-
 if [ -z "$1" ]; then
 	echo $USAGE
 	exit 1
@@ -67,17 +63,12 @@ if [ "$WINEPREFIX" == "" ]; then # Prefix not chosen
 	do
 		bottle=`echo "${absdir%}" | grep -o ${line%}`
 		if [ "$bottle" != "" ]; then
+			export WINEPREFIX="$bottle"
 			break
 		fi
 	done < "$BOTTLES/bottles.lst"
-	
-	# Now $bottle is empty or contains the path to the bottle we need
-	# Make it easy:
-	export WINEPREFIX="$bottle"
 fi
 
-echo "`pwd`" >> ~/log
-
-
+# Now $bottle is empty or contains the path to the bottle we need
 wine "$@"
 exit $?

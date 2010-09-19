@@ -697,7 +697,7 @@ add.signal_connect("activate")	  { addtobottle(chosenbottle) }
 winetricksbutton.signal_connect("clicked") { trickbottle(chosenbottle) }
 winetricks.signal_connect("activate")	  { trickbottle(chosenbottle) }
 
-contents.signal_connect("activate")	  { system("xdg-open file://") }
+contents.signal_connect("activate")	  { error_window(_("The documentation is not ready.")) }
 
 # Moving around the list
 bottleslist.signal_connect("cursor-changed") {

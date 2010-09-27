@@ -48,7 +48,7 @@ if [ "$parent" != "$BOTTLES/default" ]; then
 fi
 
 # Copy files regulary
-cp -R "$parent"/*  $1
+cp -R "$parent"/*  "$1"
 echo "Bottle $1 was created"
 
 # Add an item to the list

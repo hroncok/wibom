@@ -587,7 +587,7 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.8"
+	dialog.version = "0.8.2"
 	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
@@ -712,7 +712,7 @@ quit.signal_connect("activate")	{ Gtk.main_quit }
 scrolled_win = Gtk::ScrolledWindow.new
 scrolled_win.add(bottleslist)
 scrolled_win.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
-scrolled_win.set_size_request(-1, 200)
+scrolled_win.set_size_request(-1, 300)
 
 # packing together
 vbox = Gtk::VBox.new(false,5)
@@ -737,7 +737,7 @@ Gtk::Window.set_default_icon_list(icon_list)
 @window.add_accel_group(group)
 
 @window.add(vbox)
-@window.set_size_request(360, -1)
+@window.set_size_request(450, -1)
 
 
 # set window title and show & start main window

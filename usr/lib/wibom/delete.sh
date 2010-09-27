@@ -16,7 +16,8 @@ fi
 absolute1=`cd "$1"; pwd` # We need absolute path (little hack)
 
 # Test if the given bottle is in the list
-if [ `grep -x "$absolute1" "$BOTTLES/bottles.lst"` ]; then
+isthere=`grep -x "$absolute1" "$BOTTLES/bottles.lst"`
+if [ "$isthere" ]; then
 	# Returm into the list all the other bottles
 	cp "$BOTTLES/bottles.lst" "$BOTTLES/bottles.lst.old"
 	grep -vx "$absolute1" "$BOTTLES/bottles.lst.old" > "$BOTTLES/bottles.lst"

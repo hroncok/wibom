@@ -26,7 +26,8 @@ if [ "$absolute1" == "$BOTTLES/default" ]; then
 fi
 
 if [ -e "$1/user.reg" ] && [ -e "$1/system.reg" ] && [ -d "$1/drive_c" ]; then
-	if [ `grep -x "$absolute1" "$BOTTLES/bottles.lst"` ]; then
+	isthere=`grep -x "$absolute1" "$BOTTLES/bottles.lst"`
+	if [ "$isthere" ]; then
 		echo "Bottle has already been in bottles.lst, don't need to import"
 		exit 6
 	else

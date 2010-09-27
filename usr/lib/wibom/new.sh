@@ -21,7 +21,8 @@ if [ -e "$1" ]; then
 		echo "$USAGE"
 		exit 4
 	fi
-	if ! [ -z `ls -A "$1"` ]; then
+	ls=`ls -A "$1"`
+	if ! [ -z "$ls" ]; then
 		# Checking if firts param is an empty directory
 		echo "Error: $1 is not an empty directory"
 		exit 8
@@ -53,7 +54,8 @@ echo "Bottle $1 was created"
 
 # Add an item to the list
 absolute1=`cd "$1"; pwd` # We need absolute path (little hack)
-if [ `grep -x "$absolute1" "$BOTTLES/bottles.lst"` ]; then
+isthere=`grep -x "$absolute1" "$BOTTLES/bottles.lst"`
+if [ "$isthere" ]; then
 	echo "Bottle has already been in bottles.lst (means something was messed up)"
 else
 	echo "$absolute1" >> "$BOTTLES/bottles.lst"

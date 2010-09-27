@@ -9,18 +9,18 @@ USAGE="Usage: wibom runin bottle_path commands [arguments]"
 BOTTLES="$HOME/.local/share/bottles"
 
 if [ -z "$1" ] || [ -z "$2" ]; then
-	echo $USAGE
+	echo "$USAGE"
 	exit 1
 fi
 
 # Checking if $1 is a bottle
-if [ -e $1/user.reg ] && [ -e $1/system.reg ] && [ -d $1/drive_c ]; then
-	absolute1="$(cd $1; pwd)" # We need absolute path (little hack)
+if [ -e "$1/user.reg" ] && [ -e "$1/system.reg" ] && [ -d "$1/drive_c" ]; then
+	absolute1=`cd "$1"; pwd` # We need absolute path (little hack)
 	export WINEPREFIX="$absolute1"
 	command="$2" # Hold it
 	shift 2 # Drop it
 	$command "$@" # Use it
-	exitcode="$?" # Remember the exitcode now
+	exitcode=$? # Remember the exitcode now
 	if [ $exitcode == 127 ]; then
 		echo "Command $command not found."
 	fi

@@ -12,12 +12,12 @@ if ! [ "$(which wine)" ]; then
 fi
 
 # Creating the bottles directory, if doesn't exist
-if ! [ -d $BOTTLES ]; then
-	mkdir -p $BOTTLES
+if ! [ -d "$BOTTLES" ]; then
+	mkdir -p "$BOTTLES"
 	echo "Directory $BOTTLES was created"
 fi
 
-if ! ([ -e $BOTTLES/default/user.reg ] && [ -e $BOTTLES/default/system.reg ] && [ -d $BOTTLES/default/drive_c ]); then
+if ! ([ -e "$BOTTLES/default/user.reg" ] && [ -e "$BOTTLES/default/system.reg" ] && [ -d "$BOTTLES/default/drive_c" ]); then
 	# Setting the default bottle directory and creating the default bottle
 	export WINEPREFIX="$BOTTLES/default"
 	wine cmd /c echo boo 2>/dev/null # simple hack for creating a wine bottle in WINEPREFIX
@@ -27,4 +27,4 @@ if ! ([ -e $BOTTLES/default/user.reg ] && [ -e $BOTTLES/default/system.reg ] && 
 fi
 
 # Creating the list, if not existed
-touch $BOTTLES/bottles.lst
+touch "$BOTTLES/bottles.lst"

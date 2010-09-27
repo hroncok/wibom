@@ -34,7 +34,7 @@ get_script() {
 }
 
 if [ -z "$1" ]; then
-	echo $USAGE
+	echo "$USAGE"
 	exit 1
 fi
 
@@ -55,15 +55,15 @@ else
 		exit 4
 	fi
 
-	absolute1="$(cd $1; pwd)" # We need absolute path (little hack)
-	if [ -e $1/user.reg ] && [ -e $1/system.reg ] && [ -d $1/drive_c ]; then
+	absolute1=`cd "$1"; pwd` # We need absolute path (little hack)
+	if [ -e "$1/user.reg" ] && [ -e "$1/system.reg" ] && [ -d "$1/drive_c" ]; then
 		# We are in bottle
 		get_script
 		$LIBDIR/runin.sh "$absolute1" python "$SCRIPT"
 		exit 0
 	else
 		echo "Error: $absolute1 is not a bottle"
-		echo $USAGE
+		echo "$USAGE"
 		exit 5
 	fi
 fi

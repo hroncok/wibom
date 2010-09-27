@@ -41,7 +41,7 @@ cd - > /dev/null # Go back
 
 # Run the script
 $SCRIPT --basedir "$BOTTLES/ies"
-exitcode="$?" # Remember the exitcode now
+exitcode=$? # Remember the exitcode now
 if [ $exitcode != 0 ]; then
 	exit $exitcode
 fi

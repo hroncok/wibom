@@ -15,12 +15,12 @@ SCRIPT="$SHARE/wine_colors_from_gtk/wine_colors_from_gtk.py"
 LIBDIR=`dirname "${0%}"`
 
 get_script() {
-	cd $SHARE
+	cd "$SHARE"
 	wget http://gist.github.com/gists/74192/download -O wine-colors.tar.gz
 	exitcode="$?" # Remember the exitcode now
 	if [ $exitcode == 0 ]; then
 		# Was downloaded, we can delete old version
-		rm -r wine_colors_from_gtk
+		rm -rf wine_colors_from_gtk
 		tar -zxf wine-colors.tar.gz
 		mv gist* wine_colors_from_gtk
 	fi
@@ -41,17 +41,17 @@ fi
 if [ "$1" == "ALL" ]; then
 	get_script
 	# Colorize the default bottle
-	$LIBDIR/runin.sh $BOTTLES/default python $SCRIPT
+	$LIBDIR/runin.sh "$BOTTLES/default" python "$SCRIPT"
 	# Colorize all others
 	while read line
 	do
-		$LIBDIR/runin.sh $line python $SCRIPT
+		$LIBDIR/runin.sh "$line" python "$SCRIPT"
 	done < "$BOTTLES/bottles.lst"
 	exit 0
 else
 	if ! [ -d $1 ]; then
 		echo "Error: $1 is not a directory"
-		echo $USAGE
+		echo "$USAGE"
 		exit 4
 	fi
 
@@ -59,7 +59,7 @@ else
 	if [ -e $1/user.reg ] && [ -e $1/system.reg ] && [ -d $1/drive_c ]; then
 		# We are in bottle
 		get_script
-		$LIBDIR/runin.sh $absolute1 python $SCRIPT
+		$LIBDIR/runin.sh "$absolute1" python "$SCRIPT"
 		exit 0
 	else
 		echo "Error: $absolute1 is not a bottle"

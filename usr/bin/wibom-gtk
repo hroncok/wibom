@@ -737,7 +737,7 @@ Gtk::Window.set_default_icon_list(icon_list)
 @window.add_accel_group(group)
 
 @window.add(vbox)
-@window.set_size_request(450, -1)
+@window.set_default_size(450, -1)
 
 
 # set window title and show & start main window

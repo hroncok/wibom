@@ -20,7 +20,7 @@ find . -name '.svn' -exec trash {} \; 2>/dev/null
 cd .. # working dir
 
 # Tarball
-tar -cj usr > wibom-gtk-${1}.tar.bz2
+tar -cj usr > wibom-gtk-${1}-${2}.tar.bz2
 echo "tar-bzip: vytvářím balík „wibom-gtk“ v „wibom-gtk-${1}-${2}.tar.bz2“."
 
 nano wibom.changes

@@ -383,7 +383,7 @@ def colorizebottle (chosenbottle)
 		dialog.secondary_text += _("If you want to colorize all of your bottles, it may take a bit of time.")
 		dialog.secondary_text += "\n\n"
 		dialog.secondary_text += _("The colorizing script wine_colors_from_gtk.py © Endolith (GPL)")
-		dialog.add_buttons([_("Cancel"),1], [_("Selected bottle"),2], [_("All bottles"),3])
+		dialog.add_buttons([Gtk::Stock::CANCEL,1], [_("Selected bottle"),2], [_("All bottles"),3])
 		dialog.run do |response|
 			if response == 2 # Colorize the selected bottle
 				really = Gtk::MessageDialog.new(@window, 
@@ -587,7 +587,7 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.8.2"
+	dialog.version = "0.9"
 	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
@@ -728,9 +728,7 @@ Gtk::Window.set_default_icon_list(icon_list)
 @window = Gtk::Window.new
 
 # Closing the window
-@window.signal_connect("destroy") {
-  Gtk.main_quit
-}
+@window.signal_connect("destroy") { Gtk.main_quit }
 
 
 # adding accel group and vbox

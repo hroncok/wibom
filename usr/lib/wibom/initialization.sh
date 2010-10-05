@@ -22,8 +22,6 @@ if ! ([ -e "$BOTTLES/default/user.reg" ] && [ -e "$BOTTLES/default/system.reg" ]
 	export WINEPREFIX="$BOTTLES/default"
 	wine cmd /c echo boo 2>/dev/null # simple hack for creating a wine bottle in WINEPREFIX
 	echo "The default bottle was created in $BOTTLES/default"
-	# Setting back to default, if something bad happens
-	export WINEPREFIX=""
 fi
 
 # Creating the list, if not existed

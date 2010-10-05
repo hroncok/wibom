@@ -78,13 +78,17 @@ echo "" >> wibom.spec
 echo "%package bottle-chooser" >> wibom.spec
 echo "Requires:       bash" >> wibom.spec
 echo "Requires:       wibom" >> wibom.spec
+echo "Requires:       ruby" >> wibom.spec
+echo "Requires:       ruby-gnome2" >> wibom.spec
+echo "Requires:       rubygem-gettext" >> wibom.spec
+echo "Requires:       hicolor-icon-theme" >> wibom.spec
 echo "BuildArch:      noarch" >> wibom.spec
 echo "Group:          System/Emulators/PC" >> wibom.spec
 echo "%if 0%{?suse_version}" >> wibom.spec
 echo "BuildRequires:  update-desktop-files" >> wibom.spec
 echo "Recommends:     wibom-gtk" >> wibom.spec
 echo "%endif" >> wibom.spec
-echo "Summary:        Automatic bottle chooser for Wine Bottle Management" >> wibom.spec
+echo "Summary:        Halfautomatic bottle chooser for Wine Bottle Management" >> wibom.spec
 echo "" >> wibom.spec
 echo "%description bottle-chooser" >> wibom.spec
 echo "This package contains automatic bottle chooser for Wine Bottle Management." >> wibom.spec
@@ -108,7 +112,7 @@ echo "" >> wibom.spec
 echo "%files" >> wibom.spec
 echo "%defattr(-,root,root)" >> wibom.spec
 echo "/usr/bin/wibom" >> wibom.spec
-echo "/usr/lib/wibom" >> wibom.spec
+echo "/usr/lib/wibom/*.sh" >> wibom.spec
 echo "/usr/share/man/man1/*" >> wibom.spec
 echo "/usr/share/man/cs" >> wibom.spec
 echo "" >> wibom.spec
@@ -122,6 +126,7 @@ echo "" >> wibom.spec
 echo "%files bottle-chooser" >> wibom.spec
 echo "%defattr(-,root,root)" >> wibom.spec
 echo "/usr/bin/wibom-bottle-chooser" >> wibom.spec
+echo "/usr/lib/wibom/bottlechooser.rb" >> wibom.spec
 echo "/usr/share/applications/wibom-bottle-chooser.desktop" >> wibom.spec
 echo "" >> wibom.spec
 echo "%changelog" >> wibom.spec
@@ -132,8 +137,10 @@ echo "rpm-spec: vytvářím soubor „wibom.spec“ v „wibom.spec“."
 #  bottle chooser package
 rm -r wibom-bottle-chooser-package/usr/
 mkdir -p wibom-bottle-chooser-package/usr/bin
+mkdir -p wibom-bottle-chooser-package/usr/lib/wibom
 mkdir -p wibom-bottle-chooser-package/usr/share/applications
 mv usr/bin/wibom-bottle-chooser wibom-bottle-chooser-package/usr/bin/wibom-bottle-chooser
+mv usr/lib/wibom/bottlechooser.rb wibom-bottle-chooser-package/usr/lib/wibom/bottlechooser.rb
 mv usr/share/applications/wibom-bottle-chooser.desktop wibom-bottle-chooser-package/usr/share/applications/wibom-bottle-chooser.desktop
 
 cd wibom-bottle-chooser-package/DEBIAN
@@ -147,7 +154,7 @@ echo "Depends: wine, bash, wibom (=${1}-${2})" >> control
 echo "Suggests: wibom-gtk" >> control
 echo "Installed-Size: `du --apparent-size -s ../usr/ | head -c2`" >> control
 echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
-echo "Description: Automatic bottle chooser for wibom." >> control
+echo "Description: Halfautomatic bottle chooser for wibom." >> control
 
 cd ../.. # working dir
 dpkg -b wibom-bottle-chooser-package/ wibom-bottle-chooser_${1}-${2}_all.deb

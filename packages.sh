@@ -112,6 +112,7 @@ echo "" >> wibom.spec
 echo "%files" >> wibom.spec
 echo "%defattr(-,root,root)" >> wibom.spec
 echo "/usr/bin/wibom" >> wibom.spec
+echo "%dir /usr/lib/wibom/" >> wibom.spec
 echo "/usr/lib/wibom/*.sh" >> wibom.spec
 echo "/usr/share/man/man1/*" >> wibom.spec
 echo "/usr/share/man/cs" >> wibom.spec
@@ -126,6 +127,7 @@ echo "" >> wibom.spec
 echo "%files bottle-chooser" >> wibom.spec
 echo "%defattr(-,root,root)" >> wibom.spec
 echo "/usr/bin/wibom-bottle-chooser" >> wibom.spec
+echo "%dir /usr/lib/wibom/" >> wibom.spec
 echo "/usr/lib/wibom/bottlechooser.rb" >> wibom.spec
 echo "/usr/share/applications/wibom-bottle-chooser.desktop" >> wibom.spec
 echo "" >> wibom.spec

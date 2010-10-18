@@ -60,6 +60,24 @@ def makeicon (icon, size)
 	return Gtk::Image.new(img)
 end
 
+# Use ~ instead of the absolute path
+def tildize (path)
+	tmp = path
+	if tmp.include?(`echo $HOME`.chomp)
+		tmp[`echo $HOME`.chomp] = "~"
+	end
+	return tmp
+end
+
+# Use the absolute path instead of ~
+def untildize (path)
+	tmp = path
+	if tmp.include?("~")
+		tmp["~"] = `echo $HOME`.chomp
+	end
+	return tmp
+end
+
 # Initialize Wibom (good for first run)
 system(@libdir + "/initialization.sh")
 if $?.exitstatus == 127
@@ -216,7 +234,7 @@ def redraw (bottles)
 	file = File.new(`echo $HOME/.local/share/bottles/bottles.lst`.chomp, "r")
 	while (line = file.gets)
 		bottle = bottles.append
-		bottles.set_value(bottle, 0, line.chomp)
+		bottles.set_value(bottle, 0, tildize(line.chomp))
 	end
 	file.close
 end
@@ -237,7 +255,7 @@ def newbottle
 				error_window(_("Chosen directory is not empty."))
 			else
 				bottle = @bottles.append
-				@bottles.set_value(bottle, 0, dialog.filename)
+				@bottles.set_value(bottle, 0, tildize(dialog.filename))
 				dialog.destroy
 				break
 			end
@@ -268,7 +286,7 @@ def clonebottle (chosenbottle)
 				break
 			else
 				bottle = @bottles.append
-				@bottles.set_value(bottle, 0, dialog.filename)
+				@bottles.set_value(bottle, 0, tildize(dialog.filename))
 				dialog.destroy
 				break
 			end
@@ -297,7 +315,7 @@ def importbottle
 				error_window(_("Chosen directory is already on the list."))
 			else
 				bottle = @bottles.append
-				@bottles.set_value(bottle, 0, dialog.filename)
+				@bottles.set_value(bottle, 0, tildize(dialog.filename))
 				dialog.destroy
 				break
 			end
@@ -328,7 +346,7 @@ def deletebottle (chosenbottle)
 					@bottles.clear
 					redraw (@bottles)
 					bottle = @bottles.prepend
-					@bottles.set_value(bottle, 0, `echo $HOME/.local/share/bottles/default`.chomp)
+					@bottles.set_value(bottle, 0, "~/.local/share/bottles/default")
 				end
 			end
 			dialog.destroy
@@ -486,7 +504,7 @@ def executeinbottle (chosenbottle)
 		dialog.extra_widget = hbox
 		# Tooltips
 		help = Gtk::Tooltips.new
-		help.set_tip(toggle,_("Whatever the application should be run in an emulated virtual desktop"), nil)
+		help.set_tip(toggle,_("Whether the application should be run in an emulated virtual desktop"), nil)
 		help.set_tip(resolution,_("The resolution of the virtual desktop"), nil)
 		help.set_tip(resolutionlabel,_("The resolution of the virtual desktop"), nil)
 		while true
@@ -642,7 +660,7 @@ bottleslist.append_column(column)
 redraw (@bottles)
 
 bottle = @bottles.prepend
-@bottles.set_value(bottle, 0, `echo $HOME/.local/share/bottles/default`.chomp)
+@bottles.set_value(bottle, 0, "~/.local/share/bottles/default")
 
 pointer = bottleslist.selection
 pointer.mode = Gtk::SELECTION_BROWSE
@@ -653,14 +671,14 @@ chosenbottle = @bottles.get_value(bottle, 0)
 newbutton.signal_connect("clicked") { newbottle }
 new.signal_connect("activate")	  { newbottle }
 
-copybutton.signal_connect("clicked") { clonebottle(chosenbottle) }
-copy.signal_connect("activate")	  { clonebottle(chosenbottle) }
+copybutton.signal_connect("clicked") { clonebottle(untildize(chosenbottle)) }
+copy.signal_connect("activate")	  { clonebottle(untildize(chosenbottle)) }
 
 importbutton.signal_connect("clicked") { importbottle }
 import.signal_connect("activate")	  { importbottle }
 
 deletebutton.signal_connect("clicked") {
-	deletebottle(chosenbottle)
+	deletebottle(untildize(chosenbottle))
 	pointer = bottleslist.selection
 	pointer.mode = Gtk::SELECTION_BROWSE
 	bottle = @bottles.iter_first
@@ -668,7 +686,7 @@ deletebutton.signal_connect("clicked") {
 	chosenbottle = @bottles.get_value(bottle, 0)
 }
 delete.signal_connect("activate")	  {
-	deletebottle(chosenbottle)
+	deletebottle(untildize(chosenbottle))
 	pointer = bottleslist.selection
 	pointer.mode = Gtk::SELECTION_BROWSE
 	bottle = @bottles.iter_first
@@ -676,26 +694,26 @@ delete.signal_connect("activate")	  {
 	chosenbottle = @bottles.get_value(bottle, 0)
 }
 
-openbutton.signal_connect("clicked"){ openbottle(chosenbottle) }
-open.signal_connect("activate")	{ openbottle(chosenbottle) }
+openbutton.signal_connect("clicked"){ openbottle(untildize(chosenbottle)) }
+open.signal_connect("activate")	{ openbottle(untildize(chosenbottle)) }
 
-winecfgbutton.signal_connect("clicked") { winecfgbottle(chosenbottle) }
-winecfg.signal_connect("activate")	{ winecfgbottle(chosenbottle) }
+winecfgbutton.signal_connect("clicked") { winecfgbottle(untildize(chosenbottle)) }
+winecfg.signal_connect("activate")	{ winecfgbottle(untildize(chosenbottle)) }
 
-regeditbutton.signal_connect("clicked") { regeditbottle(chosenbottle) }
-regedit.signal_connect("activate")	  { regeditbottle(chosenbottle) }
+regeditbutton.signal_connect("clicked") { regeditbottle(untildize(chosenbottle)) }
+regedit.signal_connect("activate")	  { regeditbottle(untildize(chosenbottle)) }
 
-colorizebutton.signal_connect("clicked") { colorizebottle(chosenbottle) }
-colorize.signal_connect("activate")	  { colorizebottle(chosenbottle) }
+colorizebutton.signal_connect("clicked") { colorizebottle(untildize(chosenbottle)) }
+colorize.signal_connect("activate")	  { colorizebottle(untildize(chosenbottle)) }
 
-executebutton.signal_connect("clicked") { executeinbottle(chosenbottle) }
-execute.signal_connect("activate")	  { executeinbottle(chosenbottle) }
+executebutton.signal_connect("clicked") { executeinbottle(untildize(chosenbottle)) }
+execute.signal_connect("activate")	  { executeinbottle(untildize(chosenbottle)) }
 
-addbutton.signal_connect("clicked") { addtobottle(chosenbottle) }
-add.signal_connect("activate")	  { addtobottle(chosenbottle) }
+addbutton.signal_connect("clicked") { addtobottle(untildize(chosenbottle)) }
+add.signal_connect("activate")	  { addtobottle(untildize(chosenbottle)) }
 
-winetricksbutton.signal_connect("clicked") { trickbottle(chosenbottle) }
-winetricks.signal_connect("activate")	  { trickbottle(chosenbottle) }
+winetricksbutton.signal_connect("clicked") { trickbottle(untildize(chosenbottle)) }
+winetricks.signal_connect("activate")	  { trickbottle(untildize(chosenbottle)) }
 
 contents.signal_connect("activate")	  { error_window(_("The documentation is not ready.")) }
 

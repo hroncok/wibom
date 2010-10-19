@@ -516,7 +516,22 @@ def executeinbottle (chosenbottle)
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 				# Should the script be saved?
 				if scripttoggle.active?
-					script = "--script \"/home/churchyard/script.sh\" " # Don't forgot the last space
+					scriptdialog = Gtk::FileChooserDialog.new(_("Save the script as..."),
+														dialog,
+														Gtk::FileChooser::ACTION_SAVE,
+														nil,
+														[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
+														[Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
+					scriptdialog.current_folder = `echo $HOME`.chomp
+					while true
+						if scriptdialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+							script = "--script \"#{scriptdialog.filename}\" " # Don't forgot the last space
+						else
+							script = ""
+						end
+						scriptdialog.destroy
+						break
+					end
 				else
 					script = ""
 				end

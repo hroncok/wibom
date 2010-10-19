@@ -79,7 +79,7 @@ def untildize (path)
 end
 
 # Initialize Wibom (good for first run)
-system(@libdir + "/initialization.sh")
+system("#{@libdir}/initialization.sh")
 if $?.exitstatus == 127
 	error_window(_("Could not find Wine or wibom scripts. You should install both before running wibom-gtk."))
 	exit
@@ -258,7 +258,7 @@ def newbottle
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system(@libdir + "/new.sh \"#{dialog.filename}\"")
+			system("#{@libdir}/new.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 8
 				error_window(_("Chosen directory is not empty."))
 			else
@@ -285,7 +285,7 @@ def clonebottle (chosenbottle)
 	dialog.current_folder = `echo $HOME/.local/share/bottles`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system(@libdir + "/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
+			system("#{@libdir}/new.sh \"#{dialog.filename}\" \"#{chosenbottle}\"")
 			if $?.exitstatus == 8
 				error_window(_("Chosen directory is not empty."))
 			elsif $?.exitstatus == 5
@@ -316,7 +316,7 @@ def importbottle
 	dialog.current_folder = `echo $HOME`.chomp
 	while true
 		if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
-			system(@libdir + "/import.sh \"#{dialog.filename}\"")
+			system("#{@libdir}/import.sh \"#{dialog.filename}\"")
 			if $?.exitstatus == 5
 				error_window(_("Chosen directory is not a bottle."))
 			elsif $?.exitstatus == 6
@@ -347,7 +347,7 @@ def deletebottle (chosenbottle)
 		dialog.secondary_text = tildize(chosenbottle)
 		dialog.run do |response|
 			if response == Gtk::Dialog::RESPONSE_YES
-				system(@libdir + "/delete.sh \"#{chosenbottle}\"")
+				system("#{@libdir}/delete.sh \"#{chosenbottle}\"")
 				if $?.exitstatus == 5
 					error_window(_("Selected bottle is not on the list, have you been smashing the list?"))
 				else
@@ -385,11 +385,11 @@ def openbottle (chosenbottle)
 end
 
 def winecfgbottle (chosenbottle)
-	Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" winecfg") }
+	Thread.new { system("#{@libdir}/runin.sh \"#{chosenbottle}\" winecfg") }
 end
 
 def regeditbottle (chosenbottle)
-	Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" regedit") }
+	Thread.new { system("#{@libdir}/runin.sh \"#{chosenbottle}\" regedit") }
 end
 
 def killbottle (chosenbottle)
@@ -401,7 +401,7 @@ def killbottle (chosenbottle)
 	dialog.secondary_text = _("Do you really want to kill all wine proceses executed in the selected bottle? All unsaved work will be lost.")
 	dialog.run do |response|
 		if response == Gtk::Dialog::RESPONSE_YES
-			Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" wineserver -kill") }
+			Thread.new { system("#{@libdir}/runin.sh \"#{chosenbottle}\" wineserver -kill") }
 		end
 		dialog.destroy
 	end
@@ -435,7 +435,7 @@ def colorizebottle (chosenbottle)
 				really.secondary_text = _("This feature should be tested on a useless bottle, do you want to continue?")
 				really.run do |response|
 					if response == Gtk::Dialog::RESPONSE_YES
-						system(@libdir + "/colorize.sh \"#{chosenbottle}\"")
+						system("#{@libdir}/colorize.sh \"#{chosenbottle}\"")
 						if $?.exitstatus == 4
 							error_window(_("You are probably offline (or the Github is) and you have never downloaded this script before."))
 						end
@@ -451,7 +451,7 @@ def colorizebottle (chosenbottle)
 				really.secondary_text = _("Have you tested this feature before on a useless bottle?")
 				really.run do |response|
 					if response == Gtk::Dialog::RESPONSE_YES
-						system(@libdir + "/colorize.sh ALL")
+						system("#{@libdir}/colorize.sh ALL")
 						if $?.exitstatus == 4
 							error_window(_("You are probably offline (or the Github is) and you have never downloaded this script before."))
 						end
@@ -606,14 +606,14 @@ def addtobottle (chosenbottle)
 		end
 	end
 	if no == false
-		Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" wine uninstaller") }
+		Thread.new { system("#{@libdir}/runin.sh \"#{chosenbottle}\" wine uninstaller") }
 	end
 end
 
 # Run winetricks in bottle
 def trickbottle (chosenbottle)
 	if "" == `which winetricks`.chomp
-		error_window(_("It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable!"))
+		error_window(_("It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable! It also might be in your distribution's repository."))
 	elsif "" == `which zenity`.chomp
 		error_window(_("You need to install Zenity befor using this feature. Use your package manager."))
 	else
@@ -633,7 +633,8 @@ def trickbottle (chosenbottle)
 			end
 		end
 		if no == false
-			Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" winetricks") }
+			# Using Zenity, for some reason standard message dialog doesn't work in a new thread
+			Thread.new { system("#{@libdir}/runin.sh \"#{chosenbottle}\" winetricks | tail -1 | grep \"winetricks done.\" && zenity --info --title \"#{_("Winetricks has finished")}\" --text \"#{_("Winetrick has successfully finished (probably).")}\"") }
 		end
 	end
 end

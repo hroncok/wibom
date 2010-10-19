@@ -142,12 +142,16 @@ winecfg.image = makeicon("wine-winecfg",16)
 regedit = Gtk::ImageMenuItem.new(_("Edit _registers"), true)
 regedit.image = makeicon("wine-notepad",16)
 
+kill = Gtk::ImageMenuItem.new(_("_Kill apps executed in bottle"), true)
+kill.image = makeicon("stop",16)
+
 colorize = Gtk::ImageMenuItem.new(_("Colori_ze bottle(s)..."), true)
 colorize.image = makeicon("preferences-desktop-theme",16)
 
 toolsmenu.append(open)
 toolsmenu.append(winecfg)
 toolsmenu.append(regedit)
+toolsmenu.append(kill)
 toolsmenu.append(colorize)
 
 # Create the Software menu content.
@@ -180,6 +184,7 @@ separator = Gtk::SeparatorToolItem.new
 openbutton = Gtk::ToolButton.new(makeicon("document-open",24),_("Open"))
 winecfgbutton = Gtk::ToolButton.new(makeicon("wine-winecfg",24),_("Configure"))
 regeditbutton = Gtk::ToolButton.new(makeicon("wine-notepad",24),_("Regedit"))
+killbutton = Gtk::ToolButton.new(makeicon("stop",24),_("Kill"))
 colorizebutton = Gtk::ToolButton.new(makeicon("preferences-desktop-theme",24),_("Colorize"))
 separator2 = Gtk::SeparatorToolItem.new
 executebutton = Gtk::ToolButton.new(Gtk::Stock::EXECUTE)
@@ -198,11 +203,12 @@ toolbar.insert(4, separator)
 toolbar.insert(5, openbutton)
 toolbar.insert(6, winecfgbutton)
 toolbar.insert(7, regeditbutton)
-toolbar.insert(8, colorizebutton)
-toolbar.insert(9, separator2)
-toolbar.insert(10, executebutton)
-toolbar.insert(11, addbutton)
-toolbar.insert(12, winetricksbutton)
+toolbar.insert(8, killbutton)
+toolbar.insert(9, colorizebutton)
+toolbar.insert(10, separator2)
+toolbar.insert(11, executebutton)
+toolbar.insert(12, addbutton)
+toolbar.insert(13, winetricksbutton)
 
 # Set help text
 help = Gtk::Tooltips.new
@@ -220,6 +226,8 @@ help.set_tip(winecfgbutton,_("Open Wine config dialog for the selected bottle"),
 help.set_tip(winecfg,_("Open Wine config dialog for the selected bottle"), nil)
 help.set_tip(regedit,_("Edit the registers of the selected bottle"), nil)
 help.set_tip(regeditbutton,_("Edit the registers of the selected bottle"), nil)
+help.set_tip(kill,_("Kill all Windows proceses executed in the selected bottle"), nil)
+help.set_tip(killbutton,_("Kill all Windows proceses executed in the selected bottle"), nil)
 help.set_tip(colorize,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
 help.set_tip(colorizebutton,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
 help.set_tip(execute,_("Execute a Windows application in selected bottle"), nil)
@@ -336,7 +344,7 @@ def deletebottle (chosenbottle)
 										Gtk::MessageDialog::QUESTION,
 										Gtk::MessageDialog::BUTTONS_YES_NO,
 										_("Do you really want to delete this bottle?"))
-		dialog.secondary_text = chosenbottle
+		dialog.secondary_text = tildize(chosenbottle)
 		dialog.run do |response|
 			if response == Gtk::Dialog::RESPONSE_YES
 				system(@libdir + "/delete.sh \"#{chosenbottle}\"")
@@ -382,6 +390,21 @@ end
 
 def regeditbottle (chosenbottle)
 	Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" regedit") }
+end
+
+def killbottle (chosenbottle)
+	dialog = Gtk::MessageDialog.new(@window, 
+									Gtk::Dialog::MODAL,
+									Gtk::MessageDialog::QUESTION,
+									Gtk::MessageDialog::BUTTONS_YES_NO,
+									_("Kill all wine proceses?"))
+	dialog.secondary_text = _("Do you really want to kill all wine proceses executed in the selected bottle? All unsaved work will be lost.")
+	dialog.run do |response|
+		if response == Gtk::Dialog::RESPONSE_YES
+			Thread.new { system(@libdir + "/runin.sh \"#{chosenbottle}\" wineserver -kill") }
+		end
+		dialog.destroy
+	end
 end
 
 def colorizebottle (chosenbottle)
@@ -728,6 +751,9 @@ winecfg.signal_connect("activate")	{ winecfgbottle(untildize(chosenbottle)) }
 
 regeditbutton.signal_connect("clicked") { regeditbottle(untildize(chosenbottle)) }
 regedit.signal_connect("activate")	  { regeditbottle(untildize(chosenbottle)) }
+
+killbutton.signal_connect("clicked") { killbottle(untildize(chosenbottle)) }
+kill.signal_connect("activate")	  { killbottle(untildize(chosenbottle)) }
 
 colorizebutton.signal_connect("clicked") { colorizebottle(untildize(chosenbottle)) }
 colorize.signal_connect("activate")	  { colorizebottle(untildize(chosenbottle)) }

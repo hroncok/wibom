@@ -477,6 +477,9 @@ def executeinbottle (chosenbottle)
 		allfiles.name = _("All files")
 		allfiles.add_pattern("*")
 		dialog.add_filter(allfiles)
+		# Script
+		scripttoggle = Gtk::CheckButton.new(_("Save a script"))
+		scripttoggle.show
 		# Option to run in emulated desktop
 		toggle = Gtk::CheckButton.new(_("Run in an emulated virtual desktop"))
 		toggle.show
@@ -496,19 +499,27 @@ def executeinbottle (chosenbottle)
 			resolutionlabel.sensitive = toggle.active?
 			resolution.sensitive = toggle.active?
 		}
-		# HBox
-		hbox = Gtk::HBox.new(false,5)
-		hbox.pack_start_defaults(toggle)
-		hbox.pack_start_defaults(resolutionlabel)
-		hbox.pack_start_defaults(resolution)
-		dialog.extra_widget = hbox
+		# Window HBox
+		windowhbox = Gtk::HBox.new(false,5)
+		windowhbox.pack_start_defaults(scripttoggle)
+		windowhbox.pack_start_defaults(toggle)
+		windowhbox.pack_start_defaults(resolutionlabel)
+		windowhbox.pack_start_defaults(resolution)
+		dialog.extra_widget = windowhbox
 		# Tooltips
 		help = Gtk::Tooltips.new
+		help.set_tip(scripttoggle,_("Save a Bash script, that can be used without wibom"), nil)
 		help.set_tip(toggle,_("Whether the application should be run in an emulated virtual desktop"), nil)
 		help.set_tip(resolution,_("The resolution of the virtual desktop"), nil)
 		help.set_tip(resolutionlabel,_("The resolution of the virtual desktop"), nil)
 		while true
 			if dialog.run == Gtk::Dialog::RESPONSE_ACCEPT
+				# Should the script be saved?
+				if scripttoggle.active?
+					script = "--script \"/home/churchyard/script.sh\" " # Don't forgot the last space
+				else
+					script = ""
+				end
 				# Should be run in emulated desktop?
 				if toggle.active?
 					explorer = "explorer /desktop=Wibom,#{resolution.active_text} " # Don't forgot the last space
@@ -517,7 +528,7 @@ def executeinbottle (chosenbottle)
 				end
 				# Run it in differend thread, but keep the exitstatus
 				winapp = Thread.new {
-					system("cd \"#{dialog.current_folder}\"; /usr/lib/wibom/runin.sh \"#{chosenbottle}\" wine #{explorer}start /unix \"#{dialog.filename}\"")
+					system("cd #{@libdir}; absolutelibdir=\"`pwd`\"; cd \"#{dialog.current_folder}\"; ${absolutelibdir}/runin.sh #{script}\"#{chosenbottle}\" wine #{explorer}start /unix \"#{dialog.filename}\"")
 					exitstatus = $?.exitstatus
 					Thread.current["exitstatus"] = exitstatus # Putting out of the thread
 				}

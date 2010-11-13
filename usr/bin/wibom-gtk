@@ -185,7 +185,7 @@ openbutton = Gtk::ToolButton.new(makeicon("document-open",24),_("Open"))
 winecfgbutton = Gtk::ToolButton.new(makeicon("wine-winecfg",24),_("Configure"))
 regeditbutton = Gtk::ToolButton.new(makeicon("wine-notepad",24),_("Regedit"))
 killbutton = Gtk::ToolButton.new(makeicon("stop",24),_("Kill"))
-colorizebutton = Gtk::ToolButton.new(makeicon("preferences-desktop-theme",24),_("Colorize"))
+#colorizebutton = Gtk::ToolButton.new(makeicon("preferences-desktop-theme",24),_("Colorize"))
 separator2 = Gtk::SeparatorToolItem.new
 executebutton = Gtk::ToolButton.new(Gtk::Stock::EXECUTE)
 addbutton = Gtk::ToolButton.new(makeicon("wine-uninstaller",24),_("Add/Remove"))
@@ -195,20 +195,28 @@ toolbar.show_arrow = true
 toolbar.toolbar_style = Gtk::Toolbar::Style::ICONS
 
 # Insertation
-toolbar.insert(0, newbutton)
-toolbar.insert(1, copybutton)
-toolbar.insert(2, importbutton)
-toolbar.insert(3, deletebutton)
-toolbar.insert(4, separator)
-toolbar.insert(5, openbutton)
-toolbar.insert(6, winecfgbutton)
-toolbar.insert(7, regeditbutton)
-toolbar.insert(8, killbutton)
-toolbar.insert(9, colorizebutton)
-toolbar.insert(10, separator2)
-toolbar.insert(11, executebutton)
-toolbar.insert(12, addbutton)
-toolbar.insert(13, winetricksbutton)
+# Trick
+@i=0
+def ii
+	tmp = @i
+	@i += 1
+	return tmp
+end
+
+toolbar.insert(ii, newbutton)
+toolbar.insert(ii, copybutton)
+toolbar.insert(ii, importbutton)
+toolbar.insert(ii, deletebutton)
+toolbar.insert(ii, separator)
+toolbar.insert(ii, openbutton)
+toolbar.insert(ii, winecfgbutton)
+toolbar.insert(ii, regeditbutton)
+toolbar.insert(ii, killbutton)
+#toolbar.insert(ii, colorizebutton)
+toolbar.insert(ii, separator2)
+toolbar.insert(ii, executebutton)
+toolbar.insert(ii, addbutton)
+toolbar.insert(ii, winetricksbutton)
 
 # Set help text
 help = Gtk::Tooltips.new
@@ -229,7 +237,7 @@ help.set_tip(regeditbutton,_("Edit the registers of the selected bottle"), nil)
 help.set_tip(kill,_("Kill all Windows proceses executed in the selected bottle"), nil)
 help.set_tip(killbutton,_("Kill all Windows proceses executed in the selected bottle"), nil)
 help.set_tip(colorize,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
-help.set_tip(colorizebutton,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
+#help.set_tip(colorizebutton,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
 help.set_tip(execute,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(executebutton,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(add,_("Add or Remove software into or from selected bottle"), nil)
@@ -655,7 +663,7 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.9"
+	dialog.version = "0.10"
 	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
@@ -756,7 +764,7 @@ regedit.signal_connect("activate")	  { regeditbottle(untildize(chosenbottle)) }
 killbutton.signal_connect("clicked") { killbottle(untildize(chosenbottle)) }
 kill.signal_connect("activate")	  { killbottle(untildize(chosenbottle)) }
 
-colorizebutton.signal_connect("clicked") { colorizebottle(untildize(chosenbottle)) }
+#colorizebutton.signal_connect("clicked") { colorizebottle(untildize(chosenbottle)) }
 colorize.signal_connect("activate")	  { colorizebottle(untildize(chosenbottle)) }
 
 executebutton.signal_connect("clicked") { executeinbottle(untildize(chosenbottle)) }

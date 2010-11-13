@@ -23,7 +23,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERSION="0.9"
+VERSION="0.10"
 
 USAGE="Usage: wibom-bottle-chooser PROGRAM"
 
@@ -61,7 +61,7 @@ if [ -z $WINEPREFIX ]; then # Prefix not chosen
 	
 	# If the file is in the default bottle
 	if [ -z $WINEPREFIX ]; then
-		bottle=`echo "${absdir%}" | grep -o "${BOTTLES%}/default"`
+		bottle=`echo "${absdir%}" | grep -o "^${BOTTLES%}/default$"`
 		if [ "$bottle" != "" ]; then
 			export WINEPREFIX="$bottle"
 		fi
@@ -69,7 +69,7 @@ if [ -z $WINEPREFIX ]; then # Prefix not chosen
 	# If the file is inside of an other bottle
 	while read line
 	do
-		bottle=`echo "${absdir%}" | grep -o "${line%}"`
+		bottle=`echo "${absdir%}" | grep -o "^${line%}$"`
 		if [ "$bottle" != "" ]; then
 			export WINEPREFIX="$bottle"
 			break

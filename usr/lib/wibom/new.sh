@@ -54,7 +54,7 @@ echo "Bottle $1 was created"
 
 # Add an item to the list
 absolute1=`cd "$1"; pwd` # We need absolute path (little hack)
-isthere=`grep -x "$absolute1" "$BOTTLES/bottles.lst"`
+isthere=`grep -x "^$absolute1$" "$BOTTLES/bottles.lst"`
 if [ "$isthere" ]; then
 	echo "Bottle has already been in bottles.lst (means something was messed up)"
 else

@@ -16,11 +16,11 @@ fi
 absolute1=`cd "$1"; pwd` # We need absolute path (little hack)
 
 # Test if the given bottle is in the list
-isthere=`grep -x "$absolute1" "$BOTTLES/bottles.lst"`
+isthere=`grep -x "^$absolute1$" "$BOTTLES/bottles.lst"`
 if [ "$isthere" ]; then
 	# Returm into the list all the other bottles
 	cp "$BOTTLES/bottles.lst" "$BOTTLES/bottles.lst.old"
-	grep -vx "$absolute1" "$BOTTLES/bottles.lst.old" > "$BOTTLES/bottles.lst"
+	grep -vx "^$absolute1$" "$BOTTLES/bottles.lst.old" > "$BOTTLES/bottles.lst"
 	echo "Bottle $1 was deleted from the list"
 	if ! [ "$(which trash)" ]; then
 		echo "It is recommanded to install trash-cli. Directory $1 was deleted forever."

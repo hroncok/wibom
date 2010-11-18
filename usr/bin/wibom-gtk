@@ -62,20 +62,12 @@ end
 
 # Use ~ instead of the absolute path
 def tildize (path)
-	tmp = path
-	if tmp.include?(`echo $HOME`.chomp)
-		tmp[`echo $HOME`.chomp] = "~"
-	end
-	return tmp
+	path.gsub(`echo $HOME`.chomp, "~")
 end
 
 # Use the absolute path instead of ~
 def untildize (path)
-	tmp = path
-	if tmp.include?("~")
-		tmp["~"] = `echo $HOME`.chomp
-	end
-	return tmp
+	path.gsub("~", `echo $HOME`.chomp)
 end
 
 # Initialize Wibom (good for first run)

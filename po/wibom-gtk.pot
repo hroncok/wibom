@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-10-05 15:34+0200\n"
-"PO-Revision-Date: 2010-10-05 15:34+0200\n"
+"POT-Creation-Date: 2010-12-14 08:25+0100\n"
+"PO-Revision-Date: 2010-12-14 08:25+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,345 +21,377 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:66
+#: ../usr/bin/wibom-gtk:76
 msgid "Could not find Wine or wibom scripts. You should install both before running wibom-gtk."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:81
+#: ../usr/bin/wibom-gtk:91
 msgid "_File"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:82
+#: ../usr/bin/wibom-gtk:92
 msgid "_Tools"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:83
+#: ../usr/bin/wibom-gtk:93
 msgid "_Software"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:84
+#: ../usr/bin/wibom-gtk:94
 msgid "_Help"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:97
+#: ../usr/bin/wibom-gtk:107
 msgid "_New bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:100
+#: ../usr/bin/wibom-gtk:110
 msgid "_Clone bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:103
+#: ../usr/bin/wibom-gtk:113
 msgid "_Import bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:106
+#: ../usr/bin/wibom-gtk:116
 msgid "_Delete bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:118
+#: ../usr/bin/wibom-gtk:128
 msgid "_Open bottle in file manager"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:121
+#: ../usr/bin/wibom-gtk:131
 msgid "_Configure bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:124
+#: ../usr/bin/wibom-gtk:134
 msgid "Edit _registers"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:127
+#: ../usr/bin/wibom-gtk:137
+msgid "_Kill apps executed in bottle"
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:140
 msgid "Colori_ze bottle(s)..."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:138
+#: ../usr/bin/wibom-gtk:152
 msgid "_Add or Remove"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:141
+#: ../usr/bin/wibom-gtk:155
 msgid "_Winetricks"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:157
+#: ../usr/bin/wibom-gtk:171
 msgid "New"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:158
+#: ../usr/bin/wibom-gtk:172
 msgid "Clone"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:159
+#: ../usr/bin/wibom-gtk:173
 msgid "Import"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:160
+#: ../usr/bin/wibom-gtk:174
 msgid "Delete"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:162
+#: ../usr/bin/wibom-gtk:176
 msgid "Open"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:163
+#: ../usr/bin/wibom-gtk:177
 msgid "Configure"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:164
+#: ../usr/bin/wibom-gtk:178
 msgid "Regedit"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:165 ../usr/bin/wibom-gtk:378
-msgid "Colorize"
+#: ../usr/bin/wibom-gtk:179
+msgid "Kill"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:168
+#: ../usr/bin/wibom-gtk:183
 msgid "Add/Remove"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:169
+#: ../usr/bin/wibom-gtk:184
 msgid "Winetricks"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:191 ../usr/bin/wibom-gtk:192
+#: ../usr/bin/wibom-gtk:215 ../usr/bin/wibom-gtk:216
 msgid "Create a new bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:193 ../usr/bin/wibom-gtk:194
+#: ../usr/bin/wibom-gtk:217 ../usr/bin/wibom-gtk:218
 msgid "Create new bottle as a copy of selected one"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:195 ../usr/bin/wibom-gtk:196
+#: ../usr/bin/wibom-gtk:219 ../usr/bin/wibom-gtk:220
 msgid "Import an existing bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:197 ../usr/bin/wibom-gtk:198
+#: ../usr/bin/wibom-gtk:221 ../usr/bin/wibom-gtk:222
 msgid "Delete selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:199 ../usr/bin/wibom-gtk:200
+#: ../usr/bin/wibom-gtk:223 ../usr/bin/wibom-gtk:224
 msgid "Open selected bottle folder in file manager"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:201 ../usr/bin/wibom-gtk:202
+#: ../usr/bin/wibom-gtk:225 ../usr/bin/wibom-gtk:226
 msgid "Open Wine config dialog for the selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:203 ../usr/bin/wibom-gtk:204
+#: ../usr/bin/wibom-gtk:227 ../usr/bin/wibom-gtk:228
 msgid "Edit the registers of the selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:205 ../usr/bin/wibom-gtk:206
+#: ../usr/bin/wibom-gtk:229 ../usr/bin/wibom-gtk:230
+msgid "Kill all Windows proceses executed in the selected bottle"
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:231
 msgid "Set the color theme of selected or all bottles according to your GTK settings"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:207 ../usr/bin/wibom-gtk:208
+#: ../usr/bin/wibom-gtk:233 ../usr/bin/wibom-gtk:234
 msgid "Execute a Windows application in selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:209 ../usr/bin/wibom-gtk:210
+#: ../usr/bin/wibom-gtk:235 ../usr/bin/wibom-gtk:236
 msgid "Add or Remove software into or from selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:211 ../usr/bin/wibom-gtk:212
+#: ../usr/bin/wibom-gtk:237 ../usr/bin/wibom-gtk:238
 msgid "Add software into the selected bottle using Winetricks"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:226 ../usr/lib/wibom/bottlechooser.rb:88
+#: ../usr/bin/wibom-gtk:252 ../usr/lib/wibom/bottlechooser.rb:88
 msgid "Choose or create an empty directory for the new bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:237 ../usr/bin/wibom-gtk:264 ../usr/lib/wibom/bottlechooser.rb:99
+#: ../usr/bin/wibom-gtk:263 ../usr/bin/wibom-gtk:290 ../usr/lib/wibom/bottlechooser.rb:99
 #: ../usr/lib/wibom/bottlechooser.rb:125
 msgid "Chosen directory is not empty."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:253 ../usr/lib/wibom/bottlechooser.rb:114
+#: ../usr/bin/wibom-gtk:279 ../usr/lib/wibom/bottlechooser.rb:114
 msgid "Choose or create an empty directory for the copy of the selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:266 ../usr/lib/wibom/bottlechooser.rb:127
+#: ../usr/bin/wibom-gtk:292 ../usr/lib/wibom/bottlechooser.rb:127
 msgid "Selected bottle is corrupted, have you been smashing files?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:284
+#: ../usr/bin/wibom-gtk:310
 msgid "Choose the directory with the bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:295
+#: ../usr/bin/wibom-gtk:321
 msgid "Chosen directory is not a bottle."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:297
+#: ../usr/bin/wibom-gtk:323
 msgid "Chosen directory is already on the list."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:314
+#: ../usr/bin/wibom-gtk:340
 msgid "You are trying to delete the default bottle. This is not possible."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:320
+#: ../usr/bin/wibom-gtk:346
 msgid "Do you really want to delete this bottle?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:326
+#: ../usr/bin/wibom-gtk:352
 msgid "Selected bottle is not on the list, have you been smashing the list?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:371
+#: ../usr/bin/wibom-gtk:400
+msgid "Kill all wine proceses?"
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:401
+msgid "Do you really want to kill all wine proceses executed in the selected bottle? All unsaved work will be lost."
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:412
 msgid "You need to install Python befor using this feature. Use your package manager."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:377
+#: ../usr/bin/wibom-gtk:418
 msgid "Colorize the selected bottle or all of them?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:379
+#: ../usr/bin/wibom-gtk:419
+msgid "Colorize"
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:420
 msgid "This feature sets the color scheme of the selected bottle or of all of them according to your GTK settings. It downloads and runs a Python script, but it is a little tricky. It should probably work well, but it does not with some GTK engines. You also have to be online if you are using this first time."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:381
+#: ../usr/bin/wibom-gtk:422
 msgid "It is recommanded to create a new bottle to test it, then check the result (e.g. by running a config dialog in testing bottle) and if it works well, apply it to all bottles. If you haven't tried this before with this GTK theme, you shouldn't apply this feature on an working bottle, because it is hard to undo."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:383
+#: ../usr/bin/wibom-gtk:424
 msgid "If you want to colorize all of your bottles, it may take a bit of time."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:385
+#: ../usr/bin/wibom-gtk:426
 msgid "The colorizing script wine_colors_from_gtk.py © Endolith (GPL)"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:386
+#: ../usr/bin/wibom-gtk:427
 msgid "Selected bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:386
+#: ../usr/bin/wibom-gtk:427
 msgid "All bottles"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:393 ../usr/bin/wibom-gtk:409
+#: ../usr/bin/wibom-gtk:434 ../usr/bin/wibom-gtk:450
 msgid "You are going to use a tricky feature"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:394
+#: ../usr/bin/wibom-gtk:435
 msgid "This feature should be tested on a useless bottle, do you want to continue?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:399 ../usr/bin/wibom-gtk:415
+#: ../usr/bin/wibom-gtk:440 ../usr/bin/wibom-gtk:456
 msgid "You are probably offline (or the Github is) and you have never downloaded this script before."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:410
+#: ../usr/bin/wibom-gtk:451
 msgid "Have you tested this feature before on a useless bottle?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:434 ../usr/lib/wibom/bottlechooser.rb:165
+#: ../usr/bin/wibom-gtk:475 ../usr/lib/wibom/bottlechooser.rb:165
 msgid "You want to run software in default bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:435 ../usr/bin/wibom-gtk:533 ../usr/bin/wibom-gtk:560
+#: ../usr/bin/wibom-gtk:476 ../usr/bin/wibom-gtk:600 ../usr/bin/wibom-gtk:627
 #: ../usr/lib/wibom/bottlechooser.rb:166
 msgid "If you install an application to default bottle, it'll be copied to each new bottle. Do you know, what you are doing?"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:444
+#: ../usr/bin/wibom-gtk:485
 msgid "Choose a Windows application to run"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:453
+#: ../usr/bin/wibom-gtk:494
 msgid "Windows executables"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:459
+#: ../usr/bin/wibom-gtk:500
 msgid "All files"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:463
+#: ../usr/bin/wibom-gtk:504
+msgid "Save a script"
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:507
 msgid "Run in an emulated virtual desktop"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:466
+#: ../usr/bin/wibom-gtk:510
 msgid "Resolution:"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:489
-msgid "Whatever the application should be run in an emulated virtual desktop"
+#: ../usr/bin/wibom-gtk:534
+msgid "Save a Bash script, that can be used without wibom"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:490 ../usr/bin/wibom-gtk:491
+#: ../usr/bin/wibom-gtk:535
+msgid "Whether the application should be run in an emulated virtual desktop"
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:536 ../usr/bin/wibom-gtk:537
 msgid "The resolution of the virtual desktop"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:511
+#: ../usr/bin/wibom-gtk:542
+msgid "Save the script as..."
+msgstr ""
+
+#: ../usr/bin/wibom-gtk:578
 msgid " is not a Windows application."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:532 ../usr/bin/wibom-gtk:559
+#: ../usr/bin/wibom-gtk:599 ../usr/bin/wibom-gtk:626
 msgid "You want to add software to default bottle"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:549
-msgid "It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable!"
+#: ../usr/bin/wibom-gtk:616
+msgid "It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable! It also might be in your distribution's repository."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:551
+#: ../usr/bin/wibom-gtk:618
 msgid "You need to install Zenity befor using this feature. Use your package manager."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:577
+#: ../usr/bin/wibom-gtk:645
 msgid "Icon by"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:577
+#: ../usr/bin/wibom-gtk:645
 msgid "GNOME Colors by"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:577
+#: ../usr/bin/wibom-gtk:645
 msgid "The Leaflet by"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:592
+#: ../usr/bin/wibom-gtk:660
 msgid "Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:594
+#: ../usr/bin/wibom-gtk:662
 msgid "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n	* Redistributions of source code must retain the above copyright\n	  notice, this list of conditions and the following disclaimer.\n	* Redistributions in binary form must reproduce the above copyright\n	  notice, this list of conditions and the following disclaimer in the\n	  documentation and/or other materials provided with the distribution.\n	* Neither the name of the copyright holder nor the\n	  names of its contributors may be used to endorse or promote products\n	  derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:622
+#: ../usr/bin/wibom-gtk:690
 msgid "translator-credits"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:639
+#: ../usr/bin/wibom-gtk:707
 msgid "Bottles"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:700
+#: ../usr/bin/wibom-gtk:771
 msgid "The documentation is not ready."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:742
+#: ../usr/bin/wibom-gtk:813
 msgid "Wine bottle management"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:751
+#: ../usr/bin/wibom-gtk:822
 msgid "What should you know before using wibom:"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:752
+#: ../usr/bin/wibom-gtk:823
 msgid "First run"
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:753
+#: ../usr/bin/wibom-gtk:824
 msgid "What is a Wine bottle?\n	A Wine bottle has nothing to do with the famous\n	alcoholic drink. It is a separated and isolated\n	instance of fake Windows file structure and\n	registers, where Wine can run Windows apps."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:759
+#: ../usr/bin/wibom-gtk:830
 msgid "What can I do with more bottles?\n	You are able to do whatever you want with one\n	bottle without any risk to destroy other bottles.\n	It means you can have bottle for native DirectX,\n	bottle without sound, bottle with IE 6 and another\n	bottle with IE 7."
 msgstr ""
 
-#: ../usr/bin/wibom-gtk:766
+#: ../usr/bin/wibom-gtk:837
 msgid "What should I do with the default bottle?\n	The default bottle will be copied each time you\n	create a new bottle. You shouldn't install apps\n	inside, unless you want them in each bottle.\n	You should configure it well."
 msgstr ""
 

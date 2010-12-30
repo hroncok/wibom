@@ -60,25 +60,28 @@ if [ -z $WINEPREFIX ]; then # Prefix not chosen
 	absdir=`cd "$reldir"; pwd` # We need absolute path (little hack)
 	
 	# If the file is in the default bottle
-	if [ -z $WINEPREFIX ]; then
-		bottle=`echo "${absdir%}" | grep -o "^${BOTTLES%}/default$"`
-		if [ "$bottle" != "" ]; then
-			export WINEPREFIX="$bottle"
-		fi
+	bottle=`echo "${absdir%}" | grep -o "^${BOTTLES%}/default"`
+	if [ "$bottle" != "" ]; then
+		export WINEPREFIX="$bottle"
 	fi
+	
 	# If the file is inside of an other bottle
-	while read line
-	do
-		bottle=`echo "${absdir%}" | grep -o "^${line%}$"`
-		if [ "$bottle" != "" ]; then
-			export WINEPREFIX="$bottle"
-			break
-		fi
-	done < "$BOTTLES/bottles.lst"
+	if [ -z $WINEPREFIX ]; then
+		while read line
+		do
+			bottle=`echo "${absdir%}" | grep -o "^${line%}"`
+			if [ "$bottle" != "" ]; then
+				export WINEPREFIX="$bottle"
+				break
+			fi
+		done < "$BOTTLES/bottles.lst"
+	fi
+	
 	# If it is not inside a bottle
 	if [ -z $WINEPREFIX ]; then
-		bottle=`${LIBDIR%}/bottlechooser.rb | tail -1`
+		bottle=`${LIBDIR%}/bottlechooser.rb`
 		exitcode=$?
+		bottle=`echo $bottle | tail -1`
 		if [ "$exitcode" == "66" ]; then
 			exit 66
 		elif [ "$exitcode" == "44" ]; then
@@ -90,6 +93,5 @@ if [ -z $WINEPREFIX ]; then # Prefix not chosen
 fi
 
 # Now $WINEPREFIX is empty or contains the path to the bottle we need
-#echo $WINEPREFIX
 wine "$@"
 exit $?

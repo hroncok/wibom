@@ -88,6 +88,7 @@ Gtk::AccelMap.add_entry("<Wibom>/Tools/Configure bottle", Gdk::Keyval::GDK_Retur
 Gtk::AccelMap.add_entry("<Wibom>/Tools/Edit registers", Gdk::Keyval::GDK_R, Gdk::Window::CONTROL_MASK)
 Gtk::AccelMap.add_entry("<Wibom>/Tools/Kill apps executed in bottle", Gdk::Keyval::GDK_K, Gdk::Window::CONTROL_MASK)
 Gtk::AccelMap.add_entry("<Wibom>/Software/Execute", Gdk::Keyval::GDK_R, Gdk::Window::MOD1_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Software/Execute the default application", Gdk::Keyval::GDK_Return, nil)
 Gtk::AccelMap.add_entry("<Wibom>/Software/Add or Remove", Gdk::Keyval::GDK_U, Gdk::Window::CONTROL_MASK)
 Gtk::AccelMap.add_entry("<Wibom>/Software/Winetricks", Gdk::Keyval::GDK_W, Gdk::Window::CONTROL_MASK)
 
@@ -146,7 +147,7 @@ filemenu.append(delete)
 filemenu.append(quit)
 
 # Create the Tools menu content.
-open   = Gtk::ImageMenuItem.new(_("_Open bottle in file manager"), true)
+open = Gtk::ImageMenuItem.new(_("_Open bottle in file manager"), true)
 open.image = makeicon("document-open",16)
 open.set_accel_path("<Wibom>/Tools/Open bottle in file manager")
 
@@ -175,6 +176,10 @@ toolsmenu.append(colorize)
 execute = Gtk::ImageMenuItem.new(Gtk::Stock::EXECUTE, group)
 execute.set_accel_path("<Wibom>/Software/Execute")
 
+executedefault = Gtk::ImageMenuItem.new(_("Execute the _default application"), true)
+executedefault.image = makeicon("system-run",16)
+executedefault.set_accel_path("<Wibom>/Software/Execute the default application")
+
 add = Gtk::ImageMenuItem.new(_("_Add or Remove"), true)
 add.image = makeicon("wine-uninstaller",16)
 add.set_accel_path("<Wibom>/Software/Add or Remove")
@@ -184,6 +189,7 @@ winetricks.image = makeicon("winetricks",16)
 winetricks.set_accel_path("<Wibom>/Software/Winetricks")
 
 softwaremenu.append(execute)
+softwaremenu.append(executedefault)
 softwaremenu.append(add)
 softwaremenu.append(winetricks)
 
@@ -260,6 +266,7 @@ help.set_tip(colorize,_("Set the color theme of selected or all bottles accordin
 #help.set_tip(colorizebutton,_("Set the color theme of selected or all bottles according to your GTK settings"), nil)
 help.set_tip(execute,_("Execute a Windows application in selected bottle"), nil)
 help.set_tip(executebutton,_("Execute a Windows application in selected bottle"), nil)
+help.set_tip(executedefault,_("Execute the previously set default Windows application in selected bottle"), nil)
 help.set_tip(add,_("Add or Remove software into or from selected bottle"), nil)
 help.set_tip(addbutton,_("Add or Remove software into or from selected bottle"), nil)
 help.set_tip(winetricks,_("Add software into the selected bottle using Winetricks"), nil)
@@ -573,7 +580,13 @@ def executeinbottle (chosenbottle)
 														nil,
 														[Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_CANCEL],
 														[Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
-					scriptdialog.current_folder = `echo $HOME`.chomp
+					scriptdialog.current_folder = chosenbottle.chomp
+					if chosenbottle != `echo $HOME/.local/share/bottles/default`.chomp
+						defaulttip = Gtk::Label.new(_("Tip: Save the script in bottle as \"default\" and run the app just by doubleclicking on the bottle"))
+						help.set_tip(defaulttip,_("If you save the script in the bottle directory named as \"default\", you will be able to run this application by doubleclicking on this bottle in wibom."), nil)
+						defaulttip.show
+						scriptdialog.extra_widget = defaulttip
+					end
 					while true
 						if scriptdialog.run == Gtk::Dialog::RESPONSE_ACCEPT
 							script = "--script \"#{scriptdialog.filename}\" " # Don't forgot the last space
@@ -612,6 +625,38 @@ def executeinbottle (chosenbottle)
 				dialog.destroy
 				break
 			end
+		end
+	end
+end
+
+# Execute default windows application
+def executedefault (chosenbottle)
+	if chosenbottle == `echo $HOME/.local/share/bottles/default`.chomp
+		dialog = Gtk::MessageDialog.new(@window, 
+										Gtk::Dialog::MODAL,
+										Gtk::MessageDialog::WARNING,
+										Gtk::MessageDialog::BUTTONS_OK,
+										_("You want to run the default application from the default bottle"))
+		dialog.secondary_text = _("It is not recommanded to set a default application for the default bottle. Therefore I won't tell you how to do such stupidity :P")
+		dialog.run
+		dialog.destroy
+	else
+		winapp = Thread.new {
+			system(chosenbottle+"/default")
+			exitstatus = $?.exitstatus
+			Thread.current["exitstatus"] = exitstatus # Putting out of the thread
+		}
+		system("sleep 1") # Waiting for Bash to realize, no file is there
+		exitstatus = winapp["exitstatus"]
+		if (exitstatus == 127)
+			dialog = Gtk::MessageDialog.new(@window, 
+											Gtk::Dialog::MODAL,
+											Gtk::MessageDialog::INFO,
+											Gtk::MessageDialog::BUTTONS_OK,
+											_("The default app for this bottle has not been set yet"))
+			dialog.secondary_text = _("If you want to set it, use the Execute menuitem, in the file chooser dialog check the box \"Save a script\" and save the script as \"default\" in the bottle directory.")
+			dialog.run
+			dialog.destroy
 		end
 	end
 end
@@ -790,6 +835,8 @@ colorize.signal_connect("activate")	  { colorizebottle(untildize(chosenbottle)) 
 executebutton.signal_connect("clicked") { executeinbottle(untildize(chosenbottle)) }
 execute.signal_connect("activate")	  { executeinbottle(untildize(chosenbottle)) }
 
+executedefault.signal_connect("activate")	  { executedefault(untildize(chosenbottle)) }
+
 addbutton.signal_connect("clicked") { addtobottle(untildize(chosenbottle)) }
 add.signal_connect("activate")	  { addtobottle(untildize(chosenbottle)) }
 
@@ -803,6 +850,13 @@ bottleslist.signal_connect("cursor-changed") {
 	bottle = pointer.selected
 	chosenbottle = @bottles.get_value(bottle, 0)
 }
+
+# Default app on doubleclick
+bottleslist.signal_connect("row-activated") do |view, path, column|
+	if bottle = view.model.get_iter(path)
+		executedefault(untildize(bottle[0]))
+	end
+end
 
 about.signal_connect("activate")	{ aboutdialog }
 

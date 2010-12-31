@@ -77,16 +77,32 @@ if $?.exitstatus == 127
 	exit
 end
 
-# Blah blah, don't exactly know, why this should be here
+# Keyboard shortcuts
 group = Gtk::AccelGroup.new
+Gtk::AccelMap.add_entry("<Wibom>/File/New bottle", Gdk::Keyval::GDK_N, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/File/Clone bottle", Gdk::Keyval::GDK_C, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/File/Import bottle", Gdk::Keyval::GDK_I, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/File/Delete bottle", Gdk::Keyval::GDK_Delete, nil)
+Gtk::AccelMap.add_entry("<Wibom>/Tools/Open bottle in file manager", Gdk::Keyval::GDK_O, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Tools/Configure bottle", Gdk::Keyval::GDK_Return, Gdk::Window::MOD1_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Tools/Edit registers", Gdk::Keyval::GDK_R, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Tools/Kill apps executed in bottle", Gdk::Keyval::GDK_K, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Software/Execute", Gdk::Keyval::GDK_R, Gdk::Window::MOD1_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Software/Add or Remove", Gdk::Keyval::GDK_U, Gdk::Window::CONTROL_MASK)
+Gtk::AccelMap.add_entry("<Wibom>/Software/Winetricks", Gdk::Keyval::GDK_W, Gdk::Window::CONTROL_MASK)
+
 
 # Menu bar
 menubar = Gtk::MenuBar.new
 
 filemenu = Gtk::Menu.new
+filemenu.set_accel_group(group)
 toolsmenu = Gtk::Menu.new
+toolsmenu.set_accel_group(group)
 softwaremenu = Gtk::Menu.new
+softwaremenu.set_accel_group(group)
 helpmenu = Gtk::Menu.new
+helpmenu.set_accel_group(group)
 
 file = Gtk::MenuItem.new(_("_File"))
 tools = Gtk::MenuItem.new(_("_Tools"))
@@ -106,15 +122,20 @@ menubar.append(help)
 # Create the File menu content.
 new = Gtk::ImageMenuItem.new(_("_New bottle"), true)
 new.image = makeicon("folder-new",16)
+new.set_accel_path("<Wibom>/File/New bottle")
 
 copy = Gtk::ImageMenuItem.new(_("_Clone bottle"), true)
 copy.image = makeicon("editcopy",16)
+copy.set_accel_path("<Wibom>/File/Clone bottle")
 
 import = Gtk::ImageMenuItem.new(_("_Import bottle"), true)
 import.image = makeicon("document-import",16)
+import.set_accel_path("<Wibom>/File/Import bottle")
+
 
 delete = Gtk::ImageMenuItem.new(_("_Delete bottle"), true)
 delete.image = makeicon("editdelete",16)
+delete.set_accel_path("<Wibom>/File/Delete bottle")
 
 quit = Gtk::ImageMenuItem.new(Gtk::Stock::QUIT, group)
 
@@ -127,15 +148,19 @@ filemenu.append(quit)
 # Create the Tools menu content.
 open   = Gtk::ImageMenuItem.new(_("_Open bottle in file manager"), true)
 open.image = makeicon("document-open",16)
+open.set_accel_path("<Wibom>/Tools/Open bottle in file manager")
 
 winecfg = Gtk::ImageMenuItem.new(_("_Configure bottle"), true)
 winecfg.image = makeicon("wine-winecfg",16)
+winecfg.set_accel_path("<Wibom>/Tools/Configure bottle")
 
 regedit = Gtk::ImageMenuItem.new(_("Edit _registers"), true)
 regedit.image = makeicon("wine-notepad",16)
+regedit.set_accel_path("<Wibom>/Tools/Edit registers")
 
 kill = Gtk::ImageMenuItem.new(_("_Kill apps executed in bottle"), true)
 kill.image = makeicon("stop",16)
+kill.set_accel_path("<Wibom>/Tools/Kill apps executed in bottle")
 
 colorize = Gtk::ImageMenuItem.new(_("Colori_ze bottle(s)..."), true)
 colorize.image = makeicon("preferences-desktop-theme",16)
@@ -148,12 +173,15 @@ toolsmenu.append(colorize)
 
 # Create the Software menu content.
 execute = Gtk::ImageMenuItem.new(Gtk::Stock::EXECUTE, group)
+execute.set_accel_path("<Wibom>/Software/Execute")
 
 add = Gtk::ImageMenuItem.new(_("_Add or Remove"), true)
 add.image = makeicon("wine-uninstaller",16)
+add.set_accel_path("<Wibom>/Software/Add or Remove")
 
 winetricks = Gtk::ImageMenuItem.new(_("_Winetricks"), true)
 winetricks.image = makeicon("winetricks",16)
+winetricks.set_accel_path("<Wibom>/Software/Winetricks")
 
 softwaremenu.append(execute)
 softwaremenu.append(add)

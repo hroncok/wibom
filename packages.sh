@@ -123,6 +123,7 @@ echo "/usr/bin/wibom-gtk" >> wibom.spec
 echo "/usr/share/icons/hicolor" >> wibom.spec
 echo "/usr/share/applications/wibom-gtk.desktop" >> wibom.spec
 echo "/usr/share/locale/cs/LC_MESSAGES/wibom-gtk.mo" >> wibom.spec
+echo "/usr/share/locale/de/LC_MESSAGES/wibom-gtk.mo" >> wibom.spec
 echo "" >> wibom.spec
 echo "%files bottle-chooser" >> wibom.spec
 echo "%defattr(-,root,root)" >> wibom.spec

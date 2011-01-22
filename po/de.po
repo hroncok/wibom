@@ -62,21 +62,19 @@ msgstr "Flasche im Dateimanager _Öffnen"
 
 #: ../usr/bin/wibom-gtk:131
 msgid "_Configure bottle"
-msgstr "Flasche _Konfigurieren"
+msgstr "_Einstellungen einer Flasche"
 
 #: ../usr/bin/wibom-gtk:134
 msgid "Edit _registers"
 msgstr "_Registry bearbeiten"
 
 #: ../usr/bin/wibom-gtk:137
-#, fuzzy
 msgid "_Kill apps executed in bottle"
-msgstr "Ausgewählte Flasche löschen"
+msgstr "In einer Flasche ausgeführtes Programm ab_würgen"
 
 #: ../usr/bin/wibom-gtk:140
-#, fuzzy
 msgid "Colori_ze bottle(s)..."
-msgstr "Flasche _Klonen"
+msgstr "Flasche Ein_färben"
 
 #: ../usr/bin/wibom-gtk:152
 msgid "_Add or Remove"
@@ -116,7 +114,7 @@ msgstr "Regedit"
 
 #: ../usr/bin/wibom-gtk:179
 msgid "Kill"
-msgstr ""
+msgstr "Abwürgen"
 
 #: ../usr/bin/wibom-gtk:183
 msgid "Add/Remove"
@@ -163,13 +161,12 @@ msgstr "Registry der ausgewählten Flasche bearbeiten"
 
 #: ../usr/bin/wibom-gtk:229
 #: ../usr/bin/wibom-gtk:230
-#, fuzzy
 msgid "Kill all Windows proceses executed in the selected bottle"
-msgstr "Ein Windows-Programm in der ausgewählten Flasche ausführen"
+msgstr "Alle Windows-Programme in der ausgewählten Flasche ausführen"
 
 #: ../usr/bin/wibom-gtk:231
 msgid "Set the color theme of selected or all bottles according to your GTK settings"
-msgstr ""
+msgstr "Lege das Farbschema der ausgewählten oder aller Flaschen anhand der GTK Einstellungen fest"
 
 #: ../usr/bin/wibom-gtk:233
 #: ../usr/bin/wibom-gtk:234
@@ -188,9 +185,8 @@ msgstr "Software in der ausgewählten Flasche mit Winetricks hinzufügen"
 
 #: ../usr/bin/wibom-gtk:252
 #: ../usr/lib/wibom/bottlechooser.rb:88
-#, fuzzy
 msgid "Choose or create an empty directory for the new bottle"
-msgstr "Verwende ein leeres Verzeichnis für die neue Flasche"
+msgstr "Verwende oder erzeuge ein leeres Verzeichnis für die neue Flasche"
 
 #: ../usr/bin/wibom-gtk:263
 #: ../usr/bin/wibom-gtk:290
@@ -201,9 +197,8 @@ msgstr "Das gewählte Verzeichnis ist nicht leer"
 
 #: ../usr/bin/wibom-gtk:279
 #: ../usr/lib/wibom/bottlechooser.rb:114
-#, fuzzy
 msgid "Choose or create an empty directory for the copy of the selected bottle"
-msgstr "Verwende ein leeres Verzeichnis für die Kopie der ausgewählten Flasche"
+msgstr "Verwende oder erzeuge ein leeres Verzeichnis für die Kopie der ausgewählten Flasche"
 
 #: ../usr/bin/wibom-gtk:292
 #: ../usr/lib/wibom/bottlechooser.rb:127
@@ -236,69 +231,65 @@ msgstr "Die ausgewählte Flasche ist nicht in der Liste; ist die Liste beschädi
 
 #: ../usr/bin/wibom-gtk:400
 msgid "Kill all wine proceses?"
-msgstr ""
+msgstr "Alle Wine-Prozesse abwürgen"
 
 #: ../usr/bin/wibom-gtk:401
 msgid "Do you really want to kill all wine proceses executed in the selected bottle? All unsaved work will be lost."
-msgstr ""
+msgstr "Wollen Sie wirklich alle Wine-Prozesse in der ausgewählten Flasche abwürgen? Alle ungespeicherten Daten gehen verloren."
 
 #: ../usr/bin/wibom-gtk:412
-#, fuzzy
 msgid "You need to install Python befor using this feature. Use your package manager."
-msgstr "Um diese Funktion zu nutzen, muss Zenity installliert sein. Verwenden Sie Ihre Paketverwaltung."
+msgstr "Um diese Funktion zu nutzen, muss Python installliert sein. Verwenden Sie Ihre Paketverwaltung."
 
 #: ../usr/bin/wibom-gtk:418
-#, fuzzy
 msgid "Colorize the selected bottle or all of them?"
-msgstr "Ausgewählte Flasche löschen"
+msgstr "Nur die ausgewählte Flasche einfärben oder alle Flaschen?"
 
 #: ../usr/bin/wibom-gtk:419
 msgid "Colorize"
-msgstr ""
+msgstr "Einfärben"
 
 #: ../usr/bin/wibom-gtk:420
 msgid "This feature sets the color scheme of the selected bottle or of all of them according to your GTK settings. It downloads and runs a Python script, but it is a little tricky. It should probably work well, but it does not with some GTK engines. You also have to be online if you are using this first time."
-msgstr ""
+msgstr "Hierdurch wird das Farbschema der ausgewählten oder aller Flaschen Ihrem GTK-Einstellungen angepasst. Es wird ein Python-Skript herunter geladen und ausgeführt; aber es ist ein bisschen unausgegoren. Es sollte ordentlich funktionieren, aber es funktioniert nicht mit einigen GTK-Engines. Außerdem müssen Sie online sein, wenn Sie dieses Skript das erste Mal starten."
 
 #: ../usr/bin/wibom-gtk:422
 msgid "It is recommanded to create a new bottle to test it, then check the result (e.g. by running a config dialog in testing bottle) and if it works well, apply it to all bottles. If you haven't tried this before with this GTK theme, you shouldn't apply this feature on an working bottle, because it is hard to undo."
-msgstr ""
+msgstr "Hierfür wird empfohlen, eine neue Flasche für einen Test zu erstellen; prüfen Sie dann das Ergebnis (z. B. durch den Aufruf eines Einstellungsfensters). Wenn das problemlos geht, wenden Sie diesen Fall auf alle Flaschen an. Wenn Sie dies noch nicht mit diesem GTK-Thema probiert haben, sollten Sie es nicht in einer bestehenden Flasche anwenden, da es sich schwer rückgängig machen lässt."
 
 #: ../usr/bin/wibom-gtk:424
 msgid "If you want to colorize all of your bottles, it may take a bit of time."
-msgstr ""
+msgstr "Wenn Sie alle Flaschen einfärben wollen, benötigt es ein bisschen Zeit."
 
 #: ../usr/bin/wibom-gtk:426
 msgid "The colorizing script wine_colors_from_gtk.py © Endolith (GPL)"
-msgstr ""
+msgstr "Das Einfärbe-Skript script wine_colors_from_gtk.py © Endolith (GPL)"
 
 #: ../usr/bin/wibom-gtk:427
-#, fuzzy
 msgid "Selected bottle"
-msgstr "Flasche _Löschen"
+msgstr "Ausgewählte Flasche"
 
 #: ../usr/bin/wibom-gtk:427
-#, fuzzy
 msgid "All bottles"
-msgstr "Flasche _Klonen"
+msgstr "Alle Flaschen"
 
 #: ../usr/bin/wibom-gtk:434
 #: ../usr/bin/wibom-gtk:450
 msgid "You are going to use a tricky feature"
-msgstr ""
+msgstr "Dies ist ein unausgegorenes Feature"
 
 #: ../usr/bin/wibom-gtk:435
 msgid "This feature should be tested on a useless bottle, do you want to continue?"
-msgstr ""
+msgstr "Dieses Feature sollte an einer Flasche getestet werden, die Sie nicht benötigen. Wollen Sie weiter machen?"
 
 #: ../usr/bin/wibom-gtk:440
 #: ../usr/bin/wibom-gtk:456
 msgid "You are probably offline (or the Github is) and you have never downloaded this script before."
-msgstr ""
+msgstr "Sie sind vermutlich offline (oder der Github) und haben bisher dieses Skribt noch nicht herunter geladen."
 
 #: ../usr/bin/wibom-gtk:451
 msgid "Have you tested this feature before on a useless bottle?"
-msgstr ""
+msgstr "Haben Sie dieses Feature an einer nicht benötigten Flasche zuvor getestet?"
 
 #: ../usr/bin/wibom-gtk:475
 #: ../usr/lib/wibom/bottlechooser.rb:165
@@ -318,15 +309,15 @@ msgstr "Wählen Sie eine Windows-Anwendung"
 
 #: ../usr/bin/wibom-gtk:494
 msgid "Windows executables"
-msgstr ""
+msgstr "Windows-Programm"
 
 #: ../usr/bin/wibom-gtk:500
 msgid "All files"
-msgstr ""
+msgstr "Alle Dateien"
 
 #: ../usr/bin/wibom-gtk:504
 msgid "Save a script"
-msgstr ""
+msgstr "Als Skript speichern"
 
 #: ../usr/bin/wibom-gtk:507
 msgid "Run in an emulated virtual desktop"
@@ -338,12 +329,11 @@ msgstr "Auflösung:"
 
 #: ../usr/bin/wibom-gtk:534
 msgid "Save a Bash script, that can be used without wibom"
-msgstr ""
+msgstr "Ein Bash-Skript speichern, das auch one Wibom verwendet werden kann"
 
 #: ../usr/bin/wibom-gtk:535
-#, fuzzy
 msgid "Whether the application should be run in an emulated virtual desktop"
-msgstr "Einen emulierten virtuellen Desktop verwenden"
+msgstr "Auswahl, ob das Programm in einen emulierten virtuellen Desktop ablaufen soll"
 
 #: ../usr/bin/wibom-gtk:536
 #: ../usr/bin/wibom-gtk:537
@@ -352,7 +342,7 @@ msgstr "Die Auflösung des virtuellen Desktops"
 
 #: ../usr/bin/wibom-gtk:542
 msgid "Save the script as..."
-msgstr ""
+msgstr "Skript speichern als..."
 
 #: ../usr/bin/wibom-gtk:578
 msgid " is not a Windows application."
@@ -364,9 +354,8 @@ msgid "You want to add software to default bottle"
 msgstr "Sie wollen Software zur Standardflasche hinzufügen"
 
 #: ../usr/bin/wibom-gtk:616
-#, fuzzy
 msgid "It seems Winetricks is not installed. Download it from http://www.kegel.com/wine/winetricks and move it to $PATH (e.g. to /usr/local/share). Don't forget to make it executable! It also might be in your distribution's repository."
-msgstr "Es scheint, dass Winetricks nicht installiert ist. Laden Sie es von http://www.kegel.com/wine/winetricks verschieben es nach $PATH (z. B. nach /usr/local/share). Denken Sie daran, es ausführbar zu machen."
+msgstr "Es scheint, dass Winetricks nicht installiert ist. Laden Sie es von http://www.kegel.com/wine/winetricks und verschieben Sie es nach $PATH (z. B. nach /usr/local/share). Denken Sie daran, es ausführbar zu machen. Es könnte aber auch in der Paketverwaltung Ihrer Distribution zu finden sein."
 
 #: ../usr/bin/wibom-gtk:618
 msgid "You need to install Zenity befor using this feature. Use your package manager."
@@ -374,15 +363,15 @@ msgstr "Um diese Funktion zu nutzen, muss Zenity installliert sein. Verwenden Si
 
 #: ../usr/bin/wibom-gtk:645
 msgid "Icon by"
-msgstr ""
+msgstr "Symbol von"
 
 #: ../usr/bin/wibom-gtk:645
 msgid "GNOME Colors by"
-msgstr ""
+msgstr "GNOME Farben von"
 
 #: ../usr/bin/wibom-gtk:645
 msgid "The Leaflet by"
-msgstr ""
+msgstr "The Leaflet von"
 
 #: ../usr/bin/wibom-gtk:660
 msgid ""
@@ -455,7 +444,7 @@ msgstr "Flaschen"
 
 #: ../usr/bin/wibom-gtk:771
 msgid "The documentation is not ready."
-msgstr ""
+msgstr "Die Dokumentation ist nicht fertig."
 
 #: ../usr/bin/wibom-gtk:813
 msgid "Wine bottle management"
@@ -516,57 +505,50 @@ msgstr ""
 "\tdie Standardflasche sorgfältig konfigurieren."
 
 #: ../usr/lib/wibom/bottlechooser.rb:16
-#, fuzzy
 msgid "Choose a Wine bottle, where the selected Windows application should be run:"
-msgstr "Wählen Sie eine Windows-Anwendung"
+msgstr "Wählen Sie eine Wine Flasche, in der das ausgewählte Windows-Programm laufen soll:"
 
 #: ../usr/lib/wibom/bottlechooser.rb:29
-#, fuzzy
 msgid "Create a _new bottle"
-msgstr "Neue Flasche anlegen"
+msgstr "_Neue Flasche anlegen"
 
 #: ../usr/lib/wibom/bottlechooser.rb:31
-#, fuzzy
 msgid "Run the selected Windows application in a  new _bottle"
-msgstr "Ein Windows-Programm in der ausgewählten Flasche ausführen"
+msgstr "Das ausgewählte Windows-Programm in einer neuen Flasche ausführen"
 
 #: ../usr/lib/wibom/bottlechooser.rb:32
 msgid "_Clone an existing (above selected) bottle to the new one"
-msgstr ""
+msgstr "_Klone eine vorhandene (oben ausgewählte) Flasche als neue"
 
 #: ../usr/lib/wibom/bottlechooser.rb:184
-#, fuzzy
 msgid "Choose a Wine bottle, where the selected Windows application should be run"
-msgstr "Wählen Sie eine Windows-Anwendung"
+msgstr "Wählen Sie eine Wine Flasche, in der das ausgewählte Windows-Programm laufen soll"
 
 #: ../usr/lib/wibom/bottlechooser.rb:185
 msgid "Show or hide extra options for running the selected Windows application in a new bottle"
-msgstr ""
+msgstr "Zeige oder Verstecke zusätzliche Optionen, um das ausgewählte Windows-Programm in einer neuen Flasche laufen zu lassen"
 
 #: ../usr/lib/wibom/bottlechooser.rb:186
-#, fuzzy
 msgid "Whether to run the selected Windows application in a new bottle"
-msgstr "Ein Windows-Programm in der ausgewählten Flasche ausführen"
+msgstr "Auswahl, ob das ausgewählte Windows-Programm in einer neuen Flasche laufen soll"
 
 #: ../usr/lib/wibom/bottlechooser.rb:187
 msgid "Whether to copy an existing bottle into the new one, the selected bottle from above combo box will be used as a \"parent\""
-msgstr ""
+msgstr "Auswahl, ob die bestehende Flasche in die neue kopiert wird; die im Auswahlfeld oben ausgewählte Flasche wird als \"Mutter\" verwendet"
 
 #: ../usr/lib/wibom/bottlechooser.rb:188
-#, fuzzy
 msgid "Do not run the selected Windows application at all"
-msgstr "Wählen Sie eine Windows-Anwendung"
+msgstr "Das ausgewählte Windows-Prgramm gar nicht laufen lassen"
 
 #: ../usr/lib/wibom/bottlechooser.rb:189
 msgid "Do not use wibom, run the Windows  application in the standard ~/.wine folder"
-msgstr ""
+msgstr "Wibom nicht verwenden; das Windows-Programm wird im Standardordner ~/.wine ausgeführt"
 
 #: ../usr/lib/wibom/bottlechooser.rb:190
-#, fuzzy
 msgid "Run the Windows application in the selected or in a new bottle"
-msgstr "Ein Windows-Programm in der ausgewählten Flasche ausführen"
+msgstr "Das Windows-Programm in der ausgewählten oder in einer neuen Flasche ausführen"
 
 #: ../usr/lib/wibom/bottlechooser.rb:222
 msgid "Wibom bottle chooser"
-msgstr ""
+msgstr "Wibom Flaschen-Auswahl"
 

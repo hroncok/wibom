@@ -237,6 +237,38 @@ cd ../.. # working dir
 dpkg -b wibom-gtk-package/ wibom-gtk_${1}-${2}_all.deb
 mv wibom-gtk_${1}-${2}_all.deb debian/debs
 
+cd wibom-metapackages/DEBIAN
+
+echo "Package: wibom-debian" > control
+echo "Version: ${1}-${2}" >> control
+echo "Section: otherosfs" >> control
+echo "Priority: optional" >> control
+echo "Architecture: all" >> control
+echo "Depends: wibom (=${1}-${2}), wibom-gtk (=${1}-${2}), wibom-bottle-chooser (=${1}-${2}), wibom-additional-icons (=${1}-${2})" >> control
+echo "Installed-Size: 0" >> control
+echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
+echo "Description: Debian metapackage for wibom." >> control
+
+cd ../.. # working dir
+dpkg -b wibom-metapackages/ wibom-debian_${1}-${2}_all.deb
+mv wibom-debian_${1}-${2}_all.deb debian/debs
+
+cd wibom-metapackages/DEBIAN
+
+echo "Package: wibom-ubuntu" > control
+echo "Version: ${1}-${2}" >> control
+echo "Section: otherosfs" >> control
+echo "Priority: optional" >> control
+echo "Architecture: all" >> control
+echo "Depends: wibom (=${1}-${2}), wibom-gtk (=${1}-${2}), wibom-bottle-chooser (=${1}-${2})" >> control
+echo "Installed-Size: 0" >> control
+echo "Maintainer: Miroslav Hrončok [miro@hroncok.cz]" >> control
+echo "Description: Ubuntu metapackage for wibom." >> control
+
+cd ../.. # working dir
+dpkg -b wibom-metapackages/ wibom-ubuntu_${1}-${2}_all.deb
+mv wibom-ubuntu_${1}-${2}_all.deb debian/debs
+
 cd debian
 dpkg-scanpackages debs /dev/null | gzip > ./Packages.gz
 cd .. # working dir

@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-# Copyright © 2009-2010, Miro Hrončok [hroncok.cz]. All rights reserved.
+# Copyright © 2009-2011, Miro Hrončok [hroncok.cz]. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -79,19 +79,34 @@ end
 
 # Keyboard shortcuts
 group = Gtk::AccelGroup.new
-Gtk::AccelMap.add_entry("<Wibom>/File/New bottle", Gdk::Keyval::GDK_N, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/File/Clone bottle", Gdk::Keyval::GDK_C, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/File/Import bottle", Gdk::Keyval::GDK_I, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/File/Delete bottle", Gdk::Keyval::GDK_Delete, nil)
-Gtk::AccelMap.add_entry("<Wibom>/Tools/Open bottle in file manager", Gdk::Keyval::GDK_O, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/Tools/Configure bottle", Gdk::Keyval::GDK_Return, Gdk::Window::MOD1_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/Tools/Edit registers", Gdk::Keyval::GDK_R, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/Tools/Kill apps executed in bottle", Gdk::Keyval::GDK_K, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/Software/Execute", Gdk::Keyval::GDK_R, Gdk::Window::MOD1_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/Software/Execute the default application", Gdk::Keyval::GDK_Return, nil)
-Gtk::AccelMap.add_entry("<Wibom>/Software/Add or Remove", Gdk::Keyval::GDK_U, Gdk::Window::CONTROL_MASK)
-Gtk::AccelMap.add_entry("<Wibom>/Software/Winetricks", Gdk::Keyval::GDK_W, Gdk::Window::CONTROL_MASK)
 
+begin
+	Gtk::AccelMap.add_entry("<Wibom>/File/New bottle", Gdk::Keyval::GDK_N, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/File/Clone bottle", Gdk::Keyval::GDK_C, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/File/Import bottle", Gdk::Keyval::GDK_I, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/File/Delete bottle", Gdk::Keyval::GDK_Delete, nil)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Open bottle in file manager", Gdk::Keyval::GDK_O, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Configure bottle", Gdk::Keyval::GDK_Return, Gdk::Window::MOD1_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Edit registers", Gdk::Keyval::GDK_R, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Kill apps executed in bottle", Gdk::Keyval::GDK_K, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Execute", Gdk::Keyval::GDK_R, Gdk::Window::MOD1_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Execute the default application", Gdk::Keyval::GDK_Return, nil)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Add or Remove", Gdk::Keyval::GDK_U, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Winetricks", Gdk::Keyval::GDK_W, Gdk::Window::CONTROL_MASK)
+rescue NameError
+	Gtk::AccelMap.add_entry("<Wibom>/File/New bottle", Gdk::Keyval::GDK_KEY_N, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/File/Clone bottle", Gdk::Keyval::GDK_KEY_C, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/File/Import bottle", Gdk::Keyval::GDK_KEY_I, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/File/Delete bottle", Gdk::Keyval::GDK_KEY_Delete, nil)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Open bottle in file manager", Gdk::Keyval::GDK_KEY_O, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Configure bottle", Gdk::Keyval::GDK_KEY_Return, Gdk::Window::MOD1_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Edit registers", Gdk::Keyval::GDK_KEY_R, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Tools/Kill apps executed in bottle", Gdk::Keyval::GDK_KEY_K, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Execute", Gdk::Keyval::GDK_KEY_R, Gdk::Window::MOD1_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Execute the default application", Gdk::Keyval::GDK_KEY_Return, nil)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Add or Remove", Gdk::Keyval::GDK_KEY_U, Gdk::Window::CONTROL_MASK)
+	Gtk::AccelMap.add_entry("<Wibom>/Software/Winetricks", Gdk::Keyval::GDK_KEY_W, Gdk::Window::CONTROL_MASK)
+end
 
 # Menu bar
 menubar = Gtk::MenuBar.new
@@ -728,8 +743,8 @@ def aboutdialog
 
 	# Set application data that will be displayed in the
 	# main dialog.
-	dialog.version = "0.11"
-	dialog.copyright = "Copyright © 2009-2010 Miro Hrončok"
+	dialog.version = "0.12"
+	dialog.copyright = "Copyright © 2009-2011 Miro Hrončok"
 	dialog.comments = _("Wibom is the Wine bottle manager.\nThe Core is written in Bash, this GTK+ 2 frontend is written in Ruby.")
 
 	dialog.license = _("Redistribution and use in source and binary forms, with or without

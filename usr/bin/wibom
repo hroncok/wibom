@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright © 2009-2010, Miro Hrončok [hroncok.cz]. All rights reserved.
+# Copyright © 2009-2011, Miro Hrončok [hroncok.cz]. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -23,7 +23,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-VERSION="0.11"
+VERSION="0.12"
 
 BOTTLES="$HOME/.local/share/bottles"
 
@@ -55,7 +55,7 @@ elif [ "$1" == "--help" ]; then
 elif [ "$1" == "--version" ]; then
 	echo "Wine bottle management $VERSION"
 	echo ""
-	echo "Copyright (C) 2009, Miro Hrončok [hroncok.cz]"
+	echo "Copyright (C) 2009-2011, Miro Hrončok [hroncok.cz]"
 	echo "Licenced under BSD licence, see source for more information."
 	echo ""
 	echo "Written by Miro Hrončok [hroncok.cz]"
